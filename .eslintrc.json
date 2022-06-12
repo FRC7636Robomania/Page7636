@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": true,
+        "es2022": true
+    },
+    "extends": [
+        "plugin:vue/essential",
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2022,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue"
+    ],
+    "rules": {
+        "semi": "error",
+        "comma-dangle": ["error", "always-multiline"],
+        "no-extend-native": "warn",
+        "spaced-comment": "warn",
+        "no-tabs": ["error", { "allowIndentationTabs": true }]
+    }
+}
