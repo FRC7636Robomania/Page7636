@@ -4,7 +4,8 @@
         "es2022": true
     },
     "extends": [
-        "plugin:vue/essential",
+        "plugin:vue/vue3-recommended",
+        "plugin:vue/vue3-strongly-recommended",
         "standard"
     ],
     "parserOptions": {
@@ -19,6 +20,9 @@
         "comma-dangle": ["error", "always-multiline"],
         "no-extend-native": "warn",
         "spaced-comment": "warn",
-        "no-tabs": ["error", { "allowIndentationTabs": true }]
+        "no-tabs": ["error", { "allowIndentationTabs": true }],
+        "vue/multi-word-component-names": ["error", {
+            "ignores": ["Header"]
+        }]
     }
 }
