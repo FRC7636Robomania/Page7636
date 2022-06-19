@@ -1,4 +1,20 @@
 <script setup>
+import { ref } from 'vue'
+import TabMenu from 'primevue/tabmenu/sfc'
+const items = ref([
+  {
+    label: 'Home',
+    icon: 'pi pi-home',
+  },
+  {
+    label: 'About',
+    icon: 'pi pi-home',
+  },
+  {
+    label: 'Home',
+    icon: 'pi pi-home',
+  },
+])
 </script>
 
 <template>
@@ -13,8 +29,10 @@
       ROBOMANIA
     </h1>
   </div>
-  <div id="header-toolbar">
-    text
+  <div
+    id="header-toolbar"
+  >
+    <TabMenu :model="items" />
   </div>
 </template>
 
@@ -36,10 +54,36 @@
 
 #header-toolbar {
   background: #002b5e;
-  height: 10vh;
+  height: auto;
   left: 0px;
   position: sticky;
   top: 0px;
   width: 100vw;
+}
+
+.p-ink-active {
+  display: none !important;
+}
+
+.p-tabmenu-nav {
+  background: #002b5e !important;
+  border-width: 0 0 0px 0 !important;
+}
+
+.p-menuitem-link {
+  background: #002b5e !important;
+  border-radius: 0px !important;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: 0 0 0 0 !important;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):hover {
+  filter: brightness(1.5);
+}
+
+.p-menuitem-text .p-menuitem-icon {
+  color: aliceblue;
 }
 </style>
