@@ -1,5 +1,78 @@
 <script setup>
-
+import { ref } from 'vue'
+const sponsors = ref([
+  {
+    logo: require('@/assets/Elements/Sponsor/CTSP.png'),
+    path: 'https://www.ctsp.gov.tw/chinese/00-Home/home.aspx?v=1',
+  },
+  {
+    logo: require('@/assets/Elements/Sponsor/NEHSCTSP.png'),
+    path: 'http://www.nehs.tc.edu.tw/index.php',
+  },
+])
+const items = ref([
+  {
+    title: 'About',
+    links: [
+      {
+        name: 'FIRST',
+        path: '/FIRST',
+      },
+      {
+        name: 'Team #7636',
+        path: '/Team 7636',
+      },
+    ],
+  },
+  {
+    title: 'OUTREACH',
+    links: [
+      {
+        name: 'Outreach',
+        path: '/Outreach',
+      },
+      {
+        name: 'Our Sponsors',
+        path: '/sponsor',
+      },
+    ],
+  },
+  {
+    title: 'MEMBERS',
+    links: [
+      {
+        name: 'Mentors',
+        path: '/Mentor',
+      },
+      {
+        name: 'Leaders',
+        path: '/Leader',
+      },
+    ],
+  },
+])
+const icons = ref([
+  {
+    title: 'pi pi-facebook',
+    path: 'https://www.facebook.com/7636.Robomania',
+  },
+  {
+    title: 'pi pi-youtube',
+    path: 'https://www.youtube.com/channel/UCXFLKnRlpTNMn2aaLVM9H6g',
+  },
+  {
+    title: 'pi pi-instagram',
+    path: 'https://www.instagram.com/frc7636_robomania/',
+  },
+  {
+    title: 'pi pi-github',
+    path: 'https://www.twitch.tv/frc7636robomania',
+  },
+  {
+    title: 'pi pi-envelope',
+    path: '',
+  },
+])
 </script>
 
 <template>
@@ -43,8 +116,8 @@
         </template>
         <template #content>
           <div
-            v-for="(link, index) in item.links"
-            :key="`link-${index}`"
+            v-for="(link, index2) in item.links"
+            :key="`link-${index2}`"
           >
             <router-link
               class="no-underline text-white"
@@ -83,86 +156,6 @@
     </Card>
   </div>
 </template>
-
-<script>
-export default {
-  data: () => ({
-    sponsors: [
-      {
-        logo: require('@/assets/Elements/Sponsor/CTSP.png'),
-        path: 'https://www.ctsp.gov.tw/chinese/00-Home/home.aspx?v=1',
-      },
-      {
-        logo: require('@/assets/Elements/Sponsor/NEHSCTSP.png'),
-        path: 'http://www.nehs.tc.edu.tw/index.php',
-      },
-    ],
-    items: [
-      {
-        title: 'About',
-        links: [
-          {
-            name: 'FIRST',
-            path: '/FIRST',
-          },
-          {
-            name: 'Team #7636',
-            path: '/Team 7636',
-          },
-        ],
-      },
-      {
-        title: 'OUTREACH',
-        links: [
-          {
-            name: 'Outreach',
-            path: '/Outreach',
-          },
-          {
-            name: 'Our Sponsors',
-            path: '/sponsor',
-          },
-        ],
-      },
-      {
-        title: 'MEMBERS',
-        links: [
-          {
-            name: 'Mentors',
-            path: '/Mentor',
-          },
-          {
-            name: 'Leaders',
-            path: '/Leader',
-          },
-        ],
-      },
-    ],
-    icons: [
-      {
-        title: 'pi pi-facebook',
-        path: 'https://www.facebook.com/7636.Robomania',
-      },
-      {
-        title: 'pi pi-youtube',
-        path: 'https://www.youtube.com/channel/UCXFLKnRlpTNMn2aaLVM9H6g',
-      },
-      {
-        title: 'pi pi-instagram',
-        path: 'https://www.instagram.com/frc7636_robomania/',
-      },
-      {
-        title: 'pi pi-github',
-        path: 'https://www.twitch.tv/frc7636robomania',
-      },
-      {
-        title: 'pi pi-envelope',
-        path: '',
-      },
-    ],
-  }),
-}
-</script>
 
 <style lang="scss">
 @import "@/assets/scss/footer.scss";

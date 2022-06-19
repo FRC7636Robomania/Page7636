@@ -21,8 +21,6 @@
         "no-extend-native": "warn",
         "spaced-comment": "warn",
         "no-tabs": ["error", { "allowIndentationTabs": true }],
-        "vue/multi-word-component-names": ["error", {
-            "ignores": ["Header","Footer"]
-        }]
+        "vue/multi-word-component-names": "off"
     }
 }
