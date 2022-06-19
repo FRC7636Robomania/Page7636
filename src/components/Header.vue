@@ -21,7 +21,7 @@ const items = ref([
   <div id="header-banner">
     <img
       id="header-logo"
-      :src="require('../assets/logo.jpg')"
+      :src="require('../assets/7636_logo.jpg')"
     >
     <h1 class="text-white text-wrap">
       FRC #7636
@@ -45,7 +45,7 @@ const items = ref([
   display: flex;
   height: 25vh;
   justify-content: center;
-  width: 100vw;
+  max-width: 100%;
 }
 
 #header-logo {
@@ -58,7 +58,7 @@ const items = ref([
   left: 0px;
   position: sticky;
   top: 0px;
-  width: 100vw;
+  max-width: 100%;
 }
 
 .p-ink-active {

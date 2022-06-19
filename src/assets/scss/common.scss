@@ -1,11 +1,13 @@
 // compiled bootstrap
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'primeflex/primeflex.scss';
 
 // Common color
 $color-blue: #031f5b;
+$color-gray: #272727;
 
 * {
   box-sizing: border-box;
-  padding: 0px;
-  margin: 0px 0px;
+  padding: 0;
+  margin: 0;
 }
