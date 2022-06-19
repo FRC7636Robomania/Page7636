@@ -43,8 +43,8 @@
         </template>
         <template #content>
           <div
-            v-for="(link, index) in item.links"
-            :key="`link-${index}`"
+            v-for="(link, index2) in item.links"
+            :key="`link-${index2}`"
           >
             <router-link
               class="no-underline text-white"
