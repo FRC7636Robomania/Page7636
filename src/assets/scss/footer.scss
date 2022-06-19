@@ -1,0 +1,25 @@
+@import '@/assets/scss/common.scss';
+
+#footerSponsor {
+    background-color: $color-blue;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footerLinks{
+    background-color: $color-gray;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #footerMenu{
+        max-width:100%;
+        height:auto;
+        text-align: center;
+    }
+}
+
