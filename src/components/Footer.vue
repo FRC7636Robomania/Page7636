@@ -25,7 +25,7 @@ const items = ref([
     ],
   },
   {
-    title: 'OUTREACH',
+    title: 'Outreach',
     links: [
       {
         name: 'Outreach',
@@ -38,7 +38,7 @@ const items = ref([
     ],
   },
   {
-    title: 'MEMBERS',
+    title: 'Members',
     links: [
       {
         name: 'Mentors',
@@ -77,11 +77,11 @@ const icons = ref([
 
 <template>
   <div id="footerSponsor">
-    <div class="col-3 d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-center">
       <div
         v-for="(sponsor, index) in sponsors"
         :key="index"
-        class="text-center pt-5 my-5"
+        class="col-2 text-center pt-5 my-5"
       >
         <a :href="sponsor.path">
           <img
@@ -110,14 +110,16 @@ const icons = ref([
     >
       <Card style="background-color: #272727">
         <template #title>
-          <div class="font-bold text-white">
+          <div class="font-bold text-white text-center">
             {{ item.title }}
+            <hr>
           </div>
         </template>
         <template #content>
           <div
             v-for="(link, index2) in item.links"
             :key="`link-${index2}`"
+            class="pt-1"
           >
             <router-link
               class="text-decoration-none text-white"
