@@ -9,6 +9,7 @@
     "lintfix": "eslint --fix \"{,!(node_modules)/**/}*.{js,vue}\""
   },
   "dependencies": {
+    "async": "^3.2.4",
     "bootstrap": "^5.2.0-beta1",
     "core-js": "^3.8.3",
     "primeicons": "^5.0.0",
