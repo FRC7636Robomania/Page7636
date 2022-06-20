@@ -65,7 +65,7 @@ const icons = ref([
     path: 'https://www.instagram.com/frc7636_robomania/',
   },
   {
-    title: 'pi pi-github',
+    title: 'fi fi-brands-twitch',
     path: 'https://www.twitch.tv/frc7636robomania',
   },
   {
@@ -77,7 +77,7 @@ const icons = ref([
 
 <template>
   <div id="footerSponsor">
-    <div class="col-3 flex align-items-center justify-content-center">
+    <div class="col-3 d-flex align-items-center justify-content-center">
       <div
         v-for="(sponsor, index) in sponsors"
         :key="index"
@@ -86,7 +86,7 @@ const icons = ref([
         <a :href="sponsor.path">
           <img
             :src="sponsor.logo"
-            class="w-5 h-auto"
+            class="w-50 h-auto"
           >
         </a>
       </div>
@@ -98,7 +98,7 @@ const icons = ref([
       class="col-2 md-2"
     >
       <img
-        class="w-8 h-auto"
+        class="w-75 h-auto"
         :src="require('../assets/FIRST_logo.png')"
       >
     </div>
@@ -120,7 +120,7 @@ const icons = ref([
             :key="`link-${index2}`"
           >
             <router-link
-              class="no-underline text-white"
+              class="text-decoration-none text-white"
               :to="link.path"
             >
               {{ link.name }}
@@ -139,15 +139,18 @@ const icons = ref([
         </div>
       </template>
       <template #content>
-        <div class="text-white flex flex-row justify-content-center align-items-center">
+        <div class="text-white d-flex flex-row justify-content-center align-items-center">
           <div
             v-for="(icon, index) in icons"
             :key="`icon-${index}`"
           >
-            <a :href="icon.path">
+            <a
+              :href="icon.path"
+              class="text-decoration-none"
+            >
               <i
                 :class="`${icon.title}`"
-                class="text-3xl text-white mx-2"
+                class="fs-4 text-white mx-2"
               />
             </a>
           </div>
@@ -159,4 +162,5 @@ const icons = ref([
 
 <style lang="scss">
 @import "@/assets/scss/footer.scss";
+@import url('https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css');
 </style>
