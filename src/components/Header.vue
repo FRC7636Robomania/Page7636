@@ -21,7 +21,7 @@ const items = ref([
   <div id="header-banner">
     <img
       id="header-logo"
-      :src="require('../assets/7636_logo.jpg')"
+      :src="require('../assets/Elements/7636_logo.jpg')"
     >
     <h1 class="text-white text-wrap">
       FRC #7636

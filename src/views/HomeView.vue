@@ -42,6 +42,28 @@ const cardItems = ref([
     path: '/Outreach',
   },
 ])
+const bottomItems = ref([
+  {
+    photo: require('@/assets/Elements/Everywhere-2020 Infinite Recharge.png'),
+    text: 'FRC2021:Infinite Recharge',
+    path: '/2021InfiniteRecharge',
+  },
+  {
+    photo: require('@/assets/2020-2021/elements/Img01.png'),
+    text: '2021 Syzygy',
+    path: '',
+  },
+  {
+    photo: require('@/assets/2020-2021/elements/Img02.png'),
+    text: 'Outreach',
+    path: '/Outreach',
+  },
+  {
+    photo: require('@/assets/2020-2021/elements/Img03.png'),
+    text: 'FIRST',
+    path: '/FIRST',
+  },
+])
 </script>
 
 <template>
@@ -151,6 +173,21 @@ const cardItems = ref([
           class="mx-auto my-10"
           style="max-width: 90%"
         >
+      </div>
+    </div>
+    <div class="pb-5 px-5">
+      <div class="pb-5 row">
+        <div
+          v-for="(bottomItem, index) in bottomItems"
+          :key="index"
+          class="sm-6 lg-3 text-center pt-6 col-3 px-2 fs-5"
+        >
+          <img
+            :src="bottomItem.photo"
+            class="mx-auto w-75 h-auto py-2"
+          ><br>
+          {{ bottomItem.text }}
+        </div>
       </div>
     </div>
   </div>

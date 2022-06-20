@@ -99,7 +99,7 @@ const icons = ref([
     >
       <img
         class="w-75 h-auto"
-        :src="require('../assets/FIRST_logo.png')"
+        :src="require('../assets/Elements/FIRST_logo.png')"
       >
     </div>
     <div
