@@ -68,32 +68,28 @@ const bottomItems = ref([
 
 <template>
   <div class="home d-flex flex-column align-items-center justify-content-center px-5 py-5">
-    <div class="py-5 px-5">
-      <div class="px-5 mx-auto h-100">
-        <a
-          href="https://www.ctsp.gov.tw/chinese/00-Home/home.aspx?v=1"
-          style="text-decoration:none; color:white;"
-        >
-          <div>
-            <div class="row">
-              <div class="text-center my-auto col-5 md-4">
-                <img
-                  src="@/assets/Elements/Sponsor/CTSP.png"
-                  class="w-25 h-auto"
-                >
-              </div>
-              <div class="col-7">
-                <div class="mb-2 titleSize">
-                  NEHS @ CTSP
-                </div>
-                <div class="contentSize">
-                  FRC #7636 Robomania is made up by students studying in National Experimental High School at Central Taiwan Science Park.
-                </div>
-              </div>
+    <div class="CTSPItem px-5 py-5 my-5 h-auto w-75">
+      <a
+        href="https://www.ctsp.gov.tw/chinese/00-Home/home.aspx?v=1"
+        style="text-decoration:none; color:white;"
+      >
+        <div class="row">
+          <div class="text-center my-auto col-5 md-4">
+            <img
+              src="@/assets/Elements/Sponsor/CTSP.png"
+              class="w-50 h-auto"
+            >
+          </div>
+          <div class="col-7">
+            <div class="mb-2 titleSize">
+              NEHS @ CTSP
+            </div>
+            <div class="contentSize">
+              FRC #7636 Robomania is made up by students studying in National Experimental High School at Central Taiwan Science Park.
             </div>
           </div>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
     <div
       no-gutters
@@ -130,26 +126,23 @@ const bottomItems = ref([
         </div>
       </div>
     </div>
-    <div class="mx-auto py-5 px-5 w-100">
+    <div class="py-5 px-5 w-100">
       <div
         v-for="(cardItem, index) in cardItems"
         :key="index"
       >
-        <div class="px-5 py-5 h-100">
+        <div class="py-5 px-5 mx-5 my-5 h-100 cardItem">
           <div class="row">
             <div
               v-if="index % 2 == 0"
-              class="text-center my-auto col-5 md-4"
+              class="text-center col-5 md-4"
             >
               <img
                 :src="cardItem.imgPath"
                 class="w-75 bg-dark"
               >
             </div>
-            <div
-              order="2"
-              class="col-7"
-            >
+            <div class="col-7">
               <div class="mb-2 titleSize">
                 {{ cardItem.title }}
               </div>
@@ -168,19 +161,15 @@ const bottomItems = ref([
             </div>
           </div>
         </div>
-        <hr
-          color="#8f8f8f"
-          class="mx-auto my-10"
-          style="max-width: 90%"
-        >
+        <hr class="mx-auto my-10">
       </div>
     </div>
-    <div class="pb-5 px-5">
-      <div class="pb-5 row">
+    <div class="pb-5 px-5 w-75">
+      <div class="row">
         <div
           v-for="(bottomItem, index) in bottomItems"
           :key="index"
-          class="sm-6 lg-3 text-center pt-6 col-3 px-2 fs-5"
+          class=" bottomItem sm-6 lg-3 text-center pt-4 col-3 fs-5"
         >
           <img
             :src="bottomItem.photo"
