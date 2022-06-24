@@ -1,18 +1,22 @@
 <script setup>
 import { ref } from 'vue'
 import TabMenu from 'primevue/tabmenu/sfc'
+
 const items = ref([
   {
     label: 'Home',
     icon: 'pi pi-home',
+    to: '/home',
   },
   {
     label: 'About',
     icon: 'pi pi-home',
+    to: '/about',
   },
   {
-    label: 'Home',
-    icon: 'pi pi-home',
+    label: 'Sponsor',
+    icon: 'pi pi-heart',
+    to: '/sponsor',
   },
 ])
 </script>

@@ -44,22 +44,22 @@ const cardItems = ref([
 ])
 const bottomItems = ref([
   {
-    photo: require('@/assets/Elements/Everywhere-2020 Infinite Recharge.png'),
+    // photo: require('@/assets/Elements/Everywhere-2020 Infinite Recharge.png'),
     text: 'FRC2021:Infinite Recharge',
     path: '/2021InfiniteRecharge',
   },
   {
-    photo: require('@/assets/2020-2021/elements/Img01.png'),
+    // photo: require('@/assets/2020-2021/elements/Img01.png'),
     text: '2021 Syzygy',
     path: '',
   },
   {
-    photo: require('@/assets/2020-2021/elements/Img02.png'),
+    // photo: require('@/assets/2020-2021/elements/Img02.png'),
     text: 'Outreach',
     path: '/Outreach',
   },
   {
-    photo: require('@/assets/2020-2021/elements/Img03.png'),
+    // photo: require('@/assets/2020-2021/elements/Img03.png'),
     text: 'FIRST',
     path: '/FIRST',
   },
