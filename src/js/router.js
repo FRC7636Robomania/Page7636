@@ -22,6 +22,11 @@ const routes = [
     name: 'sponsor',
     component: () => import(/* webpackChunkName: "sponsor" */ '../views/SponsorView.vue'),
   },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue'),
+  },
 ]
 
 const router = createRouter({

@@ -18,6 +18,11 @@ const items = ref([
     icon: 'pi pi-heart',
     to: '/sponsor',
   },
+  {
+    label: 'Contact',
+    icon: 'pi pi-at',
+    to: '/contact',
+  },
 ])
 </script>
 

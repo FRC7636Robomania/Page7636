@@ -137,7 +137,7 @@ const icons = ref([
     >
       <template #title>
         <div class="font-bold text-white">
-          Contact US
+          Contact Us
         </div>
       </template>
       <template #content>
