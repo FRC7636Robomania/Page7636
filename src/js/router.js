@@ -18,9 +18,34 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'), // lazy-loaded with a separate js chunk name.
   },
   {
-    path: '/sponsor',
-    name: 'sponsor',
-    component: () => import(/* webpackChunkName: "sponsor" */ '../views/SponsorView.vue'),
+    path: '/members',
+    name: 'members',
+    component: () => import(/* webpackChunkName: "members" */ '../views/MembersView.vue'),
+  },
+  {
+    path: '/outreach',
+    name: 'outreach',
+    component: () => import(/* webpackChunkName: "outreach" */ '../views/OutreachView.vue'),
+  },
+  {
+    path: '/sponsors',
+    name: 'sponsors',
+    component: () => import(/* webpackChunkName: "sponsors" */ '../views/SponsorsView.vue'),
+  },
+  {
+    path: '/resources',
+    name: 'resources',
+    component: () => import(/* webpackChunkName: "resources" */ '../views/ResourcesView.vue'),
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: () => import(/* webpackChunkName: "news" */ '../views/NewsView.vue'),
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue'),
   },
 ]
 

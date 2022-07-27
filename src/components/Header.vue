@@ -14,9 +14,45 @@ const items = ref([
     to: '/about',
   },
   {
-    label: 'Sponsor',
+    label: 'Members',
     icon: 'pi pi-heart',
-    to: '/sponsor',
+    to: '/members',
+  },
+  {
+    label: 'Outreach',
+    icon: 'pi pi-heart',
+    to: '/outreach',
+  },
+  {
+    label: 'Sponsors',
+    icon: 'pi pi-heart',
+    to: '/sponsors',
+  },
+  {
+    label: 'Resources',
+    icon: 'pi pi-heart',
+    to: '/resources',
+    items: [
+      {
+        label: 'Robots',
+      },
+      {
+        label: 'CAD',
+      },
+      {
+        label: 'YT/ Videos',
+      },
+    ],
+  },
+  {
+    label: 'News',
+    icon: 'pi pi-heart',
+    to: '/news',
+  },
+  {
+    label: 'Contact',
+    icon: 'pi pi-heart',
+    to: '/contact',
   },
 ])
 </script>
