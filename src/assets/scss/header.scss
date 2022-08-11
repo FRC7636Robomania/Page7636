@@ -1,0 +1,47 @@
+#header-banner {
+    align-items: center;
+    background: #002b5e;
+    display: flex;
+    height: 125px;
+    justify-content: center;
+    max-width: 100%;
+}
+
+#header-logo {
+    height: 90px;
+}
+
+#header-toolbar {
+    background: #002b5e;
+    height: auto;
+    left: 0px;
+    position: sticky;
+    top: 0px;
+    max-width: 100%;
+}
+
+.p-ink-active {
+    display: none !important;
+}
+
+.p-tabmenu-nav {
+    background: #002b5e !important;
+    border-width: 0 !important;
+}
+
+.p-menuitem-link {
+    background: #002b5e !important;
+    border-radius: 0px !important;
+    color: white !important;  
+    font-family: 'DIN Alternate';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0.07em;
+    text-align: left;
+}
+
+
+.p-menuitem-text .p-menuitem-icon {
+    color: white !important;
+}
