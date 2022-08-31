@@ -1,47 +1,82 @@
 #header-banner {
+    width: 100%;
     align-items: center;
-    background: #002b5e;
     display: flex;
-    height: 125px;
+    height: 100px;
     justify-content: center;
     max-width: 100%;
+    position: fixed;
+    z-index: 99;
+
+    #header-logo {
+        height: 100px;
+    }
+
+    #header-toolbar {
+        height: auto;
+        left: 0px;
+        top: 0px;
+        max-width: 100%;
+    }
+    
+    .p-ink-active {
+        display: none !important;
+        border-width: 0 0 0 0 !important;
+    }
+
+    .p-tabmenu-nav {
+        border-width: 0 !important;
+        background-color: rgba(255, 255, 255, 0) !important;
+    }
+
+    .p-menuitem-link {
+        background-color: rgba(255, 255, 255, 0) !important;
+        border-width: 0px !important;
+        border-color: rgba(255, 255, 255, 0) !important;
+        color: white !important;  
+        font-family: 'DIN Alternate', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 23px;
+        letter-spacing: 0.07em;
+        text-align: left;
+        :hover{
+            color: rgb(199, 200, 216) !important;  
+        }
+        :active{
+            border: 0 !important;
+        }
+    }
+
+    .p-menuitem-active {
+        border: 0 !important;
+        border-color: rgba(255, 255, 255, 0) !important;
+        color: $color-blue;
+    }
 }
 
-#header-logo {
-    height: 90px;
+#gradient-mask {
+    background: linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url(../assets/Elements/Home/Img02.png);
+    height: 650px;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    #menuSelected{
+        color: white;
+        font-family: 'Playfair Display SC', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 65px;
+        line-height: 85px;
+        letter-spacing: 0.5em;
+    }
 }
 
-#header-toolbar {
-    background: #002b5e;
-    height: auto;
-    left: 0px;
+#color-lump {
+    height: 100px;
+    background-color: $color-blue;
     position: sticky;
-    top: 0px;
-    max-width: 100%;
-}
-
-.p-ink-active {
-    display: none !important;
-}
-
-.p-tabmenu-nav {
-    background: #002b5e !important;
-    border-width: 0 !important;
-}
-
-.p-menuitem-link {
-    background: #002b5e !important;
-    border-radius: 0px !important;
-    color: white !important;  
-    font-family: 'DIN Alternate';
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 23px;
-    letter-spacing: 0.07em;
-    text-align: left;
+    top: 0;
 }
 
 
-.p-menuitem-text .p-menuitem-icon {
-    color: white !important;
-}

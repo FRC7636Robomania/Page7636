@@ -5,27 +5,27 @@ import InputText from 'primevue/inputtext'
 
 const items = ref([
   {
-    label: 'Members',
+    label: 'MEMBERS',
     to: '/members',
   },
   {
-    label: 'Outreach',
+    label: 'OUTREACH',
     to: '/outreach',
   },
   {
-    label: 'Sponsors',
+    label: 'SPONSORS',
     to: '/sponsors',
   },
   {
-    label: 'News',
+    label: 'NEWS',
     to: '/news',
   },
   {
-    label: 'Resources',
+    label: 'RESOURCES',
     to: '/resources',
   },
   {
-    label: 'Contact',
+    label: 'CONTACT',
     to: '/contact',
   },
 ])
@@ -36,15 +36,26 @@ const items = ref([
     <router-link :to="'/home'">
       <img
         id="header-logo"
-        :src="require('../assets/Elements/7636_logo.jpg')"
+        :src="require('../assets/Elements/7636logo.png')"
       >
     </router-link>
     <TabMenu
       id="header-toolbar"
       :model="items"
     />
-    <InputText type="text" v-model="searchValue" />
+    <InputText
+      v-model="searchValue"
+      type="text"
+    />
   </div>
+  <div id="header-image">
+    <div id="gradient-mask">
+      <p id="menuSelected">
+        {{ $route.name }}
+      </p>
+    </div>
+  </div>
+  <div id="color-lump" />
 </template>
 
 <style lang="scss">

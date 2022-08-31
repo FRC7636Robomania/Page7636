@@ -1,56 +1,41 @@
 <script setup>
-import { ref } from 'vue'
-const sponsors = ref([
-  {
-    logo: require('@/assets/Elements/Sponsor/CTSP.png'),
-    path: 'https://www.ctsp.gov.tw/chinese/00-Home/home.aspx?v=1',
-  },
-  {
-    logo: require('@/assets/Elements/Sponsor/NEHSCTSP.png'),
-    path: 'http://www.nehs.tc.edu.tw/index.php',
-  },
-])
+// import { ref } from 'vue'
+/*
 const items = ref([
   {
-    title: 'About',
+    title: 'QUICK LINKS',
     links: [
       {
-        name: 'FIRST',
-        path: '/FIRST',
+        name: 'MAIL US',
       },
       {
-        name: 'Team #7636',
-        path: '/Team 7636',
+        name: 'CALENDER',
+      },
+      {
+        name: 'MAP',
+      },
+      {
+        name: 'RESOURCES',
+      },
+      {
+        name: 'GALLERY',
       },
     ],
   },
   {
-    title: 'Outreach',
+    title: 'WEBSITES',
     links: [
       {
         name: 'Outreach',
-        path: '/Outreach',
       },
       {
         name: 'Our Sponsors',
-        path: '/sponsor',
-      },
-    ],
-  },
-  {
-    title: 'Members',
-    links: [
-      {
-        name: 'Mentors',
-        path: '/Mentor',
-      },
-      {
-        name: 'Leaders',
-        path: '/Leader',
       },
     ],
   },
 ])
+*/
+/*
 const icons = ref([
   {
     title: 'pi pi-facebook',
@@ -73,92 +58,20 @@ const icons = ref([
     path: '',
   },
 ])
+*/
 </script>
 
 <template>
-  <div id="footerSponsor">
-    <div class="d-flex align-items-center justify-content-center">
-      <div
-        v-for="(sponsor, index) in sponsors"
-        :key="index"
-        class="col-2 text-center pt-5 my-5"
-      >
-        <a :href="sponsor.path">
-          <img
-            :src="sponsor.logo"
-            class="w-50 h-auto"
-          >
-        </a>
-      </div>
+  <div id="footer-wrapper">
+    <div id="footer-media">
+      ...
     </div>
-  </div>
-  <div id="footerLinks">
-    <div
-      id="frcLogo"
-      class="col-2 md-2"
-    >
-      <img
-        class="w-75 h-auto"
-        :src="require('../assets/Elements/FIRST_logo.png')"
-      >
+    <div id="footer-links">
+      ...
     </div>
-    <div
-      v-for="(item, index) in items"
-      id="footerMenu"
-      :key="`footer-${index}`"
-      class="col-2 md-2"
-    >
-      <Card style="background-color: #272727">
-        <template #title>
-          <div class="font-bold text-white text-center">
-            {{ item.title }}
-            <hr>
-          </div>
-        </template>
-        <template #content>
-          <div
-            v-for="(link, index2) in item.links"
-            :key="`link-${index2}`"
-            class="pt-1"
-          >
-            <router-link
-              class="text-decoration-none text-white"
-              :to="link.path"
-            >
-              {{ link.name }}
-            </router-link>
-          </div>
-        </template>
-      </Card>
+    <div id="footer-copyright">
+      © FRC 7636 Robomania, National Experimental High School at Central Taiwan Science Park 2022
     </div>
-    <Card
-      style="background-color: #272727"
-      class="col-2"
-    >
-      <template #title>
-        <div class="font-bold text-white">
-          Contact Us
-        </div>
-      </template>
-      <template #content>
-        <div class="text-white d-flex flex-row justify-content-center align-items-center">
-          <div
-            v-for="(icon, index) in icons"
-            :key="`icon-${index}`"
-          >
-            <a
-              :href="icon.path"
-              class="text-decoration-none"
-            >
-              <i
-                :class="`${icon.title}`"
-                class="fs-4 text-white mx-2"
-              />
-            </a>
-          </div>
-        </div>
-      </template>
-    </Card>
   </div>
 </template>
 

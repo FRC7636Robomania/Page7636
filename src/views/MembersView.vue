@@ -42,16 +42,6 @@ const sponsors = ref([
 
 <template>
   <div>
-    <v-img
-      aspect-ratio="2"
-      src="@/assets/Elements/FrontIMG/Sponsor header.jpg"
-      class="align-center"
-    >
-      <div class="textInImg">
-        Sponsors
-      </div>
-    </v-img>
-
     <div class="box">
       <div>
         <v-row class="justify-center align-center">

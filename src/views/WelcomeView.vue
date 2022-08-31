@@ -4,7 +4,9 @@
 <template>
   <div id="welcome-banner">
     <router-link :to="'/home'">
-      <button id="button">Homepage</button>
+      <button id="button">
+        Homepage
+      </button>
     </router-link>
   </div>
   <div>

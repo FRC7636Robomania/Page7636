@@ -1,39 +1,18 @@
 @import '@/assets/scss/common.scss';
 
-#footerSponsor {
-    background-color: $color-blue;
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#footerLinks{
-    background-color: $color-gray;
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 0;
-    #footerMenu{
-        max-width:100%;
-        height:auto;
+#footer-wrapper{
+    margin-top: 100px;
+    #footer-media{
+        background-color: $color-blue;
+        height: 500px;
+    }
+    #footer-links{
+        background-color: #ffffff;
+        height: 360px;
+    }
+    #footer-copyright{
+        color: #7a7a7a;
         text-align: center;
-        hr {
-            margin: 10px auto;
-            border: 0;
-            width: 100%;
-            border-bottom: 2px solid white;
-            opacity: .8;
-        }
     }
 }
-.p-card{
-    box-shadow: none !important;
-    .p-card-content {
-        padding: 0 0 1.25rem 0 !important;
-    }
-} 
 
