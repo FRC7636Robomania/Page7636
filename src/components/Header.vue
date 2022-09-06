@@ -49,9 +49,18 @@ const items = ref([
     />
   </div>
   <div id="header-image">
-    <div id="gradient-mask">
-      <p id="menuSelected">
+    <div class="gradient-mask">
+      <p
+        v-if="$route.path !='/home'"
+        id="menuSelected"
+      >
         {{ $route.name }}
+      </p>
+      <p
+        v-else
+        id="homeTitle"
+      >
+        Robomania, Team 7636 is a FRC team located at Taichung, Taiwan.
       </p>
     </div>
   </div>

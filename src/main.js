@@ -6,6 +6,7 @@ import PrimeVue from 'primevue/config'
 
 import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/lara-light-indigo/theme.css'
+import 'primeflex/primeflex.css'
 
 const app = createApp(App)
   .use(router)
