@@ -49,7 +49,7 @@ export default {
       icons: [
         {
           alt: 'icon-facebook',
-          url: require('../assets/Elements/Icon/icon-facebook.svg'),
+          url: require('../assets/Elements/Icon/icon-facebook.png'),
           to: 'https://www.facebook.com/7636.Robomania',
         },
         {
