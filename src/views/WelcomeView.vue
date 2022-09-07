@@ -3,14 +3,20 @@
 
 <template>
   <div id="welcomeImg">
-    <router-link :to="'/home'">
-      <button id="toHomepage">
-        <pre>
+    <div id="welcome-container">
+      <router-link :to="'/home'">
+        <img
+          id="welcomeLogo"
+          src="../assets/Elements/7636logo.png"
+        >
+        <button id="toHomepage">
+          <pre>
 FRC Team 7636
 Robomania
-        </pre>
-      </button>
-    </router-link>
+          </pre>
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 

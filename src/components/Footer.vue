@@ -11,11 +11,35 @@
         id="links-words"
         class="lg:col-8 sm:col-12 grid"
       >
-        <div class="lg:col-6 sm:col-12">
-          hello
+        <div class="lg:col-6 sm:col-12 xs:col-12 links-wrapper">
+          <h3>
+            QUICK LINKS
+          </h3>
+          <a
+            v-for="link in quickLinks"
+            :key="link"
+            :href="link.to"
+            target="_blank"
+            class="links"
+          >
+            {{ link.label }}
+            <br>
+          </a>
         </div>
-        <div class="lg:col-6 sm:col-12">
-          hello
+        <div class="lg:col-6 sm:col-12 xs:col-12 links-wrapper">
+          <h3>
+            WEBSITES
+          </h3>
+          <a
+            v-for="link in websites"
+            :key="link"
+            :href="link.to"
+            target="_blank"
+            class="links"
+          >
+            {{ link.label }}
+            <br>
+          </a>
         </div>
       </div>
       <div
@@ -71,6 +95,46 @@ export default {
           alt: 'icon-twitch',
           url: require('../assets/Elements/Icon/icon-twitch.png'),
           to: 'https://www.twitch.tv/frc7636robomania',
+        },
+      ],
+      quickLinks: [
+        {
+          label: 'Mail us',
+          to: 'mailto:frc7636@nehs.tc.edu.tw',
+        },
+        {
+          label: 'Calender',
+          to: '',
+        },
+        {
+          label: 'Map',
+          to: '',
+        },
+        {
+          label: 'Resources',
+          to: '',
+        },
+        {
+          label: 'Gallery',
+          to: '',
+        },
+      ],
+      websites: [
+        {
+          label: 'NEHS CTSP',
+          to: 'https://www.nehs.tc.edu.tw',
+        },
+        {
+          label: 'FIRST',
+          to: 'https://www.firstinspires.org',
+        },
+        {
+          label: 'FRC',
+          to: 'https://www.firstinspires.org/robotics/frc',
+        },
+        {
+          label: 'Grab CAD',
+          to: '',
         },
       ],
     }

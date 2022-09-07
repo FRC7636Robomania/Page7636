@@ -1,55 +1,39 @@
-<script setup>
-import { ref } from 'vue'
-import TabMenu from 'primevue/tabmenu/sfc'
-import InputText from 'primevue/inputtext'
-
-const items = ref([
-  {
-    label: 'MEMBERS',
-    to: '/members',
-  },
-  {
-    label: 'OUTREACH',
-    to: '/outreach',
-  },
-  {
-    label: 'SPONSORS',
-    to: '/sponsors',
-  },
-  {
-    label: 'NEWS',
-    to: '/news',
-  },
-  {
-    label: 'RESOURCES',
-    to: '/resources',
-  },
-  {
-    label: 'CONTACT',
-    to: '/contact',
-  },
-])
-</script>
-
 <template>
   <div id="header-banner">
-    <router-link :to="'/home'">
-      <img
-        id="header-logo"
-        :src="require('../assets/Elements/7636logo.png')"
+    <div>
+      <router-link :to="'/home'">
+        <img
+          id="header-logo"
+          :src="require('../assets/Elements/7636logo.png')"
+        >
+      </router-link>
+    </div>
+    <div id="header-toolbar">
+      <router-link
+        v-for="list in menu"
+        :key="list"
+        :to="list.to"
+        class="menu-item"
       >
-    </router-link>
-    <TabMenu
-      id="header-toolbar"
-      :model="items"
-    />
-    <InputText
-      v-model="searchValue"
-      type="text"
-    />
+        {{ list.label }}
+      </router-link>
+    </div>
+    <div id="searchBar">
+      <input
+        id="keyIn"
+        type="text"
+      >
+      <img
+        id="searchBtn"
+        src="../assets/Elements/Icon/icon-search.png"
+      >
+    </div>
   </div>
   <div id="header-image">
-    <div class="gradient-mask">
+    <div
+      class="gradient-mask"
+      :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require('../assets/Elements/Header/'+$route.name+'.png')+')'}"
+    >
       <p
         v-if="$route.path !='/home'"
         id="menuSelected"
@@ -66,6 +50,41 @@ const items = ref([
   </div>
   <div id="color-lump" />
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      menu: [
+        {
+          label: 'MEMBERS',
+          to: '/members',
+        },
+        {
+          label: 'OUTREACH',
+          to: '/outreach',
+        },
+        {
+          label: 'SPONSORS',
+          to: '/sponsors',
+        },
+        {
+          label: 'NEWS',
+          to: '/news',
+        },
+        {
+          label: 'RESOURCES',
+          to: '/resources',
+        },
+        {
+          label: 'CONTACT',
+          to: '/contact',
+        },
+      ],
+    }
+  },
+}
+</script>
 
 <style lang="scss">
 @import '@/assets/scss/common.scss';

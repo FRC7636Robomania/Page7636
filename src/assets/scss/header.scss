@@ -1,73 +1,70 @@
 #header-banner {
     width: 100%;
-    align-items: center;
-    display: flex;
     height: 100px;
-    justify-content: center;
-    max-width: 100%;
+    place-content: center;
+    place-items: center;
+    display: flex;
     position: fixed;
     z-index: 99;
 
     #header-logo {
-        height: 100px;
+        height: 110px;
+        transition: 0.5s;
+        &:hover {
+            height: 120px;
+            filter: drop-shadow(0 0 0.2em white);
+        }
     }
 
     #header-toolbar {
-        height: auto;
-        left: 0px;
-        top: 0px;
-        max-width: 100%;
-    }
-    
-    .p-ink-active {
-        display: none !important;
-        border-width: 0 0 0 0 !important;
-    }
-
-    .p-tabmenu-nav {
-        border-width: 0 !important;
-        background-color: rgba(255, 255, 255, 0) !important;
-    }
-
-    .p-menuitem-link {
-        background-color: rgba(255, 255, 255, 0) !important;
-        border-width: 0px !important;
-        border-color: rgba(255, 255, 255, 0) !important;
-        color: white !important;  
-        font-family: 'DIN Alternate', sans-serif;
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 23px;
-        letter-spacing: 0.07em;
-        text-align: left;
-        :hover{
-            color: rgb(199, 200, 216) !important;  
-        }
-        :active{
-            border: 0 !important;
+        .menu-item {
+            padding: 10px 20px 10px 20px;
+            font-family: 'DIN Alternate', sans-serif;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            transition: 0.3s;
+            &:hover {
+                color: rgba($color: #ffffff, $alpha: 0.5);
+            }
+            &.router-link-active {
+                color: rgba(223, 154, 152, 1);
+            }
         }
     }
 
-    .p-menuitem-active {
-        border: 0 !important;
-        border-color: rgba(255, 255, 255, 0) !important;
-        color: $color-blue;
+    #searchBar {
+        width: 250px;
+        border-radius: 30px;
+        background-color: white;
+        padding: 0 10px 0 10px;
+        #keyIn {
+            width: 200px;
+            padding-left: 10px;
+            border: none;
+            outline: none;
+        }
+        #searchBtn {
+            padding-left: 10px;
+        }
     }
 }
 
 .gradient-mask {
-    background: linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url(../assets/Elements/Home/Img02.png);
     height: 620px;
     display: grid;
     place-items: center;
     place-content: center;
+    color: white;
+    user-select: none;
+    font-style: normal;
+    font-weight: 700;
     #homeTitle{
-        color: white;
         font-family: 'Times New Roman', sans-serif;
-        font-style: normal;
-        font-weight: 700;
         font-size: 40px;
         line-height: 85px;
+        user-select: none;
         transform: translateY(40px);
         animation-duration: 2s;
         animation-name: brightup;
@@ -79,17 +76,15 @@
             to {
                 opacity: 1;
             }
-            }
+        }
     }
     #menuSelected{
-        color: white;
         font-family: 'Playfair Display SC', sans-serif;
-        font-style: normal;
-        font-weight: 700;
         font-size: 65px;
         line-height: 85px;
         letter-spacing: 0.5em;
         transform: translateY(40px);
+        transition: 2s;
     }
 }
 
