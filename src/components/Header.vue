@@ -30,60 +30,54 @@
     </div>
   </div>
   <div id="header-image">
-    <div
-      class="gradient-mask"
-      :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require('../assets/Elements/Header/'+$route.name+'.png')+')'}"
-    >
-      <p
-        v-if="$route.path !='/home'"
-        id="menuSelected"
+    <template v-if="$route.path !='/home'">
+      <div
+        class="gradient-mask"
+        :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require('../assets/Elements/Header/'+$route.name+'.png')+')'}"
       >
-        {{ $route.name }}
-      </p>
-      <p
-        v-else
-        id="homeTitle"
+        <p id="menuSelected">
+          {{ $route.name }}
+        </p>
+      </div>
+    </template>
+    <template v-else>
+      <swiper
+        :effect="'fade'"
+        :slides-per-view="'auto'"
+        :space-between="30"
+        :autoplay="{
+          delay: 5000,
+          disableOnInteraction: false,
+        }"
+        :centered-slides="true"
+        :loop="true"
+        style="height:600px; width:100%; z-index: -1;"
       >
-        Robomania, Team 7636 is a FRC team located at Taichung, Taiwan.
-      </p>
-    </div>
+        <swiper-slide
+          v-for="(item,index) in slideshow"
+          :key="index"
+          class="gradient-mask"
+          :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require(`../assets/Elements/Header/${item.imgurl}`)+')'}"
+        >
+          <p
+            id="homeTitle"
+          >
+            Robomania, Team 7636 is a FRC team located at Taichung, Taiwan.
+          </p>
+        </swiper-slide>
+      </swiper>
+    </template>
   </div>
   <div id="color-lump" />
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      menu: [
-        {
-          label: 'MEMBERS',
-          to: '/members',
-        },
-        {
-          label: 'OUTREACH',
-          to: '/outreach',
-        },
-        {
-          label: 'SPONSORS',
-          to: '/sponsors',
-        },
-        {
-          label: 'NEWS',
-          to: '/news',
-        },
-        {
-          label: 'RESOURCES',
-          to: '/resources',
-        },
-        {
-          label: 'CONTACT',
-          to: '/contact',
-        },
-      ],
-    }
-  },
-}
+<script setup>
+import SwiperCore, { Autoplay, EffectFade } from 'swiper'
+import { computed } from 'vue'
+import headerJson from '../json/header.json'
+SwiperCore.use([Autoplay, EffectFade])
+const menu = computed(() => headerJson.menu || null)
+const slideshow = computed(() => headerJson.slideshow || null)
 </script>
 
 <style lang="scss">

@@ -1,0 +1,51 @@
+{
+    "menu": [
+        {
+            "label": "MEMBERS",
+            "to": "/members"
+        },
+        {
+            "label": "OUTREACH",
+            "to": "/outreach"
+        },
+        {
+            "label": "SPONSORS",
+            "to": "/sponsors"
+        },
+        {
+            "label": "NEWS",
+            "to": "/news"
+        },
+        {
+            "label": "RESOURCES",
+            "to": "/resources"
+        },
+        {
+            "label": "CONTACT",
+            "to": "/contact"
+        }
+    ],
+    "slideshow": [
+        {
+            "imgurl": "contact.png"
+        },
+        {
+            "imgurl": "home.png"
+        },
+        {
+            "imgurl": "members.png"
+        },
+        {
+            "imgurl": "news.png"
+        },
+        {
+            "imgurl": "resources.png"
+        },
+        {
+            "imgurl": "outreach.png"
+        },
+        {
+            "imgurl": "sponsors.png"
+        }
+    ]
+}
