@@ -16,6 +16,7 @@
     "primeicons": "^5.0.0",
     "primevue": "^3.13.1",
     "vue": "^3.2.13",
+    "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
