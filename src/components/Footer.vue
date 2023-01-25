@@ -54,7 +54,7 @@
           class="icons"
         >
           <img
-            :src="icon.url"
+            :src="require(`@/assets/Elements/Icon/${icon.url}`)"
             :alt="icon.alt"
           >
         </a>
@@ -66,80 +66,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      icons: [
-        {
-          alt: 'icon-facebook',
-          url: require('../assets/Elements/Icon/icon-facebook.png'),
-          to: 'https://www.facebook.com/7636.Robomania',
-        },
-        {
-          alt: 'icon-instagram',
-          url: require('../assets/Elements/Icon/icon-instagram.png'),
-          to: 'https://www.instagram.com/frc7636_robomania/',
-        },
-        {
-          alt: 'icon-youtube',
-          url: require('../assets/Elements/Icon/icon-youtube.png'),
-          to: 'https://www.youtube.com/channel/UCXFLKnRlpTNMn2aaLVM9H6g',
-        },
-        {
-          alt: 'icon-github',
-          url: require('../assets/Elements/Icon/icon-github.png'),
-          to: 'https://github.com/FRC7636Robomania',
-        },
-        {
-          alt: 'icon-twitch',
-          url: require('../assets/Elements/Icon/icon-twitch.png'),
-          to: 'https://www.twitch.tv/frc7636robomania',
-        },
-      ],
-      quickLinks: [
-        {
-          label: 'Mail us',
-          to: 'mailto:frc7636@nehs.tc.edu.tw',
-        },
-        {
-          label: 'Calender',
-          to: '',
-        },
-        {
-          label: 'Map',
-          to: '',
-        },
-        {
-          label: 'Resources',
-          to: '',
-        },
-        {
-          label: 'Gallery',
-          to: '',
-        },
-      ],
-      websites: [
-        {
-          label: 'NEHS CTSP',
-          to: 'https://www.nehs.tc.edu.tw',
-        },
-        {
-          label: 'FIRST',
-          to: 'https://www.firstinspires.org',
-        },
-        {
-          label: 'FRC',
-          to: 'https://www.firstinspires.org/robotics/frc',
-        },
-        {
-          label: 'Grab CAD',
-          to: '',
-        },
-      ],
-    }
-  },
-}
+<script setup>
+import { computed } from 'vue'
+import footerJson from '../json/footer.json'
+const quickLinks = computed(() => footerJson.quickLinks || null)
+const icons = computed(() => footerJson.icons || null)
+const websites = computed(() => footerJson.websites || null)
 </script>
 
 <style lang="scss">

@@ -1,0 +1,69 @@
+{
+    "icons": [
+        {
+          "alt": "icon-facebook",
+          "url": "icon-facebook.png",
+          "to": "https://www.facebook.com/7636.Robomania"
+        },
+        {
+          "alt": "icon-instagram",
+          "url": "icon-instagram.png",
+          "to": "https://www.instagram.com/frc7636_robomania/"
+        },
+        {
+          "alt": "icon-youtube",
+          "url": "icon-youtube.png",
+          "to": "https://www.youtube.com/channel/UCXFLKnRlpTNMn2aaLVM9H6g"
+        },
+        {
+          "alt": "icon-github",
+          "url": "icon-github.png",
+          "to": "https://github.com/FRC7636Robomania"
+        },
+        {
+          "alt": "icon-twitch",
+          "url": "icon-twitch.png",
+          "to": "https://www.twitch.tv/frc7636robomania"
+        }
+      ],
+      "quickLinks": [
+        {
+          "label": "Mail us",
+          "to": "/contact"
+        },
+        {
+          "label": "Calender",
+          "to": ""
+        },
+        {
+          "label": "Map",
+          "to": ""
+        },
+        {
+          "label": "Resources",
+          "to": "/resources"
+        },
+        {
+          "label": "Gallery",
+          "to": ""
+        }
+      ],
+      "websites": [
+        {
+          "label": "NEHS CTSP",
+          "to": "https://www.nehs.tc.edu.tw"
+        },
+        {
+          "label": "FIRST",
+          "to": "https://www.firstinspires.org"
+        },
+        {
+          "label": "FRC",
+          "to": "https://www.firstinspires.org/robotics/frc"
+        },
+        {
+          "label": "Grab CAD",
+          "to": ""
+        }
+      ]
+}
