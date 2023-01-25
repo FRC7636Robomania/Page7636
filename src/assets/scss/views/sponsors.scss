@@ -1,5 +1,9 @@
 @import "@/assets/scss/common.scss";
 
+.sponsors{
+    @include viewSettings;
+}
+
 .textInImg {
     text-align: center;
     color: white;

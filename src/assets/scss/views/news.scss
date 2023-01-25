@@ -1,0 +1,62 @@
+@import "@/assets/scss/common.scss";
+
+.news{
+    @include viewSettings;
+    .yearBlock{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 20vh;
+        width: 70vw;
+        height: auto;
+        .year{
+            width: 100px;
+            height: 100px;
+            font-size: 45px;
+            font-weight: bold;
+            align-self: flex-start;
+            color:#CBCBCB;
+        }
+        .reports{
+            width: 50vw;
+            height: auto;
+            margin: 100px 0 0 50px;
+            .report{
+                width: 50vw;
+                min-height: 80px;
+                height: auto;
+                .day{
+                    min-height: 50px;
+                    min-width: 50px;
+                    height: auto;
+                    text-align: center;
+                    margin-right: 10px;
+                    float: left;
+                    span{
+                        font-size: 30px;
+                        line-height: 20px;
+                        color:#031F5B;
+                        font-weight: bold;
+                    }
+                    .number{
+                        line-height: 40px;
+                        font-size: 50px;
+                    }
+                }
+                .text{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    margin-left: 50px;
+                    .title{
+                        font-size: 30px;
+                        font-weight: bold;
+                    }
+                    .content{
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

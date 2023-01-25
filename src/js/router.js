@@ -14,11 +14,6 @@ const routes = [
     component: HomeView,
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'), // lazy-loaded with a separate js chunk name.
-  },
-  {
     path: '/members',
     name: 'members',
     component: () => import(/* webpackChunkName: "members" */ '../views/MembersView.vue'),
@@ -44,9 +39,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "news" */ '../views/NewsView.vue'),
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue'),
+    path: '/news/2022',
+    name: 'news_2022',
+    component: () => import(/* webpackChunkName: "news_2022" */ '../views/NewsView.vue'),
+  },
+  {
+    path: '/news/2021',
+    name: 'news_2021',
+    component: () => import(/* webpackChunkName: "news_2021" */ '../views/NewsView.vue'),
+  },
+  {
+    path: '/news/2020',
+    name: 'news_2020',
+    component: () => import(/* webpackChunkName: "news_2020" */ '../views/NewsView.vue'),
   },
   {
     path: '/contact',
@@ -55,9 +60,29 @@ const routes = [
   },
 ]
 
+const components = ['welcome', 'home', 'members', 'outreach', 'resources', 'news', 'contact']
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (to.name in components) return
+    if (savedPosition) {
+      return savedPosition
+    } else if (to.name) {
+      console.log(to.name)
+      if (to.matched.some(m => m.meta.scrollToBottom)) {
+        return {
+          top: 1000000,
+          behavior: 'smooth',
+        }
+      }
+      return {
+        el: `#${to.name}`,
+        top: 100,
+        behavior: 'smooth',
+      }
+    }
+  },
 })
 
 export default router
