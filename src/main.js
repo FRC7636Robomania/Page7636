@@ -4,6 +4,7 @@ import router from './js/router'
 import common from './js/common'
 import PrimeVue from 'primevue/config'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import LoadScript from 'vue-plugin-load-script'
 
 import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/lara-light-indigo/theme.css'
@@ -13,6 +14,7 @@ import 'swiper/swiper-bundle.css'
 const app = createApp(App)
   .use(router)
   .use(PrimeVue, { ripple: true })
+  .use(LoadScript)
   .component('Swiper', Swiper)
   .component('SwiperSlide', SwiperSlide)
 

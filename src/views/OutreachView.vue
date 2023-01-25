@@ -2,8 +2,7 @@
 </script>
 
 <template>
-  <div class="outreach">
-  </div>
+  <div class="outreach" />
 </template>
 
 <style scoped lang="scss">

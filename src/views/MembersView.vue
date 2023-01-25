@@ -4,8 +4,7 @@ import slideNav from '../components/SideNav.vue'
 
 <template>
   <slideNav />
-  <div class="members">
-  </div>
+  <div class="members" />
 </template>
 
 <style scoped lang="scss">

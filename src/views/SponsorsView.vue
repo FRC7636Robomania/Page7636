@@ -2,8 +2,7 @@
 </script>
 
 <template>
-  <div class="sponsors">
-  </div>
+  <div class="sponsors" />
 </template>
 
 <style scoped lang="scss">

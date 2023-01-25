@@ -14,11 +14,6 @@ const routes = [
     component: HomeView,
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'), // lazy-loaded with a separate js chunk name.
-  },
-  {
     path: '/members',
     name: 'members',
     component: () => import(/* webpackChunkName: "members" */ '../views/MembersView.vue'),
@@ -65,10 +60,12 @@ const routes = [
   },
 ]
 
+const components = ['welcome', 'home', 'members', 'outreach', 'resources', 'news', 'contact']
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior (to, from, savedPosition) {
+    if (to.name in components) return
     if (savedPosition) {
       return savedPosition
     } else if (to.name) {
