@@ -4,28 +4,28 @@
             "year": "2022",
             "reports": [
                 {
-                    "day": "6/11",
-                    "title": "OH SHIT NEW SINGLE REALEASE!!",
+                    "day": "7/22",
+                    "title": "OH SHIT!NEW SINGLE REALEASE!!",
                     "content": ".................."
                 },
                 {
-                    "day": "6/11",
-                    "title": "OH SHIT NEW SINGLE REALEASE!!",
+                    "day": "6/10",
+                    "title": "254 CHASSIS",
                     "content": ".................."
                 },
                 {
-                    "day": "6/11",
-                    "title": "OH SHIT NEW SINGLE REALEASE!!",
+                    "day": "5/30",
+                    "title": "叮叮叮",
                     "content": ".................."
                 },
                 {
-                    "day": "6/11",
-                    "title": "OH SHIT NEW SINGLE REALEASE!!",
+                    "day": "3/19",
+                    "title": "韋伯發威啦!!!",
                     "content": ".................."
                 },
                 {
-                    "day": "6/11",
-                    "title": "OH SHIT NEW SINGLE REALEASE!!",
+                    "day": "1/01",
+                    "title": "新年不快樂:)",
                     "content": ".................."
                 }
             ]
@@ -34,11 +34,42 @@
             "year": "2021",
             "reports": [
                 {
-                    "day": "6/11",
-                    "title": "OH SHIT NEW SINGLE REALEASE!!",
+                    "day": "12/25",
+                    "title": "りしれ供さ小",
                     "content": ".................."
                 }
             ]
+        }
+    ],
+    "months":{
+        "1":"JUN",
+        "2":"FEB",
+        "3":"MAR",
+        "4":"APR",
+        "5":"MAR",
+        "6":"JUN",
+        "7":"JUL",
+        "8":"AUG",
+        "9":"SEP",
+        "10":"OCT",
+        "11":"NOV",
+        "12":"DEC"
+    },
+    "links":[
+        {
+            "component":"news",
+            "name":"2022",
+            "location":"2022"
+        },
+        {
+            "component":"news",
+            "name":"2021",
+            "location":"2021"
+        },
+        {
+            "component":"news",
+            "name":"2020",
+            "location":"2020"
         }
     ]
 }

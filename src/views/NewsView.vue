@@ -2,19 +2,26 @@
 import { computed, onMounted } from 'vue'
 import slideNav from '../components/SideNav.vue'
 import newsJson from '../json/news.json'
-const news = computed(() => newsJson || null)
+const news = computed(() => newsJson.blocks || null)
+const months = computed(() => newsJson.months || null)
+const links = computed(() => newsJson.links || null)
 onMounted(() => console.log(news))
 </script>
 
 <template>
-  <slideNav />
+  <slideNav
+    :links="links"
+  />
   <div class="news">
     <div
       v-for="(item, yearIndex) in news"
       :key="yearIndex"
       class="yearBlock"
     >
-      <span class="year">
+      <span
+        :id="`news_${item.year}`"
+        class="year"
+      >
         {{ item.year }}
       </span>
       <div class="reports">
@@ -22,15 +29,22 @@ onMounted(() => console.log(news))
           v-for="(report, index) in item.reports"
           :key="index"
         >
-          <div class="day">
-            <span>{{ report.day }}</span>
+          <div class="report">
+            <div class="day">
+              <span>{{ months[report.day.slice(0, -3)] }}</span>
+              <br>
+              <span class="number">{{ report.day.slice(-2) }}</span>
+            </div>
+            <div class="text">
+              <h1 class="title">
+                {{ report.title }}
+              </h1>
+              <p class="content">
+                {{ report.content }}
+              </p>
+            </div>
           </div>
-          <h1 class="title">
-            {{ report.title }}
-          </h1>
-          <p class="content">
-            {{ report.contnt }}
-          </p>
+          <div class="divideLine" />
         </template>
       </div>
     </div>

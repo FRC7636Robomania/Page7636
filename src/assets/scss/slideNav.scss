@@ -1,9 +1,24 @@
 @import '@/assets/scss/common.scss';
 
-.slideNav{
-    position:absolute;
-    color: #732C2C;
+#slideNav{
+    position: absolute;
     width: 20vw;
     min-height: 100vh;
     height: auto;
+    transform: translate(20%, 20%);
+    .menu{
+        .menuItem{ 
+            list-style: none;
+            font-size: 20px;
+            font-weight: bold;
+            background: none;
+            a{
+                text-decoration: none;
+                color: #732C2C;
+            }
+            a.router-link-exact-active {
+                color: #031F5B;
+            }
+        }
+    }
 }
