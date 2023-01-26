@@ -4,9 +4,15 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import resourceJson from '@/assets/json/resource.json'
 const blocks = computed(() => resourceJson.blocks || null)
+const recap = computed(() => resourceJson.recap || null)
 const router = useRouter()
 const routerTo = path => router.push(path)
-
+let counter = 1
+setInterval(() => {
+  document.querySelector('#radio' + counter).checked = true
+  counter++
+  if (counter > 4) counter = 1
+}, 10000)
 </script>
 
 <template>
@@ -17,15 +23,44 @@ const routerTo = path => router.push(path)
       class="container"
     >
       <div class="row">
-        <div
-          id="recap"
-          class="resourceBlock col"
-        >
-          <h1
-            style="font-size: 80px;"
-          >
-            {{ blocks[0].name }}
-          </h1>
+        <div class="slider col">
+          <div class="slides">
+            <input
+              v-for="index in 4"
+              :id="`radio${index}`"
+              :key="index"
+              type="radio"
+              name="radio-btn"
+            >
+            <div
+              v-for="(image, index) in recap"
+              :key="index"
+              :class="{'first': index == 0 }"
+              class="slide"
+            >
+              <div
+                class="image"
+                :class="{'background1':index === 0, 'background2':index === 1, 'background3':index === 2, 'background4':index === 3}"
+              >
+                <h1> {{ blocks[0].name }} </h1>
+              </div>
+            </div>
+            <div class="navigation-auto">
+              <div
+                v-for="index in 4"
+                :key="index"
+                :class="`auto-btn${index}`"
+              />
+            </div>
+          </div>
+          <div class="navigation-manual">
+            <label
+              v-for="index in 4"
+              :key="index"
+              :for="`radio${index}`"
+              class="manual-btn"
+            />
+          </div>
         </div>
       </div>
       <div class="row g-2">

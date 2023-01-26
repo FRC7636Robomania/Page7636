@@ -3,14 +3,16 @@
 #footer-wrapper {
     // margin-top: 100px;
     #footer-media {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        column-count: 4;
+        column-gap: 0;
         padding: 50px;
         background-color: $color-blue;
-        min-height: 500px;
-        height: auto;
-        overflow-x: hidden;
+        -webkit-column-break-inside: avoid;
+        .post{
+            margin: 30px;
+            margin-top: 0;
+            -webkit-column-break-inside: avoid;
+        }
     }
     #footer-links {
         background-color: #ffffff;

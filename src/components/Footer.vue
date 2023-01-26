@@ -4,6 +4,7 @@
       <Post
         v-for="(post, index) in footerJson.posts"
         :key="index"
+        class="post"
         :post-information="post"
       />
     </div>
