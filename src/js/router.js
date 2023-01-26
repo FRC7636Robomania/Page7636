@@ -60,12 +60,12 @@ const routes = [
   },
 ]
 
-const components = ['welcome', 'home', 'members', 'outreach', 'resources', 'news', 'contact']
+const components = ['welcome', 'home', 'members', 'outreach', 'resources', 'news', 'contact', 'sponsors']
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior (to, from, savedPosition) {
-    if (to.name in components) return
+    if (components.includes(to.name)) return
     if (savedPosition) {
       return savedPosition
     } else if (to.name) {

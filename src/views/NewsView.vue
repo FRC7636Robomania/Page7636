@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import slideNav from '../components/SideNav.vue'
-import newsJson from '../json/news.json'
+import newsJson from '@/assets/json/news.json'
 const news = computed(() => newsJson.blocks || null)
 const months = computed(() => newsJson.months || null)
 const links = computed(() => newsJson.links || null)
@@ -35,7 +35,11 @@ onMounted(() => console.log(news))
               <br>
               <span class="number">{{ report.day.slice(-2) }}</span>
             </div>
-            <div class="text">
+            <img
+              v-if="report.image"
+              :src="require(`@/assets/Elements/News/${report.image}`)"
+            >
+            <div style="margin-left: 80px">
               <h1 class="title">
                 {{ report.title }}
               </h1>

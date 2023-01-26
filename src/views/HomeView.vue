@@ -1,6 +1,6 @@
 <script setup>
 import { computed, onMounted } from 'vue'
-import homeJson from '../json/home.json'
+import homeJson from '@/assets/json/home.json'
 const blocks = computed(() => homeJson.blocks || null)
 const cardItems = computed(() => homeJson.cardItems || null)
 const bottomItems = computed(() => homeJson.bottomItems || null)

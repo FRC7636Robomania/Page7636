@@ -68,7 +68,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import footerJson from '../json/footer.json'
+import footerJson from '@/assets/json/footer.json'
 const quickLinks = computed(() => footerJson.quickLinks || null)
 const icons = computed(() => footerJson.icons || null)
 const websites = computed(() => footerJson.websites || null)

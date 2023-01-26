@@ -3,45 +3,39 @@
 .resource{
     @include viewSettings;
     .container{
-        min-width: 60vw;
-        min-height: 60vh;
-        width: auto;
+        max-width: 100%;
         height: auto;
-        gap: 60px 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
         .resourceBlock{
             background: linear-gradient(rgba(0, 0, 1, 0.32),rgb(50, 50, 50)), url(~@/assets/Elements/Resource/default.png);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            border-radius: 10px;
-            min-width: 20vw;
-            min-height: 40vh;
-            display: flex;
-            align-items: center;
+            border-radius: 30px;
+            min-height: 300px;
             text-align: center;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', sans-serif;
             h1{
                 font-size: 40px;
                 width: 100%;
                 height: auto;
                 color: azure;
                 line-height: 60px;
+                margin-bottom: 10px;
             }
         }
         #recap{
-            width: 70vw;
-            height: 80vh;
+            height: 600px;
         }
         #cad{
-            width: 40vw;
-            height: 20vh;
+            height: 400px;
         }
         #channel{
-            width: 20vw;
-            height: 20vh;
+            height: 400px;
         }
     }
 }

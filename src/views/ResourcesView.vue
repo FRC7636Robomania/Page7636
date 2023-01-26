@@ -1,35 +1,38 @@
 <script setup>
 import SideNav from '@/components/SideNav.vue'
-import { computed, onMounted } from 'vue'
-import resourceJson from '../json/resource.json'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import resourceJson from '@/assets/json/resource.json'
 const blocks = computed(() => resourceJson.blocks || null)
+const router = useRouter()
+const routerTo = path => router.push(path)
 
-onMounted(() => console.log(blocks))
 </script>
 
 <template>
   <SideNav />
   <div class="resource">
-    <div class="container">
-      <div
-        id="recap"
-        class="resourceBlock"
-      >
-        <h1
-          style="font-size: 80px;"
-        >
-          {{ blocks[0].name }}
-        </h1>
-      </div>
-      <div
-        class="flex"
-        style="gap:60px 60px"
-      >
+    <div
+      v-if="blocks.length > 0"
+      class="container"
+    >
+      <div class="row">
         <div
-          v-for="(block, index) in blocks.splice(1,3)"
-          :id="block.name"
+          id="recap"
+          class="resourceBlock col"
+        >
+          <h1
+            style="font-size: 80px;"
+          >
+            {{ blocks[0].name }}
+          </h1>
+        </div>
+      </div>
+      <div class="row g-2">
+        <div
+          v-for="(block, index) in blocks.slice(1, 4)"
           :key="index"
-          class="resourceBlock"
+          class="resourceBlock col"
         >
           <h1
             style="font-size: 20px;"
@@ -38,25 +41,34 @@ onMounted(() => console.log(blocks))
           </h1>
         </div>
       </div>
-      <div
-        class="flex"
-        style="gap:60px 60px"
-      >
+      <div class="row">
         <div
           id="cad"
-          class="resourceBlock"
+          class="resourceBlock col-6"
         >
           <h1>
             {{ blocks[blocks.length - 2].name.slice(0, -4) }} <br> {{ blocks[blocks.length - 2].name.slice(-4) }}
           </h1>
+          <button
+            class="p-white"
+            @click="routerTo('/home')"
+          >
+            CLICK
+          </button>
         </div>
         <div
           id="channel"
-          class="resourceBlock"
+          class="resourceBlock col-5"
         >
           <h1>
-            {{ blocks[blocks.length - 1].name }}
+            {{ blocks[blocks.length - 1].name.slice(0, 8) }} <br> {{ blocks[blocks.length - 1].name.slice(8) }}
           </h1>
+          <button
+            class="p-white"
+            @click="routerTo('/home')"
+          >
+            CLICK
+          </button>
         </div>
       </div>
     </div>

@@ -74,7 +74,7 @@
 <script setup>
 import SwiperCore, { Autoplay, EffectFade } from 'swiper'
 import { computed } from 'vue'
-import headerJson from '../json/header.json'
+import headerJson from '@/assets/json/header.json'
 SwiperCore.use([Autoplay, EffectFade])
 const menu = computed(() => headerJson.menu || null)
 const slideshow = computed(() => headerJson.slideshow || null)
