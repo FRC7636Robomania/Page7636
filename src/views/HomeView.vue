@@ -115,10 +115,10 @@ onMounted(() => {
           :key="index"
           class=" bottomItem sm-6 lg-3 text-center pt-4 col-3 fs-5"
         >
-          <!-- <img
-            :src="require(`@/assets/2020-2021/elements/${bottomItem.photo}`)"
+          <img
+            :src="require(`@/assets/Elements/Home/${bottomItem.photo}`)"
             class="mx-auto w-75 h-auto py-2"
-          ><br> -->
+          ><br>
           {{ bottomItem.text }}
         </div>
       </div>

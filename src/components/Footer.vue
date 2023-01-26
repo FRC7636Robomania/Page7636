@@ -1,7 +1,11 @@
 <template>
   <div id="footer-wrapper">
     <div id="footer-media">
-      ...
+      <Post
+        v-for="(post, index) in footerJson.posts"
+        :key="index"
+        :post-information="post"
+      />
     </div>
     <div
       id="footer-links"
@@ -69,6 +73,7 @@
 <script setup>
 import { computed } from 'vue'
 import footerJson from '@/assets/json/footer.json'
+import Post from './Post'
 const quickLinks = computed(() => footerJson.quickLinks || null)
 const icons = computed(() => footerJson.icons || null)
 const websites = computed(() => footerJson.websites || null)
