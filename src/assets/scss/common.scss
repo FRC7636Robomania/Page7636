@@ -4,6 +4,7 @@
 
 $color-blue: #031f5b;
 $color-gray: #272727;
+$num: 3;
 
 * {
   box-sizing: border-box;
@@ -26,6 +27,56 @@ $color-gray: #272727;
   height: 1px;
   background-color: #031f5b;
   margin-bottom: 40px;
+}
+
+
+:deep(.swiper-button-prev) {
+  --swiper-navigation-size: 30px;
+  color: $color-blue;
+  top: 100%;
+  left: 40%;
+  transform: translate(0%, -100%);
+  z-index: 20;
+}
+:deep(.swiper-button-next) {
+  --swiper-navigation-size: 30px;
+  color: $color-blue;
+  top: 100%;
+  right: 40%;
+  transform: translate(0%, -100%);
+  z-index: 20;
+}
+
+:deep(.swiper-pagination){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .swiper-pagination-bullet {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    background: black;
+    opacity: 0.6;
+    margin-right: 10px;
+    @for $i from 1 through $num {
+      &:nth-child(#{$i})::before{
+        content: "#{$i}";
+        color:#F6F6F6;
+        display: inline-block;
+        transform: translateY(10%);
+      }
+    }
+  }
+  .swiper-pagination-bullet-active{
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+    background: $color-blue;
+    &:nth-child(n)::before{
+      transform: translateY(30%);
+    }
+  }
 }
 
 @mixin viewSettings(){
