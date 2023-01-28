@@ -41,7 +41,7 @@ const routes = [
   },
   {
     path: '/news/:yearId',
-    name: 'news',
+    name: 'news_year',
     component: () => import('../views/NewsView.vue'),
   },
   {
@@ -70,7 +70,7 @@ const router = createRouter({
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } else if (to.name === 'news' && to.params !== '/news') {
+    } else if (to.name === 'news_year') {
       console.log(to.params.yearId)
       if (to.matched.some(m => m.meta.scrollToBottom)) {
         return {
@@ -88,4 +88,4 @@ const router = createRouter({
 })
 
 export default router
-export { components, specialComponents }
+export { components, specialComponents, router }
