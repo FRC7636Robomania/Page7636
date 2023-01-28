@@ -40,24 +40,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "news" */ '../views/NewsView.vue'),
   },
   {
-    path: '/news/2023',
-    name: 'news_2023',
-    component: () => import(/* webpackChunkName: "news_2023" */ '../views/NewsView.vue'),
-  },
-  {
-    path: '/news/2022',
-    name: 'news_2022',
-    component: () => import(/* webpackChunkName: "news_2022" */ '../views/NewsView.vue'),
-  },
-  {
-    path: '/news/2021',
-    name: 'news_2021',
-    component: () => import(/* webpackChunkName: "news_2021" */ '../views/NewsView.vue'),
-  },
-  {
-    path: '/news/2020',
-    name: 'news_2020',
-    component: () => import(/* webpackChunkName: "news_2020" */ '../views/NewsView.vue'),
+    path: '/news/:yearId',
+    name: 'news',
+    component: () => import('../views/NewsView.vue'),
   },
   {
     path: '/contact',
@@ -77,16 +62,16 @@ const routes = [
   },
 ]
 
-const components = ['welcome', 'home', 'members', 'outreach', 'resources', 'news', 'contact', 'sponsors', 'NotFound']
+const components = ['members', 'outreach', 'resources', 'news', 'contact', 'sponsors']
+const specialComponents = ['welcome', 'home', 'NotFound']
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior (to, from, savedPosition) {
-    if (components.includes(to.name)) return
     if (savedPosition) {
       return savedPosition
-    } else if (to.name) {
-      console.log(to.name)
+    } else if (to.name === 'news' && to.params !== '/news') {
+      console.log(to.params.yearId)
       if (to.matched.some(m => m.meta.scrollToBottom)) {
         return {
           top: 1000000,
@@ -94,7 +79,7 @@ const router = createRouter({
         }
       }
       return {
-        el: `#${to.name}`,
+        el: `#${to.params.yearId}`,
         top: 100,
         behavior: 'smooth',
       }
@@ -103,3 +88,4 @@ const router = createRouter({
 })
 
 export default router
+export { components, specialComponents }

@@ -30,7 +30,7 @@
     </div>
   </div>
   <div id="header-image">
-    <template v-if="$route.path !='/home'">
+    <template v-if="mainRouter.includes($router.name)">
       <div
         class="gradient-mask"
         :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require('../assets/Elements/Header/'+$route.name+'.png')+')'}"
@@ -40,7 +40,7 @@
         </p>
       </div>
     </template>
-    <template v-else>
+    <template v-else-if="$router.path='/home'">
       <swiper
         :effect="'fade'"
         :slides-per-view="'auto'"
@@ -72,12 +72,14 @@
 </template>
 
 <script setup>
+import { components as mainRouter } from '@/js/router'
 import SwiperCore, { Autoplay, EffectFade } from 'swiper'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import headerJson from '@/assets/json/header.json'
 SwiperCore.use([Autoplay, EffectFade])
 const menu = computed(() => headerJson.menu || null)
 const slideshow = computed(() => headerJson.slideshow || null)
+onMounted(() => { console.log(mainRouter) })
 </script>
 
 <style lang="scss">

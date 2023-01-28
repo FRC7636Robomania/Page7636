@@ -97,7 +97,7 @@ onBeforeMount(() => {
           class="yearBlock"
         >
           <span
-            :id="`news_${item.year}`"
+            :id="`${item.year}`"
             class="year"
           >
             {{ item.year }}
