@@ -6,10 +6,22 @@ import SwiperCore, { Pagination, Navigation } from 'swiper'
 SwiperCore.use([Pagination, Navigation])
 const news = computed(() => newsJson.blocks || null)
 const months = computed(() => newsJson.months || null)
-const links = computed(() => newsJson.links || null)
 const totalCount = news.value.reduce((prev, curr) => prev + curr.reports.length, 0)
 const newReports = ref([])
 const newsPage = ref([])
+const years = []
+const sideLinks = ref([])
+const setControlledSwiper = swiper => {
+  sideLinks.value = []
+  years[swiper.activeIndex].forEach(year => {
+    const links = {
+      component: 'news',
+      name: year,
+    }
+    sideLinks.value.push(links)
+  })
+}
+const onSlideChange = e => { setControlledSwiper(e) }
 onBeforeMount(() => {
   let [index, yearIndex, currCount, prevIndex, count] = [0, 0, 0, 0, 6]
   let newsblock = {
@@ -17,6 +29,7 @@ onBeforeMount(() => {
     reports: [],
   }
   while (currCount < totalCount) {
+    let tmpYear = []
     while (yearIndex < news.value.length) {
       if (news.value[yearIndex].reports.length !== index) {
         index++
@@ -36,7 +49,7 @@ onBeforeMount(() => {
             }
             newsPage.value.push(newsblock)
           }
-          console.log('newsPage', newsPage.value)
+          tmpYear = [...tmpYear, newsblock.year]
           break
         }
       } else {
@@ -45,12 +58,14 @@ onBeforeMount(() => {
           reports: news.value[yearIndex].reports.slice(prevIndex, index),
         }
         newsPage.value.push(newsblock)
+        tmpYear = [...tmpYear, newsblock.year]
         index = 0
         if (yearIndex !== news.value.length - 1) {
           yearIndex++
         } else break
       }
     }
+    years.push(tmpYear)
     newReports.value.push(newsPage.value)
     newsPage.value = []
   }
@@ -59,15 +74,18 @@ onBeforeMount(() => {
 
 <template>
   <slideNav
-    :links="links"
+    :links="sideLinks"
   />
   <div class="news swiper-area">
     <swiper
+      ref="_swiper"
       :observer="true"
       :observe-parents="true"
       :pagination="{ clickable: true, dynamicBullets: false }"
       :navigation="true"
       :loop="false"
+      @swiper="setControlledSwiper"
+      @slide-change="onSlideChange"
     >
       <swiper-slide
         v-for="(pageItems, page) in newReports"

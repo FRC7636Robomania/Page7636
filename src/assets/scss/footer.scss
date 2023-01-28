@@ -15,7 +15,7 @@
         }
     }
     #footer-links {
-        background-color: #ffffff;
+        background-color: $color-white;
         margin: 0;
         #links-words {
             margin-top: 50px;
@@ -26,7 +26,7 @@
                 }
                 .links {
                     font-size: 20px;
-                    color: rgba(153, 153, 153, 1);
+                    color: rgba($color-gray, 1);
                     text-decoration: none;
                     text-align: left;
                     transition: 0.3s;
@@ -45,7 +45,7 @@
         }
     }
     #footer-copyright {
-        color: #7a7a7a;
+        color: rgba($color-gray, 0.7);
         text-align: center;
         margin-top: 40px;
     }

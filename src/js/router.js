@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import WelcomeView from '../views/WelcomeView.vue'
 import HomeView from '../views/HomeView.vue'
+import PageNotFound from '../components/NotFound.vue'
 
 const routes = [
   {
@@ -63,9 +64,20 @@ const routes = [
     name: 'contact',
     component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue'),
   },
+  {
+    path: '/404',
+    name: '404',
+    component: PageNotFound,
+    hidden: true,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404',
+    hidden: true,
+  },
 ]
 
-const components = ['welcome', 'home', 'members', 'outreach', 'resources', 'news', 'contact', 'sponsors']
+const components = ['welcome', 'home', 'members', 'outreach', 'resources', 'news', 'contact', 'sponsors', 'NotFound']
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
