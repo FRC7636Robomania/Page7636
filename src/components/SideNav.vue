@@ -6,7 +6,7 @@
         :key="index"
         class="menuItem"
       >
-        <router-link :to="`/${link.component}/${link.name}`">
+        <router-link :to="`/${link.path}`">
           {{ link.name }}
         </router-link>
       </li>

@@ -27,9 +27,6 @@
     ],
     "slideshow": [
         {
-            "imgurl": "contact.png"
-        },
-        {
             "imgurl": "home.png"
         },
         {
@@ -43,6 +40,9 @@
         },
         {
             "imgurl": "outreach.png"
+        },
+        {
+            "imgurl": "contact.png"
         },
         {
             "imgurl": "sponsors.png"

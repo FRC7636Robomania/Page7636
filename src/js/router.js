@@ -40,7 +40,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "news" */ '../views/NewsView.vue'),
   },
   {
-    path: '/news/:yearId',
+    path: '/slides/:slideId/:yearId',
     name: 'news_year',
     component: () => import('../views/NewsView.vue'),
   },
@@ -79,7 +79,7 @@ const router = createRouter({
         }
       }
       return {
-        el: `#${to.params.yearId}`,
+        el: `#${to.params.slideId}-${to.params.yearId}`,
         top: 100,
         behavior: 'smooth',
       }

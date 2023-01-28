@@ -1,9 +1,9 @@
 <script setup>
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed, onBeforeMount, onMounted, ref } from 'vue'
 import slideNav from '../components/SideNav.vue'
 import newsJson from '@/assets/json/news.json'
-import SwiperCore, { Pagination, Navigation } from 'swiper'
-SwiperCore.use([Pagination, Navigation])
+import SwiperCore, { Pagination, Navigation, History } from 'swiper'
+SwiperCore.use([Pagination, Navigation, History])
 const news = computed(() => newsJson.blocks || null)
 const months = computed(() => newsJson.months || null)
 const totalCount = news.value.reduce((prev, curr) => prev + curr.reports.length, 0)
@@ -15,13 +15,14 @@ const setControlledSwiper = swiper => {
   sideLinks.value = []
   years[swiper.activeIndex].forEach(year => {
     const links = {
-      component: 'news',
       name: year,
+      path: `slides/newspage${swiper.activeIndex + 1}/${year}`,
     }
     sideLinks.value.push(links)
   })
 }
 const onSlideChange = e => { setControlledSwiper(e) }
+onMounted(() => { console.log(sideLinks.value) })
 onBeforeMount(() => {
   let [index, yearIndex, currCount, prevIndex, count] = [0, 0, 0, 0, 6]
   let newsblock = {
@@ -78,18 +79,19 @@ onBeforeMount(() => {
   />
   <div class="news swiper-area">
     <swiper
-      ref="_swiper"
       :observer="true"
       :observe-parents="true"
       :pagination="{ clickable: true, dynamicBullets: false }"
       :navigation="true"
       :loop="false"
+      :history="true"
       @swiper="setControlledSwiper"
       @slide-change="onSlideChange"
     >
       <swiper-slide
         v-for="(pageItems, page) in newReports"
         :key="page"
+        :data-history="`news/page${page + 1}`"
       >
         <div
           v-for="(item, yearIndex) in pageItems"
@@ -97,7 +99,7 @@ onBeforeMount(() => {
           class="yearBlock"
         >
           <span
-            :id="`${item.year}`"
+            :id="`newspage${page + 1}-${item.year}`"
             class="year"
           >
             {{ item.year }}
