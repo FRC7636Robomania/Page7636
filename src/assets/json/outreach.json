@@ -1,0 +1,18 @@
+{
+    "items": [
+        {
+            "id": "1",
+            "color": "info",
+            "time": "2020/8/11",
+            "title": "Results presentation",
+            "description": ""
+        },
+        {
+            "id": "2",
+            "color": "info",
+            "time": "2020/7/23",
+            "title": "Communicate with team 7130",
+            "description": "During the summer vacation, team7130 invited us and team 6998 for technical exchanges and sharing.\nWe briefly introduced each other's team's team structure, responsible positions and future plans.\nWe discussed how each other effectively used limited resources and funds to build a team that can compete with other teams in the world.\nEach team has different characteristics, believe this exchange will let us learn a lot!"
+        }
+    ]
+}

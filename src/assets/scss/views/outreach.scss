@@ -2,4 +2,16 @@
 
 .outreach{
     @include viewSettings;
+    .time{
+        font-weight: bold;
+        color: $color-blue;
+    }
+    .title{
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    p{
+        word-wrap: break-word;
+        white-space: pre-wrap;
+    }
 }

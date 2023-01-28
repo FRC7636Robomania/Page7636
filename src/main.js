@@ -4,17 +4,24 @@ import router from './js/router'
 import common from './js/common'
 import PrimeVue from 'primevue/config'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import LoadScript from 'vue-plugin-load-script'
 
 import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/lara-light-indigo/theme.css'
 import 'primeflex/primeflex.css'
 import 'swiper/swiper-bundle.css'
 
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+
+const vuetify = createVuetify({
+  components,
+})
+
 const app = createApp(App)
   .use(router)
   .use(PrimeVue, { ripple: true })
-  .use(LoadScript)
+  .use(vuetify)
   .component('Swiper', Swiper)
   .component('SwiperSlide', SwiperSlide)
 
