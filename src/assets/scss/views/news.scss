@@ -46,7 +46,7 @@
                     float:left;
                     place-content: center;
                     place-items: center;
-                    width: 80px;
+                    width: 90px;
                     height: auto;
                 }
                 .title{
@@ -55,6 +55,14 @@
                 }
                 .content{
                     font-size: 10px;
+                    a{
+                        text-decoration: none;
+                        color: $color-gray;
+                        transition: .5s;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
                 }
             }
             .last {

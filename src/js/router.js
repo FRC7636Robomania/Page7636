@@ -45,6 +45,10 @@ const routes = [
     component: () => import('../views/NewsView.vue'),
   },
   {
+    path: '/slides/:slideId',
+    redirect: '/news',
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue'),

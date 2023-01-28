@@ -22,6 +22,7 @@ const setControlledSwiper = swiper => {
   })
 }
 const onSlideChange = e => { setControlledSwiper(e) }
+const filterLength = content => content.length > 250 ? content.slice(0, 250) + '...' : content
 onMounted(() => { console.log(sideLinks.value) })
 onBeforeMount(() => {
   let [index, yearIndex, currCount, prevIndex, count] = [0, 0, 0, 0, 6]
@@ -124,7 +125,13 @@ onBeforeMount(() => {
                     {{ report.title }}
                   </h1>
                   <p class="content">
-                    {{ report.content }}
+                    {{ filterLength(report.content) }}
+                    <a
+                      v-show="report.content.length > 250"
+                      href="/404"
+                    >
+                      Read More
+                    </a>
                   </p>
                 </div>
               </div>

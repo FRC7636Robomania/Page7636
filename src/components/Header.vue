@@ -30,17 +30,7 @@
     </div>
   </div>
   <div id="header-image">
-    <template v-if="mainRouter.includes(routerImg)">
-      <div
-        class="gradient-mask"
-        :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require('../assets/Elements/Header/' + routerImg + '.png')+')'}"
-      >
-        <p id="menuSelected">
-          {{ $route.name }}
-        </p>
-      </div>
-    </template>
-    <template v-else-if="$router.path='/home'">
+    <template v-if="routerName($route.name) === 'home'">
       <swiper
         :effect="'fade'"
         :slides-per-view="'auto'"
@@ -67,26 +57,28 @@
         </swiper-slide>
       </swiper>
     </template>
+    <template v-else>
+      <div
+        class="gradient-mask"
+        :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require('../assets/Elements/Header/' + routerName($route.name) + '.png')+')'}"
+      >
+        <p id="menuSelected">
+          {{ routerName($route.name) }}
+        </p>
+      </div>
+    </template>
   </div>
   <div id="color-lump" />
 </template>
 
 <script setup>
-import { components as mainRouter } from '@/js/router'
 import SwiperCore, { Autoplay, EffectFade } from 'swiper'
-import { computed, onMounted, ref } from 'vue'
+import { computed } from 'vue'
 import headerJson from '@/assets/json/header.json'
-import { useRouter } from 'vue-router'
 SwiperCore.use([Autoplay, EffectFade])
 const menu = computed(() => headerJson.menu || null)
 const slideshow = computed(() => headerJson.slideshow || null)
-const routerImg = ref(null)
-const router = useRouter()
-onMounted(() => {
-  if (router.currentRoute.value.name === 'news_year') {
-    routerImg.value = 'news'
-  } else routerImg.value = router.currentRoute.value.name
-})
+const routerName = router => router === 'news_year' ? 'news' : router
 </script>
 
 <style lang="scss">
