@@ -1,14 +1,23 @@
-/* eslint-disable quotes */
+const publicPath = process.env.NODE_ENV === 'production' ? '/Page7636/' : '/'
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/Page7636/' : '/',
+  publicPath,
+  transpileDependencies: [
+    'vuetify',
+  ],
   productionSourceMap: false,
-  // publicPath: './',
   outputDir: 'dist',
   assetsDir: 'assets',
-  devServer: {
-    port: 8090,
-    host: '0.0.0.0',
-    https: true,
-    open: true,
+
+  pluginOptions: {
+    prerenderSpa: {
+
+      registry: undefined,
+      renderRoutes: [
+        '/', '/home', '/members', '/contact', '/outreach',
+        '/news', '/resources', '/sponsors'],
+      useRenderEvent: true,
+      headless: true,
+      onlyProduction: true,
+    },
   },
 }

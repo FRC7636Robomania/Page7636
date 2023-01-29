@@ -20,16 +20,16 @@
           <h3>
             QUICK LINKS
           </h3>
-          <a
+          <router-link
             v-for="link in quickLinks"
             :key="link"
-            :href="link.to"
+            :to="link.to"
             target="_blank"
             class="links"
           >
             {{ link.label }}
             <br>
-          </a>
+          </router-link>
         </div>
         <div class="lg:col-6 sm:col-12 xs:col-12 links-wrapper">
           <h3>
