@@ -43,24 +43,24 @@
     ],
     "bottomItems": [
         {
-            "photo": "Img04.png",
+            "photo": "2021Infinite.png",
             "text": "FRC2021:Infinite Recharge",
-            "path": "/2021InfiniteRecharge"
+            "path": "/"
         },
         {
-            "photo": "Img02.png",
+            "photo": "2021syzygy.jpg",
             "text": "2021 Syzygy",
-            "path": ""
+            "path": "/"
         },
         {
-            "photo": "Img02.png",
+            "photo": "outreach.jpg",
             "text": "Outreach",
-            "path": "/Outreach"
+            "path": "/outreach"
         },
         {
-            "photo": "Img03.png",
+            "photo": "FIRST.jpg",
             "text": "FIRST",
-            "path": "/FIRST"
+            "path": "/"
         }
     ]
 }

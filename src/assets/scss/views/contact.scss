@@ -5,6 +5,7 @@
     min-height: 100px;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 100px;
@@ -25,7 +26,7 @@
             label{
                 color: coral;
             }
-            #name, #subject, #phone, #email, #message{
+            #name, #subject, #phone, #email, #message, select{
                 width: 100%;
                 height: auto;
                 outline: none;
@@ -37,6 +38,26 @@
             #message{
                 min-height: 200px;
             }
+            select{
+                width: 30%;
+                appearance: auto;
+            }
+        }
+    }
+    iframe{
+        width: 60%;
+        height: 60vh;
+        margin: 50px 0;
+    }
+    .location{
+        width: 100%;
+        height: auto;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color:$color-blue;
+        span{
+            font-weight: 100;
         }
     }
 }

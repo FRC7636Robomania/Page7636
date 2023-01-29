@@ -1,12 +1,9 @@
 <script setup>
 import SideNav from '@/components/SideNav.vue'
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
 import resourceJson from '@/assets/json/resource.json'
 const blocks = computed(() => resourceJson.blocks || null)
 const recap = computed(() => resourceJson.recap || null)
-const router = useRouter()
-const routerTo = path => router.push(path)
 let counter = 1
 setInterval(() => {
   document.querySelector('#radio' + counter).checked = true
@@ -86,7 +83,7 @@ setInterval(() => {
           </h1>
           <button
             class="p-white"
-            @click="routerTo('/home')"
+            onclick="window.location.href='http://gg.gg/7636CAD'"
           >
             CLICK
           </button>
@@ -100,7 +97,7 @@ setInterval(() => {
           </h1>
           <button
             class="p-white"
-            @click="routerTo('/home')"
+            onclick="window.location.href='https://www.youtube.com/@FRC7636Robomania';"
           >
             CLICK
           </button>

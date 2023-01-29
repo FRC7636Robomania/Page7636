@@ -47,7 +47,7 @@
           v-for="(item,index) in slideshow"
           :key="index"
           class="gradient-mask"
-          :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require(`../assets/Elements/Header/${item.imgurl}`)+')'}"
+          :style="{background: 'url('+require(`../assets/Elements/Header/${item.imgurl}`)+')'}"
         >
           <p
             id="homeTitle"
@@ -60,7 +60,7 @@
     <template v-else>
       <div
         class="gradient-mask"
-        :style="{background: 'linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url('+require('../assets/Elements/Header/' + routerName($route.name) + '.png')+')'}"
+        :style="{background: 'url('+require('../assets/Elements/Header/' + routerName($route.name) + '.png')+')'}"
       >
         <p id="menuSelected">
           {{ routerName($route.name) }}

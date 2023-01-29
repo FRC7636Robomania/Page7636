@@ -6,7 +6,10 @@
         :key="index"
         class="menuItem"
       >
-        <router-link :to="`/${link.title.path}`" class="title">
+        <router-link
+          :to="`/${link.title.path}`"
+          class="title"
+        >
           {{ link.title.name }}
         </router-link>
         <ul v-if="link.subTitle">
@@ -15,7 +18,10 @@
             :key="subTitleIndex"
             class="menuItem"
           >
-            <router-link :to="`/${link.subTitle.path[subTitleIndex - 1]}`" class="subTitle">
+            <router-link
+              :to="`/${link.subTitle.path[subTitleIndex - 1]}`"
+              class="subTitle"
+            >
               {{ link.subTitle.name[subTitleIndex - 1] }}
             </router-link>
           </li>

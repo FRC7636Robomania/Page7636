@@ -54,7 +54,7 @@ const reset = () => {
         </div>
         <div class="formOptions">
           <label>Phone</label>
-          <div style="display:flex">
+          <div style="display:flex; width:100%;">
             <select
               id="selectCountryPhone"
               style="margin-right: 10px;"
@@ -95,6 +95,19 @@ const reset = () => {
         style="width: 100px; height:50px; margin: 50px; border-radius: 30px;"
       />
     </form>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.331362841231!2d120.6258336!3d24.2301866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d1d68110173%3A0xf1a85cea689e4cac!2sNational%20Experimental%20High%20School%20at%20Central%20Taiwan%20Science%20Park!5e0!3m2!1sen!2stw!4v1613675378836!5m2!1sen!2stw"
+      width="80%"
+      height="450"
+      frameborder="0"
+      style="border:0;"
+      allowfullscreen=""
+      aria-hidden="false"
+      tabindex="0"
+    />
+    <div class="location">
+      <span>WorkShop: </span>No. 227, Pinghe Road, Daya District, Taichung City, 428
+    </div>
   </div>
 </template>
 
