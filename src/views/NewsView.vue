@@ -15,8 +15,11 @@ const setControlledSwiper = swiper => {
   sideLinks.value = []
   years[swiper.activeIndex].forEach(year => {
     const links = {
-      name: year,
-      path: `slides/newspage${swiper.activeIndex + 1}/${year}`,
+      title: {
+        name: year,
+        path: `slides/newspage${swiper.activeIndex + 1}/${year}`,
+      },
+      subTitle: null,
     }
     sideLinks.value.push(links)
   })

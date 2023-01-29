@@ -2,22 +2,29 @@
 
 #slideNav{
     position: absolute;
-    width: 20vw;
+    width: 20%;
     min-height: 100vh;
     height: auto;
-    transform: translate(20%, 20%);
+    transform: translateY(20%);
+    margin-left: 20px;
     .menu{
         .menuItem{ 
             list-style: none;
-            font-size: 20px;
             font-weight: bold;
             background: none;
+            margin-left: 20px;
             a{
                 text-decoration: none;
                 color: #732C2C;
             }
             a.router-link-exact-active {
                 color: #031F5B;
+            }
+            .title{
+                font-size: 20px;
+            }
+            .subTitle{
+                font-size: 15px;
             }
         }
     }

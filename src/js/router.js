@@ -25,6 +25,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "outreach" */ '../views/OutreachView.vue'),
   },
   {
+    path: '/outreach/:outreachYearId/:outreachId',
+    name: 'outreach_event',
+    component: () => import('../views/OutreachView.vue'),
+  },
+  {
     path: '/sponsors',
     name: 'sponsors',
     component: () => import(/* webpackChunkName: "sponsors" */ '../views/SponsorsView.vue'),
@@ -74,14 +79,13 @@ const router = createRouter({
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } else if (to.name === 'news_year') {
-      console.log(to.params.yearId)
-      if (to.matched.some(m => m.meta.scrollToBottom)) {
-        return {
-          top: 1000000,
-          behavior: 'smooth',
-        }
+    } else if (to.name === 'outreach_event') {
+      return {
+        el: `#${to.params.outreachYearId}-${to.params.outreachId}`,
+        top: 150,
+        behavior: 'smooth',
       }
+    } else if (to.name === 'news_year') {
       return {
         el: `#${to.params.slideId}-${to.params.yearId}`,
         top: 100,

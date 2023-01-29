@@ -78,7 +78,11 @@ import headerJson from '@/assets/json/header.json'
 SwiperCore.use([Autoplay, EffectFade])
 const menu = computed(() => headerJson.menu || null)
 const slideshow = computed(() => headerJson.slideshow || null)
-const routerName = router => router === 'news_year' ? 'news' : router
+const routerName = router => {
+  if (router === 'news_year') return 'news'
+  if (router === 'outreach_event') return 'outreach'
+  else return router
+}
 </script>
 
 <style lang="scss">
