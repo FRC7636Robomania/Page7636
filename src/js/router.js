@@ -91,6 +91,11 @@ const router = createRouter({
         top: 100,
         behavior: 'smooth',
       }
+    } else {
+      return {
+        top: 0,
+        behavior: 'smooth',
+      }
     }
   },
 })

@@ -14,9 +14,9 @@
     >
       <div
         id="links-words"
-        class="lg:col-8 sm:col-12 grid"
+        class="lg:col sm:col-12 row"
       >
-        <div class="lg:col-6 sm:col-12 xs:col-12 links-wrapper">
+        <div class="lg:col sm:col-12 xs:col-12 links-wrapper">
           <h3>
             QUICK LINKS
           </h3>
@@ -31,7 +31,7 @@
             <br>
           </router-link>
         </div>
-        <div class="lg:col-6 sm:col-12 xs:col-12 links-wrapper">
+        <div class="lg:col sm:col-12 xs:col-12 links-wrapper">
           <h3>
             WEBSITES
           </h3>
@@ -49,7 +49,7 @@
       </div>
       <div
         id="links-icon"
-        class="lg:col-4 sm:col-12 grid"
+        class="lg:col sm:col-12 grid"
       >
         <a
           v-for="icon in icons"

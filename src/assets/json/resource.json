@@ -1,22 +1,28 @@
 {
     "blocks": [
         {
-            "name": "2022 SEASON RECAP"
+            "name": "2022 SEASON RECAP",
+            "image": "default.png"
         },
         {
-            "name": "2019 SEASON INTRODUCE"
+            "name": "2019 SEASON INTRODUCE",
+            "image": "default.png"
         },
         {
-            "name": "2020 SEASON INTRODUCE"
+            "name": "2020 SEASON INTRODUCE",
+            "image": "default.png"
         },
         {
-            "name": "2022 SEASON INTRODUCE"
+            "name": "2022 SEASON INTRODUCE",
+            "image": "default.png"
         },
         {
-            "name": "ROBOMANIA 7636 CAD"
+            "name": "ROBOMANIA 7636 CAD",
+            "image": "default.png"
         },
         {
-            "name": "YOUTUBE CHANNEL"
+            "name": "YOUTUBE CHANNEL",
+            "image": "default.png"
         }
     ],
     "recap": [

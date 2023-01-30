@@ -4,10 +4,13 @@
     place-content: center;
     place-items: center;
     display: flex;
+    justify-content: space-between;
     position: fixed;
     z-index: 99;
+    padding: 0 20px;
 
     #header-logo {
+        float:left;
         height: 110px;
         transition: 0.5s;
         &:hover {
@@ -17,6 +20,11 @@
     }
 
     #header-toolbar {
+        float: left;
+        height: 100px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
         .menu-item {
             padding: 10px 20px 10px 20px;
             font-family: 'DIN Alternate', sans-serif;

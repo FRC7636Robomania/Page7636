@@ -35,12 +35,8 @@ setInterval(() => {
               :class="{'first': index == 0 }"
               class="slide"
             >
-              <div
-                class="image"
-                :class="{'background1':index === 0, 'background2':index === 1, 'background3':index === 2, 'background4':index === 3}"
-              >
-                <h1> {{ blocks[0].name }} </h1>
-              </div>
+              <img :src="require(`@/assets/Elements/Resource/${image}`)">
+              <h1>{{ blocks[0].name }}</h1>
             </div>
             <div class="navigation-auto">
               <div
@@ -66,6 +62,9 @@ setInterval(() => {
           :key="index"
           class="resourceBlock col"
         >
+          <div class="imageBlock">
+            <img :src="require(`@/assets/Elements/Resource/${block.image}`)">
+          </div>
           <h1
             style="font-size: 20px;"
           >
@@ -78,29 +77,37 @@ setInterval(() => {
           id="cad"
           class="resourceBlock col-6"
         >
+          <div class="imageBlock">
+            <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 2].image}`)">
+          </div>
           <h1>
             {{ blocks[blocks.length - 2].name.slice(0, -4) }} <br> {{ blocks[blocks.length - 2].name.slice(-4) }}
+            <br>
+            <button
+              class="p-white"
+              onclick="window.location.href='http://gg.gg/7636CAD'"
+            >
+              CLICK
+            </button>
           </h1>
-          <button
-            class="p-white"
-            onclick="window.location.href='http://gg.gg/7636CAD'"
-          >
-            CLICK
-          </button>
         </div>
         <div
           id="channel"
           class="resourceBlock col-5"
         >
+          <div class="imageBlock">
+            <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 1].image}`)">
+          </div>
           <h1>
             {{ blocks[blocks.length - 1].name.slice(0, 8) }} <br> {{ blocks[blocks.length - 1].name.slice(8) }}
+            <br>
+            <button
+              class="p-white"
+              onclick="window.location.href='https://www.youtube.com/@FRC7636Robomania';"
+            >
+              CLICK
+            </button>
           </h1>
-          <button
-            class="p-white"
-            onclick="window.location.href='https://www.youtube.com/@FRC7636Robomania';"
-          >
-            CLICK
-          </button>
         </div>
       </div>
     </div>

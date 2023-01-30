@@ -23,7 +23,7 @@
       >
     </div>
     <p class="content">
-      {{ post.content }}
+      {{ filterLength(post.content) }}
     </p>
     <p class="time">
       post on {{ post.month }}.{{ post.day }}.{{ post.year }} {{ post.hour }}:{{ post.minute }} GMT
@@ -40,6 +40,7 @@ const props = defineProps({
   },
 })
 const post = computed(() => props.postInformation || null)
+const filterLength = content => content.length > 100 ? content.slice(0, 100) + '...' : content
 
 </script>
 

@@ -7,16 +7,16 @@
           :src="require('../assets/Elements/7636logo.png')"
         >
       </router-link>
-    </div>
-    <div id="header-toolbar">
-      <router-link
-        v-for="list in menu"
-        :key="list"
-        :to="list.to"
-        class="menu-item"
-      >
-        {{ list.label }}
-      </router-link>
+      <div id="header-toolbar">
+        <router-link
+          v-for="list in menu"
+          :key="list"
+          :to="list.to"
+          class="menu-item"
+        >
+          {{ list.label }}
+        </router-link>
+      </div>
     </div>
     <div id="searchBar">
       <input

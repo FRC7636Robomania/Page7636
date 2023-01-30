@@ -8,6 +8,12 @@
 # 打包
 npm run build
 
+cd dist
+mv index.html 404.html
+mv 404.html ../public
+cd ..
+
+npm run build
 # 移動至到打包後的dist目錄 
 cd dist
 
