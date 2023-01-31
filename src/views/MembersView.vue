@@ -1,10 +1,3 @@
-<script setup>
-import slideNav from '../components/SideNav.vue'
-import membersJson from '../assets/json/members.json'
-import { computed } from 'vue'
-const members = computed(() => membersJson || null)
-</script>
-
 <template>
   <slideNav />
   <div class="members">
@@ -51,6 +44,15 @@ const members = computed(() => membersJson || null)
     </div>
   </div>
 </template>
+
+<script setup>
+import slideNav from '../components/SideNav.vue'
+import { computed } from 'vue'
+import { useMembersStore } from '@/js/stores/viewsData'
+const members = computed(() => store.$state.members || null)
+const store = useMembersStore()
+store.fetchData()
+</script>
 
 <style scoped lang="scss">
 @import "@/assets/scss/views/members.scss";

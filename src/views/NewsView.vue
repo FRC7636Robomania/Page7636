@@ -1,82 +1,3 @@
-<script setup>
-import { computed, onBeforeMount, onMounted, ref } from 'vue'
-import slideNav from '../components/SideNav.vue'
-import newsJson from '@/assets/json/news.json'
-import SwiperCore, { Pagination, Navigation, History } from 'swiper'
-SwiperCore.use([Pagination, Navigation, History])
-const news = computed(() => newsJson.blocks || null)
-const months = computed(() => newsJson.months || null)
-const totalCount = news.value.reduce((prev, curr) => prev + curr.reports.length, 0)
-const newReports = ref([])
-const newsPage = ref([])
-const years = []
-const sideLinks = ref([])
-const setControlledSwiper = swiper => {
-  sideLinks.value = []
-  years[swiper.activeIndex].forEach(year => {
-    const links = {
-      title: {
-        name: year,
-        path: `slides/newspage${swiper.activeIndex + 1}/${year}`,
-      },
-      subTitle: null,
-    }
-    sideLinks.value.push(links)
-  })
-}
-const onSlideChange = e => { setControlledSwiper(e) }
-const filterLength = content => content.length > 250 ? content.slice(0, 250) + '...' : content
-onMounted(() => { console.log(sideLinks.value) })
-onBeforeMount(() => {
-  let [index, yearIndex, currCount, prevIndex, count] = [0, 0, 0, 0, 6]
-  let newsblock = {
-    year: news.value[yearIndex].year,
-    reports: [],
-  }
-  while (currCount < totalCount) {
-    let tmpYear = []
-    while (yearIndex < news.value.length) {
-      if (news.value[yearIndex].reports.length !== index) {
-        index++
-        currCount++
-        if (currCount % count === 0) {
-          prevIndex = index
-          if (index - count <= 0) {
-            newsblock = {
-              year: news.value[yearIndex].year,
-              reports: news.value[yearIndex].reports.slice(0, index),
-            }
-            newsPage.value.push(newsblock)
-          } else {
-            newsblock = {
-              year: news.value[yearIndex].year,
-              reports: news.value[yearIndex].reports.slice(index - count, index),
-            }
-            newsPage.value.push(newsblock)
-          }
-          tmpYear = [...tmpYear, newsblock.year]
-          break
-        }
-      } else {
-        newsblock = {
-          year: news.value[yearIndex].year,
-          reports: news.value[yearIndex].reports.slice(prevIndex, index),
-        }
-        newsPage.value.push(newsblock)
-        tmpYear = [...tmpYear, newsblock.year]
-        index = 0
-        if (yearIndex !== news.value.length - 1) {
-          yearIndex++
-        } else break
-      }
-    }
-    years.push(tmpYear)
-    newReports.value.push(newsPage.value)
-    newsPage.value = []
-  }
-})
-</script>
-
 <template>
   <slideNav
     :links="sideLinks"
@@ -149,6 +70,90 @@ onBeforeMount(() => {
     </swiper>
   </div>
 </template>
+
+<script setup>
+import { computed, onBeforeMount, ref } from 'vue'
+import slideNav from '../components/SideNav.vue'
+import newsJson from '@/assets/json/news.json'
+import { useNewsStore } from '@/js/stores/viewsData'
+import SwiperCore, { Pagination, Navigation, History } from 'swiper'
+SwiperCore.use([Pagination, Navigation, History])
+
+const store = useNewsStore()
+const news = computed(() => newsJson.blocks || [{ year: '', reports: [] }])
+const months = computed(() => newsJson.months || null)
+const totalCount = news.value.reduce((prev, curr) => prev + curr.reports.length, 0)
+const newReports = ref([])
+const newsPage = ref([])
+const years = []
+const sideLinks = ref([])
+const setControlledSwiper = swiper => {
+  sideLinks.value = []
+  years[swiper.activeIndex].forEach(year => {
+    const links = {
+      title: {
+        name: year,
+        path: `slides/newspage${swiper.activeIndex + 1}/${year}`,
+      },
+      subTitle: null,
+    }
+    sideLinks.value.push(links)
+  })
+}
+const onSlideChange = e => { setControlledSwiper(e) }
+const filterLength = content => content.length > 250 ? content.slice(0, 250) + '...' : content
+
+onBeforeMount(() => {
+  store.fetchData()
+  console.log(news.value)
+  let [index, yearIndex, currCount, prevIndex, count] = [0, 0, 0, 0, 6]
+  let newsblock = {
+    year: news.value[yearIndex].year,
+    reports: [],
+  }
+  while (currCount < totalCount) {
+    let tmpYear = []
+    while (yearIndex < news.value.length) {
+      if (news.value[yearIndex].reports.length !== index) {
+        index++
+        currCount++
+        if (currCount % count === 0) {
+          prevIndex = index
+          if (index - count <= 0) {
+            newsblock = {
+              year: news.value[yearIndex].year,
+              reports: news.value[yearIndex].reports.slice(0, index),
+            }
+            newsPage.value.push(newsblock)
+          } else {
+            newsblock = {
+              year: news.value[yearIndex].year,
+              reports: news.value[yearIndex].reports.slice(index - count, index),
+            }
+            newsPage.value.push(newsblock)
+          }
+          tmpYear = [...tmpYear, newsblock.year]
+          break
+        }
+      } else {
+        newsblock = {
+          year: news.value[yearIndex].year,
+          reports: news.value[yearIndex].reports.slice(prevIndex, index),
+        }
+        newsPage.value.push(newsblock)
+        tmpYear = [...tmpYear, newsblock.year]
+        index = 0
+        if (yearIndex !== news.value.length - 1) {
+          yearIndex++
+        } else break
+      }
+    }
+    years.push(tmpYear)
+    newReports.value.push(newsPage.value)
+    newsPage.value = []
+  }
+})
+</script>
 
 <style scoped lang="scss">
 @import "@/assets/scss/views/news.scss";

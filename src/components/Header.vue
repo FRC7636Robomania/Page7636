@@ -44,10 +44,10 @@
         style="height:600px; width:100%; z-index: -1;"
       >
         <swiper-slide
-          v-for="(item,index) in slideshow"
+          v-for="(image, index) in slideshow"
           :key="index"
           class="gradient-mask"
-          :style="{background: 'url('+require(`../assets/Elements/Header/${item.imgurl}`)+')'}"
+          :style="{background: 'url('+require(`../assets/Elements/Header/${image}`)+')'}"
         >
           <p
             id="homeTitle"
@@ -74,15 +74,20 @@
 <script setup>
 import SwiperCore, { Autoplay, EffectFade } from 'swiper'
 import { computed } from 'vue'
-import headerJson from '@/assets/json/header.json'
+import { useHeaderStore } from '@/js/stores/componentsData'
 SwiperCore.use([Autoplay, EffectFade])
-const menu = computed(() => headerJson.menu || null)
-const slideshow = computed(() => headerJson.slideshow || null)
+const store = useHeaderStore()
+store.fetchData()
+
+const menu = computed(() => store.$state.menu || null)
+const slideshow = computed(() => store.$state.slideshow || ['default.png'])
 const routerName = router => {
   if (router === 'news_year') return 'news'
   if (router === 'outreach_event') return 'outreach'
+  if (router === 'sponsors_level') return 'sponsors'
   else return router
 }
+
 </script>
 
 <style lang="scss">

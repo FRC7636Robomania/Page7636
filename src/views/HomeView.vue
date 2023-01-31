@@ -1,15 +1,3 @@
-<script setup>
-import { computed, onMounted } from 'vue'
-import homeJson from '@/assets/json/home.json'
-const blocks = computed(() => homeJson.blocks || null)
-const cardItems = computed(() => homeJson.cardItems || null)
-const bottomItems = computed(() => homeJson.bottomItems || null)
-
-onMounted(() => {
-  console.log(cardItems)
-})
-</script>
-
 <template>
   <div class="home d-flex flex-column align-items-center justify-content-center px-5 py-5">
     <div class="CTSPItem px-5 py-5 my-5 h-auto w-75">
@@ -117,7 +105,7 @@ onMounted(() => {
         >
           <router-link :to="bottomItem.path">
             <img
-              :src="require(`@/assets/Elements/Home/bottom/${bottomItem.photo}`)"
+              :src="require(`@/assets/Elements/Home/bottom/${bottomItem.image}`)"
               class="mx-auto w-75 h-auto py-2"
             ><br>
             {{ bottomItem.text }}
@@ -127,6 +115,17 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<script setup>
+import { computed } from 'vue'
+import { useHomeStore } from '@/js/stores/viewsData'
+const blocks = computed(() => store.$state.blocks || null)
+const cardItems = computed(() => store.$state.cardItems || null)
+const bottomItems = computed(() => store.$state.bottomItems || null)
+const store = useHomeStore()
+store.fetchData()
+
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/views/home.scss"

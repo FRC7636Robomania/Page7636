@@ -1,24 +1,3 @@
-<script setup>
-import slideNav from '@/components/SideNav.vue'
-import sponsorJson from '@/assets/json/sponsors.json'
-import { computed, onBeforeMount, ref } from 'vue'
-const sponsors = computed(() => sponsorJson || null)
-const links = ref([])
-onBeforeMount(() => {
-  const group = {
-    title: {
-      path: null,
-      name: 'partnership',
-    },
-    subTitle: {
-      path: ['sponsors/platinum', 'sponsors/gold', 'sponsors/silver', 'sponsors/bronze'],
-      name: ['platinum', 'gold', 'silver', 'bronze'],
-    },
-  }
-  links.value.push(group)
-})
-</script>
-
 <template>
   <slideNav
     :links="links"
@@ -106,6 +85,30 @@ onBeforeMount(() => {
     </div>
   </div>
 </template>
+
+<script setup>
+import slideNav from '@/components/SideNav.vue'
+import { computed, onBeforeMount, ref } from 'vue'
+import { useSponsorsStore } from '@/js/stores/viewsData'
+const sponsors = computed(() => store.$state.sponsors || null)
+const links = ref([])
+const store = useSponsorsStore()
+store.fetchData()
+
+onBeforeMount(() => {
+  const group = {
+    title: {
+      path: null,
+      name: 'partnership',
+    },
+    subTitle: {
+      path: ['sponsors/platinum', 'sponsors/gold', 'sponsors/silver', 'sponsors/bronze'],
+      name: ['platinum', 'gold', 'silver', 'bronze'],
+    },
+  }
+  links.value.push(group)
+})
+</script>
 
 <style scoped lang="scss">
 @import "@/assets/scss/views/sponsors.scss";

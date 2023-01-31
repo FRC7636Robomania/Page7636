@@ -1,35 +1,3 @@
-<script setup>
-const sendEmail = () => {
-  const username = 'marvelo.k0515@gmail.com'
-  const password = 'D10CED083C0C7AC905FE32689E90898B413C'
-  const subject = document.querySelector('#subject').value || 'New Contact Form Enquiry'
-  window.Email.send({
-    Host: 'smtp.elasticemail.com',
-    Username: username,
-    Password: password,
-    To: 'marvelo.k0515@gmail.com',
-    From: 'marvelo.k0515@gmail.com',
-    Subject: subject,
-    Body: 'Name: ' + document.querySelector('#name').value +
-    '<br> Email: ' + document.querySelector('#email').value +
-    '<br> Phone no: ' + document.querySelector('#selectCountryPhone').value +
-    ' ' + document.querySelector('#phone').value +
-    '<br> Message: ' + document.querySelector('#message').value,
-  }).then(
-    message => alert('Message Sent Successfully'),
-  )
-}
-
-const reset = () => {
-  document.querySelector('#name').value = ''
-  document.querySelector('#phone').value = ''
-  document.querySelector('#email').value = ''
-  document.querySelector('#subject').value = ''
-  document.querySelector('#message').value = ''
-}
-
-</script>
-
 <template>
   <div class="contact">
     <form @submit.prevent="sendEmail(); reset();">
@@ -110,6 +78,38 @@ const reset = () => {
     </div>
   </div>
 </template>
+
+<script setup>
+const sendEmail = () => {
+  const username = 'marvelo.k0515@gmail.com'
+  const password = 'D10CED083C0C7AC905FE32689E90898B413C'
+  const subject = document.querySelector('#subject').value || 'New Contact Form Enquiry'
+  window.Email.send({
+    Host: 'smtp.elasticemail.com',
+    Username: username,
+    Password: password,
+    To: 'marvelo.k0515@gmail.com',
+    From: 'marvelo.k0515@gmail.com',
+    Subject: subject,
+    Body: 'Name: ' + document.querySelector('#name').value +
+    '<br> Email: ' + document.querySelector('#email').value +
+    '<br> Phone no: ' + document.querySelector('#selectCountryPhone').value +
+    ' ' + document.querySelector('#phone').value +
+    '<br> Message: ' + document.querySelector('#message').value,
+  }).then(
+    message => alert('Message Sent Successfully'),
+  )
+}
+
+const reset = () => {
+  document.querySelector('#name').value = ''
+  document.querySelector('#phone').value = ''
+  document.querySelector('#email').value = ''
+  document.querySelector('#subject').value = ''
+  document.querySelector('#message').value = ''
+}
+
+</script>
 
 <style scoped lang="scss">
 @import "../assets/scss/views/contact.scss";

@@ -4,6 +4,7 @@ import router from './js/router'
 import common from './js/common'
 import PrimeVue from 'primevue/config'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { createPinia } from 'pinia'
 
 import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/lara-light-indigo/theme.css'
@@ -20,10 +21,13 @@ const vuetify = createVuetify({
   directives,
 })
 
+const pinia = createPinia()
+
 const app = createApp(App)
   .use(router)
   .use(PrimeVue, { ripple: true })
   .use(vuetify)
+  .use(pinia)
   .component('Swiper', Swiper)
   .component('SwiperSlide', SwiperSlide)
 

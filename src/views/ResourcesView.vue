@@ -1,17 +1,3 @@
-<script setup>
-import SideNav from '@/components/SideNav.vue'
-import { computed } from 'vue'
-import resourceJson from '@/assets/json/resource.json'
-const blocks = computed(() => resourceJson.blocks || null)
-const recap = computed(() => resourceJson.recap || null)
-let counter = 1
-setInterval(() => {
-  document.querySelector('#radio' + counter).checked = true
-  counter++
-  if (counter > 4) counter = 1
-}, 10000)
-</script>
-
 <template>
   <SideNav />
   <div class="resource">
@@ -113,6 +99,24 @@ setInterval(() => {
     </div>
   </div>
 </template>
+
+<script setup>
+import SideNav from '@/components/SideNav.vue'
+import { computed } from 'vue'
+import { useResourcesStore } from '@/js/stores/viewsData'
+const blocks = computed(() => store.$state.blocks || null)
+const recap = computed(() => store.$state.recap || null)
+const store = useResourcesStore()
+store.fetchData()
+let counter = 1
+
+setInterval(() => {
+  document.querySelector('#radio' + counter).checked = true
+  counter++
+  if (counter > 4) counter = 1
+}, 10000)
+
+</script>
 
 <style scoped lang="scss">
 @import "@/assets/scss/views/resources.scss";
