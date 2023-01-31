@@ -13,7 +13,9 @@
         >
           {{ link.title.name }}
         </router-link>
-        <div v-else>{{ link.title.name }}</div>
+        <div v-else>
+          {{ link.title.name }}
+        </div>
         <ul v-if="link.subTitle">
           <li
             v-for="subTitleIndex in link.subTitle.path.length"

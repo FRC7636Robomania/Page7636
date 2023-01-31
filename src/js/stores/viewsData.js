@@ -10,10 +10,12 @@ export const useHomeStore = defineStore('homeData', {
   }),
   actions: {
     fetchData () {
-      onSnapshot(documents.homeDoc, (doc) => {
-        this.blocks = doc.data().blocks
-        this.bottomItems = doc.data().bottomItems
-        this.cardItems = doc.data().cardItems
+      return new Promise((resolve, reject) => {
+        onSnapshot(documents.homeDoc, (doc) => {
+          this.blocks = doc.data().blocks
+          this.bottomItems = doc.data().bottomItems
+          this.cardItems = doc.data().cardItems
+        })
       })
     },
   },
@@ -67,7 +69,7 @@ export const useNewsStore = defineStore('newsData', {
   actions: {
     fetchData () {
       onSnapshot(documents.newsDoc, (doc) => {
-        this.blocks = doc.data().block
+        this.blocks = doc.data().blocks
         this.links = doc.data().links
         this.months = doc.data().months
       })

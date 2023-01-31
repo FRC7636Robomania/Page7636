@@ -2,7 +2,7 @@
   <div id="footer-wrapper">
     <div id="footer-media">
       <Post
-        v-for="(post, index) in footerJson.posts"
+        v-for="(post, index) in posts"
         :key="index"
         class="post"
         :post-information="post"
@@ -73,11 +73,14 @@
 
 <script setup>
 import { computed } from 'vue'
-import footerJson from '@/assets/json/footer.json'
+import { useFooterStore } from '@/js/stores/componentsData'
 import Post from './Post'
-const quickLinks = computed(() => footerJson.quickLinks || null)
-const icons = computed(() => footerJson.icons || null)
-const websites = computed(() => footerJson.websites || null)
+const quickLinks = computed(() => store.$state.quickLinks || null)
+const icons = computed(() => store.$state.icons || null)
+const websites = computed(() => store.$state.websites || null)
+const posts = computed(() => store.$state.posts || null)
+const store = useFooterStore()
+store.fetchData()
 </script>
 
 <style lang="scss">
