@@ -1,17 +1,46 @@
 @import "@/assets/scss/common.scss";
 
+$color-platinum: paleturquoise;
+$color-gold:#ffd600;
+$color-silver:#d3d3d3;
+$color-bronze:#f27400;
+
 .sponsors{
     @include viewSettings;
     padding: 100px;
-    .sponsorsLogo {
-        width: 20%;
-        padding: 30px;
+    .levelBlock{
+        min-height: 300px;
+        width: 100%;
+        height: auto;
+        border-radius: 30px;
+        margin: 50px 0;
+        .sponsorsLogo {
+            padding: 30px;
+        }
     }
 }
 
-.textInImg {
-    text-align: center;
-    color: white;
-    font-size: 6vmin;
-    font-weight: bold;
+.platinum{
+    .sponsorsLogo{
+        width: 35%;
+    }
+    background-color: $color-platinum;
+}
+.gold{
+    .sponsorsLogo{
+        width: 30%;
+    }
+    background-color: $color-gold;
+}
+.silver{
+    .sponsorsLogo{
+        width: 30%;
+    }
+    background-color: $color-silver;
+}
+.bronze{
+    .sponsorsLogo{
+        width: 20%;
+    }
+    background-color: $color-bronze;
 }

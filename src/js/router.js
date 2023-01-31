@@ -35,6 +35,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "sponsors" */ '../views/SponsorsView.vue'),
   },
   {
+    path: '/sponsors/:levelId',
+    name: 'sponsors_level',
+    component: () => import('../views/SponsorsView.vue'),
+  },
+  {
     path: '/resources',
     name: 'resources',
     component: () => import(/* webpackChunkName: "resources" */ '../views/ResourcesView.vue'),
@@ -88,6 +93,12 @@ const router = createRouter({
     } else if (to.name === 'news_year') {
       return {
         el: `#${to.params.slideId}-${to.params.yearId}`,
+        top: 100,
+        behavior: 'smooth',
+      }
+    } else if (to.name === 'sponsors_level') {
+      return {
+        el: `#${to.params.levelId}`,
         top: 100,
         behavior: 'smooth',
       }

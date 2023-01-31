@@ -7,11 +7,13 @@
         class="menuItem"
       >
         <router-link
+          v-if="link.title.path"
           :to="`/${link.title.path}`"
           class="title"
         >
           {{ link.title.name }}
         </router-link>
+        <div v-else>{{ link.title.name }}</div>
         <ul v-if="link.subTitle">
           <li
             v-for="subTitleIndex in link.subTitle.path.length"
