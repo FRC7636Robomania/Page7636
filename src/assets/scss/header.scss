@@ -27,8 +27,8 @@
         align-items: center;
         text-transform: uppercase;
         .menu-item {
-            padding: 10px 20px 10px 20px;
-            font-family: 'DIN Alternate', sans-serif;
+            padding: 20px 20px 10px 30px;
+            font-family: 'DIN Alternate Bold', sans-serif;
             font-size: 20px;
             color: white;
             text-decoration: none;
@@ -98,13 +98,17 @@
         }
     }
     #menuSelected{
-        font-family: 'Playfair Display SC', sans-serif;
+        font-family: 'Playfair Display', sans-serif;
         font-size: 65px;
         text-transform: uppercase;
         line-height: 85px;
-        letter-spacing: 0.5em;
+        letter-spacing: 0.6em;
         transform: translateY(40px);
         transition: 2s;
+        &::first-letter{
+            font-size: 150px;
+            margin-right: 50px;
+        }
     }
 }
 

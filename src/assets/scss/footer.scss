@@ -34,9 +34,14 @@
             .links-wrapper {
                 text-align: left;
                 h3 {
+                    text-transform: uppercase;
+                    font-family: 'DIN Alternate Bold', sans-serif;
                     color: $color-blue;
                 }
                 .links {
+                    font-family: 'DIN Alternate Bold', sans-serif;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
                     font-size: 20px;
                     color: rgba($color-gray, 1);
                     text-decoration: none;

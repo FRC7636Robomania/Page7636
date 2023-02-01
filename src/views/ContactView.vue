@@ -81,15 +81,15 @@
 
 <script setup>
 const sendEmail = () => {
-  const username = 'marvelo.k0515@gmail.com'
-  const password = 'D10CED083C0C7AC905FE32689E90898B413C'
+  const username = 'frc7636@nehs.tc.edu.tw'
+  const password = '8007C22EF37678C01492F8F99988B2AC31D9'
   const subject = document.querySelector('#subject').value || 'New Contact Form Enquiry'
   window.Email.send({
     Host: 'smtp.elasticemail.com',
     Username: username,
     Password: password,
-    To: 'marvelo.k0515@gmail.com',
-    From: 'marvelo.k0515@gmail.com',
+    To: 'frc7636@nehs.tc.edu.tw',
+    From: 'frc7636@nehs.tc.edu.tw',
     Subject: subject,
     Body: 'Name: ' + document.querySelector('#name').value +
     '<br> Email: ' + document.querySelector('#email').value +
