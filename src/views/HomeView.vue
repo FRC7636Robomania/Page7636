@@ -1,26 +1,26 @@
 <template>
   <div class="home d-flex flex-column align-items-center justify-content-center px-5 py-5">
-    <div class="CTSPItem px-5 py-5 my-5 h-auto w-75">
+    <div class="CTSPItem px-5 py-5 my-5 h-auto">
       <a
+        class="text-decoration-none"
         href="https://www.ctsp.gov.tw/chinese/00-Home/home.aspx?v=1"
-        style="text-decoration:none; color:white;"
       >
-        <div class="row">
-          <div class="text-center my-auto col-5 md-4">
+        <v-row class="align-center">
+          <v-col cols="5" class="text-center">
             <img
               src="@/assets/Elements/Sponsor/CTSP.png"
               class="w-50 h-auto"
             >
-          </div>
-          <div class="col-7">
+          </v-col>
+          <v-col cols="7">
             <div class="mb-2 titleSize">
               NEHS @ CTSP
             </div>
             <div class="contentSize">
               FRC #7636 Robomania is made up by students studying in National Experimental High School at Central Taiwan Science Park.
             </div>
-          </div>
-        </div>
+          </v-col>
+        </v-row>
       </a>
     </div>
     <div
@@ -63,34 +63,46 @@
         v-for="(cardItem, index) in cardItems"
         :key="index"
       >
-        <div class="py-5 px-5 mx-5 my-5 h-100 cardItem">
-          <div class="row">
-            <div
-              v-if="index % 2 == 0"
-              class="text-center col-5 md-4"
+        <v-row class="align-center py-5 px-5 mx-5 my-5 h-100 cardItem" v-if="!mobile">
+          <v-col
+            cols="5"
+            v-if="index % 2 == 0"
+            class="text-center md-4"
+          >
+            <img
+              :src="require(`@/assets/Elements/Home/${cardItem.imgPath}`)"
+              class="w-75 h-auto bg-dark"
             >
-              <img
-                :src="require(`@/assets/Elements/Home/${cardItem.imgPath}`)"
-                class="w-75 bg-dark"
-              >
+          </v-col>
+          <v-col cosl="5">
+            <div class="mb-2 titleSize">
+              {{ cardItem.title }}
             </div>
-            <div class="col-7">
-              <div class="mb-2 titleSize">
-                {{ cardItem.title }}
-              </div>
-              <div class="contentSize">
-                {{ cardItem.content }}
-              </div>
+            <div class="contentSize">
+              {{ cardItem.content }}
             </div>
-            <div
-              v-if="index % 2 == 1"
-              class="text-center my-auto col-5 md-4"
+          </v-col>
+          <v-col
+            v-if="index % 2 == 1"
+            class="text-center my-auto col-5 md-4"
+          >
+            <img
+              :src="require(`@/assets/Elements/Home/${cardItem.imgPath}`)"
+              class="w-75"
             >
-              <img
-                :src="require(`@/assets/Elements/Home/${cardItem.imgPath}`)"
-                class="w-75"
-              >
-            </div>
+          </v-col>
+        </v-row>
+        <div v-else>
+          <v-row class="w-100 bg-dark overflow-hidden align-center" style="height: 500px;">
+            <img class="w-100 h-auto" :src="require(`@/assets/Elements/Home/${cardItem.imgPath}`)">
+          </v-row>
+          <div>
+            <h1 class="mb-2 titleSize">
+              {{ cardItem.title }}
+            </h1>
+            <p class="contentSize">
+              {{ cardItem.content }}
+            </p>
           </div>
         </div>
         <hr class="mx-auto my-10">
@@ -117,13 +129,20 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onBeforeMount } from 'vue'
 import { useHomeStore } from '@/js/stores/viewsData'
 const blocks = computed(() => store.$state.blocks || null)
 const cardItems = computed(() => store.$state.cardItems || null)
 const bottomItems = computed(() => store.$state.bottomItems || null)
+const mobile = ref(false)
+const checkScreen = () => { window.innerWidth <= 1100 ? mobile.value = true : mobile.value = false }
 const store = useHomeStore()
 store.fetchData()
+
+onBeforeMount(() => {
+  window.addEventListener('resize', checkScreen)
+  checkScreen()
+})
 
 </script>
 

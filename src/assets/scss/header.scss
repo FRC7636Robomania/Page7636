@@ -1,88 +1,97 @@
 #header-banner {
-    width: 100%;
-    height: 100px;
-    place-content: center;
-    place-items: center;
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    z-index: 99;
-    padding: 0 20px;
+    z-index: $z-index-max;
+    transition: .5s;
 
     #header-logo {
-        float:left;
-        height: 110px;
+        padding: 10%;
+        transform: scale(1.5);
         transition: 0.5s;
         &:hover {
-            height: 120px;
+            transform: scale(2);
             filter: drop-shadow(0 0 0.2em white);
+        }
+        @media screen and (max-width: $screen-md) {
+            transform: scale(1);
         }
     }
 
     #header-toolbar {
-        float: left;
         height: 100px;
-        margin-left: 20px;
-        display: flex;
-        align-items: center;
-        text-transform: uppercase;
+        padding-right: 10%;
+        @media screen and (max-width: $screen-md) {
+            padding-right: 30px;
+        }
         .menu-item {
-            padding: 20px 20px 10px 30px;
             font-family: 'DIN Alternate Bold', sans-serif;
-            font-size: 20px;
-            color: white;
-            text-decoration: none;
+            font-size: 1.3rem;
+            color: $color-white;
             letter-spacing: 0.08em;
             transition: 0.3s;
             &:hover {
-                color: rgba($color: #ffffff, $alpha: 0.5);
+                color: rgba($color: $color-white, $alpha: 0.5);
             }
             &.router-link-active {
-                color: rgba(223, 154, 152, 1);
+                color: $color-pink;
+            }
+            @media screen and (max-width: $screen-md) {
+                margin: 0 10px;
             }
         }
     }
 
     #searchBar {
-        width: 250px;
-        border-radius: 30px;
-        background-color: white;
-        padding: 0 10px 0 10px;
-        #keyIn {
-            width: 200px;
-            padding-left: 10px;
-            border: none;
-            outline: none;
+        padding-right: 20px;
+        #keyIn{
+            height: 30px;
+            background-color: $color-white;
         }
-        #searchBtn {
-            padding-left: 10px;
+        #searchBtn{
+            top: 8px;
+            right: 30px;
+        }
+    }
+
+    i{
+        cursor: pointer;
+        font-size: 2rem;
+        color: $color-white;
+    }
+}
+
+.menuMobile{
+    position: absolute;
+    background-color: $color-blue;
+    width: 100%;
+    text-align: center;
+    top: 120px;
+    padding-bottom: 10px;
+    p a{
+        color: $color-white;
+        &:hover, &.router-link-active{
+            color:$color-pink;
         }
     }
 }
 
 .gradient-mask {
-    background-position: top !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-    height: 620px;
-    display: grid;
-    place-items: center;
-    place-content: center;
+    @include backgroundStyle(none, cover, top, no-repeat);
+    height: 40rem;
     color: $color-white;
     user-select: none;
     font-style: normal;
     font-weight: 700;
+    overflow: hidden;
     &::before{
         content: "";
         position: absolute;
         width: 100%;
-        height: 620px;
+        height: 100%;
         background: linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0));
     }
     #homeTitle{
         font-family: 'Times New Roman', sans-serif;
-        font-size: 40px;
-        line-height: 85px;
+        font-size: 2.5rem;
+        line-height: 5rem;
         user-select: none;
         transform: translateY(40px);
         animation-duration: 2s;
@@ -99,25 +108,24 @@
     }
     #menuSelected{
         font-family: 'Playfair Display', sans-serif;
-        font-size: 65px;
-        text-transform: uppercase;
-        line-height: 85px;
-        letter-spacing: 0.6em;
+        font-size: 3rem;
+        line-height: 5rem;
+        letter-spacing: 2rem;
         transform: translateY(40px);
         transition: 2s;
         &::first-letter{
-            font-size: 150px;
-            margin-right: 50px;
+            font-size: 10rem;
+            margin-right: 2rem;
         }
     }
 }
 
-#color-lump {
-    height: 100px;
+#color-lump, .blue {
+    height: 80px;
     background-color: $color-blue;
-    position: sticky;
-    top: 0;
-    z-index: 90;
+    @media screen and (max-width: $screen-md) {
+        height: 120px;
+    }
 }
 
 

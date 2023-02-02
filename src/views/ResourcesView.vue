@@ -79,7 +79,7 @@
         </div>
         <div
           id="channel"
-          class="resourceBlock col-5"
+          class="resourceBlock col-4"
         >
           <div class="imageBlock">
             <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 1].image}`)">
