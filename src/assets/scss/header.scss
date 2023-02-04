@@ -1,29 +1,29 @@
 #header-banner {
+    width: 100vw;
     z-index: $z-index-max;
     transition: .5s;
 
     #header-logo {
-        padding: 10%;
-        transform: scale(1.5);
+        transform: scale(1.3);
+        max-width: 150px;
         transition: 0.5s;
         &:hover {
             transform: scale(2);
             filter: drop-shadow(0 0 0.2em white);
         }
-        @media screen and (max-width: $screen-md) {
+        @media screen and (max-width: $screen-sm) {
             transform: scale(1);
         }
     }
 
     #header-toolbar {
         height: 100px;
-        padding-right: 10%;
         @media screen and (max-width: $screen-md) {
             padding-right: 30px;
         }
         .menu-item {
             font-family: 'DIN Alternate Bold', sans-serif;
-            font-size: 1.3rem;
+            font-size: 3vmin;
             color: $color-white;
             letter-spacing: 0.08em;
             transition: 0.3s;
@@ -40,14 +40,13 @@
     }
 
     #searchBar {
-        padding-right: 20px;
         #keyIn{
-            height: 30px;
+            height: 80%;
             background-color: $color-white;
         }
         #searchBtn{
-            top: 8px;
-            right: 30px;
+            top: 5px;
+            right: 10px;
         }
     }
 
@@ -62,14 +61,17 @@
     position: absolute;
     background-color: $color-blue;
     width: 100%;
+    left:0;
     text-align: center;
-    top: 120px;
     padding-bottom: 10px;
-    p a{
-        color: $color-white;
-        &:hover, &.router-link-active{
-            color:$color-pink;
-        }
+    p{
+        font-size: 3vmin;
+        a{
+            color: $color-white;
+            &:hover, &.router-link-active{
+                color:$color-pink;
+            }
+        } 
     }
 }
 
@@ -121,11 +123,15 @@
 }
 
 #color-lump, .blue {
-    height: 80px;
+    height: auto;
     background-color: $color-blue;
-    @media screen and (max-width: $screen-md) {
-        height: 120px;
+    @media screen and (max-width: $screen-sm) {
+        height: auto;
     }
 }
+
+#color-lump{
+    height: 80px;
+}  
 
 

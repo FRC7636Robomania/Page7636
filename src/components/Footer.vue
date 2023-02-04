@@ -69,6 +69,8 @@
               <img
                 :src="require(`@/assets/Elements/Icon/${icon.url}`)"
                 :alt="icon.alt"
+                class="w-100 h-auto"
+                style="max-width: 40px;"
               >
             </a>
           </v-col>

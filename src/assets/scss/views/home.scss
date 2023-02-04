@@ -3,11 +3,17 @@
 .contentSize {
     color: $color-black;
     font-size: 3vmin;
+    @media screen and (max-width: $screen-xs) {
+        text-align: center;
+    }
 }
 .titleSize {
     color: $color-black;
     font-size: 7vmin;
     font-weight: bold;
+    @media screen and (max-width: $screen-xs) {
+        text-align: center;
+    }
 }
 
 .blockColor1{
@@ -25,6 +31,13 @@
     }
     a{
         color:$color-blue;
+    }
+}
+
+.bottomItem a{
+    font-size: 1rem;
+    @media screen and (max-width: $screen-xs) {
+        font-size: 2rem;
     }
 }
 

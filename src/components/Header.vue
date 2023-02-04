@@ -1,24 +1,25 @@
 <template>
   <div
     id="header-banner"
-    class="position-fixed"
+    class="position-fixed pa-3"
     :class="{'blue':scrollNav || clickBar}"
   >
-    <v-row class="align-center justify-center">
-      <v-col lg="1" md="2" sm="2" xs="2" cols="2">
+    <v-row class="w-100 align-center justify-space-between">
+      <v-col cols="3" md="1" lg="1">
         <router-link :to="'/home'">
           <img
             id="header-logo"
-            class="h-auto w-100 position-relative;"
+            class="h-auto w-100"
             :src="require('../assets/Elements/7636logo.png')"
           >
         </router-link>
       </v-col>
       <v-col
         v-if="!mobile"
+        cols="7"
+        lg="8"
         id="header-toolbar"
-        cols="8"
-        class="position-relative d-flex align-center justify-content-evenly text-uppercase"
+        class="d-flex align-center justify-content-evenly text-uppercase"
       >
         <router-link
           v-for="list in menu"
@@ -30,16 +31,18 @@
         </router-link>
       </v-col>
       <v-col
-        md="9"
+        v-if="!mobile"
+        cols="7"
+        md="3"
         lg="3"
       >
         <div
           id="searchBar"
-          class="position-relative"
+          class="position-relative w-100 h-100"
         >
           <input
             id="keyIn"
-            class="w-100 rounded-xl"
+            class="w-100 h-100 rounded-xl"
             type="text"
           >
           <img
@@ -49,25 +52,36 @@
           >
         </div>
       </v-col>
-      <v-col cols="1" v-if="mobile" class="w-100 h-auto">
-        <i class="fi fi-br-menu-burger" @click="clickBarEvent" />
+      <v-col
+        v-if="mobile"
+        cols="2"
+        class="w-100 h-auto d-flex align-center justify-center"
+      >
+        <i
+          class="fi fi-br-menu-burger"
+          style="font-size: 3rem;"
+          @click="clickBarEvent"
+        />
       </v-col>
     </v-row>
-    <div v-if="clickBar && mobile" class="menuMobile">
+    <div
+      v-if="clickBar && mobile"
+      class="menuMobile w-100"
+    >
       <p
         v-for="list in menu"
         :key="list"
       >
-        <router-link
-          :to="list.to"
-          class="text-decoration-none"
-        >
+        <router-link :to="list.to" class="text-decoration-none">
           {{ list.label }}
         </router-link>
       </p>
     </div>
   </div>
-  <div id="header-image" style="width: 100vw;">
+  <div
+    id="header-image"
+    class="w-100"
+  >
     <template v-if="routerName($route.name) === 'home'">
       <swiper
         :effect="'fade'"
@@ -110,7 +124,10 @@
       </div>
     </template>
   </div>
-  <div id="color-lump" />
+  <div
+    id="color-lump"
+    class="w-100"
+  />
 </template>
 
 <script setup>
@@ -132,7 +149,7 @@ const routerName = router => {
   if (router === 'sponsors_level') return 'sponsors'
   else return router
 }
-const checkScreen = () => { window.innerWidth <= 1100 ? mobile.value = true : mobile.value = false }
+const checkScreen = () => { window.innerWidth < 970 ? mobile.value = true : mobile.value = false; clickBar.value = false }
 const checkScroll = () => { window.scrollY > 20 ? scrollNav.value = true : scrollNav.value = false }
 const clickBarEvent = () => { clickBar.value = !clickBar.value }
 
