@@ -3,28 +3,23 @@
 .contact{
     max-width: 100%;
     min-height: 100px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 100px;
+    @media screen and (max-width: $screen-sm) {
+        padding: 20px;
+    }
     form{
         width: 60%;
         height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .formOptions{
+        @media screen and (max-width: $screen-sm) {
             width: 100%;
-            height: auto;
+        }
+        .formOptions{
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             padding: 10px;
             label{
-                color: coral;
+                color: $color-orange;
             }
             #name, #subject, #phone, #email, #message, select{
                 width: 100%;
@@ -39,6 +34,7 @@
                 min-height: 200px;
             }
             select{
+                min-width: 80px;
                 width: 30%;
                 appearance: auto;
             }
@@ -48,16 +44,22 @@
         width: 60%;
         height: 60vh;
         margin: 50px 0;
+        @media screen and (max-width: $screen-sm) {
+            width: 80%;
+        }
+        @media screen and (max-width: $screen-xs) {
+            width: 100%;
+        }
     }
     .location{
-        width: 100%;
-        height: auto;
-        text-align: center;
-        font-size: 30px;
+        font-size: 2.5rem;
         font-weight: bold;
-        color:$color-blue;
+        color: $color-blue;
         span{
             font-weight: 100;
+        }
+        @media screen and (max-width: $screen-sm) {
+            font-size: 2rem;
         }
     }
 }

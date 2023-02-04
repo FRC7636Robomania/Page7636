@@ -1,7 +1,7 @@
 <template>
-  <div class="contact">
-    <form @submit.prevent="sendEmail(); reset();">
-      <div class="formOptions">
+  <div class="contact d-flex flex-column justify-center align-center h-auto">
+    <form @submit.prevent="sendEmail(); reset();" class="d-flex flex-column justify-center align-center">
+      <div class="formOptions w-100 h-auto">
         <label>Name*</label>
         <input
           id="name"
@@ -10,8 +10,8 @@
           required
         >
       </div>
-      <div style="display:flex; justify-content: center; align-items: center; width: 100%;">
-        <div class="formOptions">
+      <div class="d-flex justify-center align-center w-100" :class="{'flex-column': mobile}">
+        <div class="formOptions w-100 h-auto">
           <label>Email*</label>
           <input
             id="email"
@@ -20,7 +20,7 @@
             required
           >
         </div>
-        <div class="formOptions">
+        <div class="formOptions w-100 h-auto">
           <label>Phone</label>
           <div style="display:flex; width:100%;">
             <select
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="formOptions">
+      <div class="formOptions w-100 h-auto">
         <label>Subject</label>
         <input
           id="subject"
@@ -46,7 +46,7 @@
           placeholder="Your Subject"
         >
       </div>
-      <div class="formOptions">
+      <div class="formOptions w-100 h-auto">
         <label>Message</label>
         <textarea
           id="message"
@@ -73,13 +73,14 @@
       aria-hidden="false"
       tabindex="0"
     />
-    <div class="location">
+    <div class="location w-100 h-auto text-center">
       <span>WorkShop: </span>No. 227, Pinghe Road, Daya District, Taichung City, 428
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, onBeforeMount } from 'vue'
 const sendEmail = () => {
   const username = 'frc7636@nehs.tc.edu.tw'
   const password = '8007C22EF37678C01492F8F99988B2AC31D9'
@@ -108,6 +109,14 @@ const reset = () => {
   document.querySelector('#subject').value = ''
   document.querySelector('#message').value = ''
 }
+
+const mobile = ref(false)
+const checkScreen = () => { window.innerWidth <= 600 ? mobile.value = true : mobile.value = false }
+
+onBeforeMount(() => {
+  window.addEventListener('resize', checkScreen)
+  checkScreen()
+})
 
 </script>
 

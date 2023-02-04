@@ -5,7 +5,11 @@
     :class="{'blue':scrollNav || clickBar}"
   >
     <v-row class="w-100 align-center justify-space-between">
-      <v-col cols="3" md="1" lg="1">
+      <v-col
+        cols="3"
+        md="1"
+        lg="1"
+      >
         <router-link :to="'/home'">
           <img
             id="header-logo"
@@ -16,9 +20,9 @@
       </v-col>
       <v-col
         v-if="!mobile"
+        id="header-toolbar"
         cols="7"
         lg="8"
-        id="header-toolbar"
         class="d-flex align-center justify-content-evenly text-uppercase"
       >
         <router-link
@@ -72,7 +76,10 @@
         v-for="list in menu"
         :key="list"
       >
-        <router-link :to="list.to" class="text-decoration-none">
+        <router-link
+          :to="list.to"
+          class="text-decoration-none"
+        >
           {{ list.label }}
         </router-link>
       </p>
