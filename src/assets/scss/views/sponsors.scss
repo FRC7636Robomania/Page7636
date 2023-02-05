@@ -10,12 +10,15 @@ $color-bronze:#f27400;
     padding: 100px;
     .levelBlock{
         min-height: 300px;
-        width: 100%;
-        height: auto;
         border-radius: 30px;
         margin: 50px 0;
-        .sponsorsLogo {
-            padding: 30px;
+        a{
+            width: 100%;
+            height: auto;
+            text-align: center;
+            .sponsorsLogo {
+                min-width: 100px;
+            }
         }
     }
 }

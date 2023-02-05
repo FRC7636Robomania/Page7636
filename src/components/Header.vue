@@ -2,13 +2,25 @@
   <div
     id="header-banner"
     class="position-fixed pa-3"
-    :class="{'blue':scrollNav || clickBar}"
   >
-    <v-row class="w-100 align-center justify-space-between">
+    <v-row class="align-center justify-space-between" style="transition: 1s;" :class="{'blue': clickRight || scrollNav}">
+      <v-col
+        v-if="mobile"
+        cols="2"
+      >
+        <div class="space text-center">
+          <i
+            class="fi fi-br-menu-burger"
+            style="font-size: 3rem;"
+            @click="clickRightEvent"
+          />
+        </div>
+      </v-col>
       <v-col
         cols="3"
         md="1"
         lg="1"
+        class="text-center"
       >
         <router-link :to="'/home'">
           <img
@@ -64,13 +76,13 @@
         <i
           class="fi fi-br-menu-burger"
           style="font-size: 3rem;"
-          @click="clickBarEvent"
+          @click="clickRightEvent"
         />
       </v-col>
     </v-row>
     <div
-      v-if="clickBar && mobile"
       class="menuMobile w-100"
+      :class="{'active': clickRight}"
     >
       <p
         v-for="list in menu"
@@ -147,7 +159,8 @@ store.fetchData()
 
 const mobile = ref(false)
 const scrollNav = ref(null)
-const clickBar = ref(false)
+const clickRight = ref(false)
+const clickLeft = ref(false)
 const menu = computed(() => store.$state.menu || null)
 const slideshow = computed(() => store.$state.slideshow || ['default.png'])
 const routerName = router => {
@@ -156,11 +169,15 @@ const routerName = router => {
   if (router === 'sponsors_level') return 'sponsors'
   else return router
 }
-const checkScreen = () => { window.innerWidth < 970 ? mobile.value = true : mobile.value = false; clickBar.value = false }
+const checkScreen = () => { window.innerWidth < 970 ? mobile.value = true : mobile.value = false; clickRight.value = false }
 const checkScroll = () => { window.scrollY > 20 ? scrollNav.value = true : scrollNav.value = false }
-const clickBarEvent = () => { clickBar.value = !clickBar.value }
+const clickRightEvent = () => {
+  clickRight.value = !clickRight.value
+}
+// const clickLeftEvent = () => { clickLeft.value = !clickLeft.value }
 
 onBeforeMount(() => {
+  console.log(clickLeft.value)
   window.addEventListener('resize', checkScreen)
   window.addEventListener('scroll', checkScroll)
   checkScreen()

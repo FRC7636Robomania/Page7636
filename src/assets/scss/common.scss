@@ -126,6 +126,10 @@ $screen-lg: 1904px;
   border-width: 20vw;
   border-left-style: solid;
   border-left-color: rgba($color-gray, 0.2);
+  @media screen and (max-width: $screen-sm) {
+      border: none;
+      padding: 50px 10px;
+  }
 }
 
 @mixin backgroundStyle($background, $size: cover, $position: center, $repeat: no-repeat){

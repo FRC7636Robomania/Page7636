@@ -1,5 +1,6 @@
 <template>
   <slideNav
+    v-if="!mobile"
     :links="links"
   />
   <div class="outreach">
@@ -32,6 +33,13 @@ import { useOutreachStore } from '@/js/stores/viewsData'
 const outreach = computed(() => store.$state.items || null)
 const links = ref([])
 const store = useOutreachStore()
+const mobile = ref(false)
+const checkScreen = () => { window.innerWidth <= 960 ? mobile.value = true : mobile.value = false }
+
+onBeforeMount(() => {
+  window.addEventListener('resize', checkScreen)
+  checkScreen()
+})
 
 onBeforeMount(() => {
   store.fetchData()

@@ -51,7 +51,7 @@
         sm="5"
         md="5"
         lg="5"
-        class="d-flex align-items-center justify-content-center h-auto"
+        class="d-flex align-center justify-center h-auto"
         style="background-color: #004eb3;"
       >
         <div class="fs-1 pa-5 text-white text-center">
@@ -76,7 +76,7 @@
             v-for="(block, index) in blocks"
             :key="index"
             cols="6"
-            class="d-flex align-items-center justify-content-center fs-4 pa-5"
+            class="d-flex align-center justify-center fs-4 pa-5"
             :class="block.color"
           >
             <div class="text-center text-white mx-3 my-3">
@@ -156,7 +156,7 @@
           sm="6"
           md="6"
           lg="3"
-          class=" bottomItem text-center pt-4 fs-5"
+          class="bottomItem text-center pt-4 fs-5"
         >
           <router-link :to="bottomItem.path">
             <img

@@ -1,5 +1,6 @@
 <template>
   <slideNav
+    v-if="!mobile"
     :links="sideLinks"
   />
   <div class="news swiper-area">
@@ -104,6 +105,13 @@ const setControlledSwiper = swiper => setTimeout(() => {
 const initalSwiper = swiper => setTimeout(() => {
   setControlledSwiper(swiper)
 }, 3000)
+const mobile = ref(false)
+const checkScreen = () => { window.innerWidth <= 960 ? mobile.value = true : mobile.value = false }
+
+onBeforeMount(() => {
+  window.addEventListener('resize', checkScreen)
+  checkScreen()
+})
 
 onBeforeMount(() => {
   store.fetchData()

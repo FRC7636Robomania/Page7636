@@ -4,49 +4,51 @@
     @include viewSettings;
     .yearBlock{
         max-width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
         .year{
-            align-self: flex-start;
             font-size: 40px;
             font-weight: 500;
             letter-spacing: 20px;
             padding-bottom: 50px;
             &::first-letter{
-                font-size: 70px;
+                font-size: 15vmin;
+            }
+            @media screen and (max-width: $screen-xs) {
+                font-size: 8vmin;
+                letter-spacing: 10px;
             }
         }
         h1{
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 70px;
+            font-size: 10vmin;
             letter-spacing: 15px;
             padding: 50px 0;
+            @media screen and (max-width: $screen-xs) {
+                font-size: 8vmin;
+            }
         }
         .group{
-            width: 100%;
-            height: auto;
             .personBlock{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
+                min-width: 190px;
+                min-height: 200px;
+                @media screen and (max-width: $screen-sm) {
+                    margin: 30px;
+                }
                 .image{
-                    width: 15vw;
-                    height: auto;
-                    border-radius: 20px;
+                    max-width: 180px;
                     margin-bottom: 20px;
                 }
                 .name{
-                    font-size: 30px;
+                    font-size: 1.8rem;
                     letter-spacing: 3px;
+                    @media screen and (max-width: $screen-sm) {
+                        font-size: 2.5rem;
+                    }
                 }
                 ul li{
-                    font-size: 25px;
+                    font-size: 1.5rem;
                     transform: translateX(-20%);
+                    @media screen and (max-width: $screen-sm) {
+                        font-size: 2rem;
+                    }
                 }
             }
         }

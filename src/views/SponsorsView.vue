@@ -1,88 +1,97 @@
 <template>
   <slideNav
+    v-if="!mobile"
     :links="links"
   />
   <div class="sponsors">
-    <div
+    <v-row
       id="platinum"
-      class="levelBlock platinum"
+      class="levelBlock platinum align-center justify-center w-100 h-auto"
     >
       <template
         v-for="(sponsor, index) in sponsors"
         :key="index"
       >
-        <a
+        <v-col
           v-if="sponsor.level === 'platinum'"
-          :href="sponsor.path"
+          class="text-center pa-5"
         >
-          <img
-            class="sponsorsLogo"
-            :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
-            :title="sponsor.logo.slice(0, -4)"
-          >
-        </a>
+          <a :href="sponsor.path">
+            <img
+              class="sponsorsLogo"
+              :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
+              :title="sponsor.logo.slice(0, -4)"
+            >
+          </a>
+        </v-col>
       </template>
-    </div>
-    <div
+    </v-row>
+    <v-row
       id="gold"
-      class="levelBlock gold"
+      class="levelBlock gold align-center justify-center w-100 h-auto"
     >
       <template
         v-for="(sponsor, index) in sponsors"
         :key="index"
       >
-        <a
+        <v-col
           v-if="sponsor.level === 'gold'"
-          :href="sponsor.path"
+          class="text-center pa-5"
         >
-          <img
-            class="sponsorsLogo"
-            :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
-            :title="sponsor.logo.slice(0, -4)"
-          >
-        </a>
+          <a :href="sponsor.path">
+            <img
+              class="sponsorsLogo"
+              :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
+              :title="sponsor.logo.slice(0, -4)"
+            >
+          </a>
+        </v-col>
       </template>
-    </div>
-    <div
+    </v-row>
+    <v-row
       id="silver"
-      class="levelBlock silver"
+      class="levelBlock silver align-center justify-center w-100 h-auto"
     >
       <template
         v-for="(sponsor, index) in sponsors"
         :key="index"
       >
-        <a
+        <v-col
           v-if="sponsor.level === 'silver'"
-          :href="sponsor.path"
+          class="text-center pa-5"
         >
-          <img
-            class="sponsorsLogo"
-            :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
-            :title="sponsor.logo.slice(0, -4)"
-          >
-        </a>
+          <a :href="sponsor.path">
+            <img
+              class="sponsorsLogo"
+              :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
+              :title="sponsor.logo.slice(0, -4)"
+            >
+          </a>
+        </v-col>
       </template>
-    </div>
-    <div
+    </v-row>
+    <v-row
       id="bronze"
-      class="levelBlock bronze"
+      class="levelBlock bronze align-center justify-center w-100 h-auto"
     >
       <template
         v-for="(sponsor, index) in sponsors"
         :key="index"
       >
-        <a
+        <v-col
           v-if="sponsor.level === 'bronze'"
-          :href="sponsor.path"
+          class="text-center pa-5"
         >
-          <img
-            class="sponsorsLogo"
-            :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
-            :title="sponsor.logo.slice(0, -4)"
-          >
-        </a>
+          <a :href="sponsor.path">
+            <img
+              class="sponsorsLogo"
+              :src="require(`@/assets/Elements/Sponsor/${sponsor.logo}`)"
+              :title="sponsor.logo.slice(0, -4)"
+            >
+          </a>
+        </v-col>
       </template>
-    </div>
+    </v-row>
   </div>
 </template>
 
@@ -94,6 +103,14 @@ const sponsors = computed(() => store.$state.sponsors || null)
 const links = ref([])
 const store = useSponsorsStore()
 store.fetchData()
+
+const mobile = ref(false)
+const checkScreen = () => { window.innerWidth <= 960 ? mobile.value = true : mobile.value = false }
+
+onBeforeMount(() => {
+  window.addEventListener('resize', checkScreen)
+  checkScreen()
+})
 
 onBeforeMount(() => {
   const group = {

@@ -1,5 +1,5 @@
 <template>
-  <SideNav />
+  <SideNav v-if="!mobile" />
   <div class="resource">
     <div
       v-if="blocks.length > 0"
@@ -102,7 +102,7 @@
 
 <script setup>
 import SideNav from '@/components/SideNav.vue'
-import { computed } from 'vue'
+import { computed, ref, onBeforeMount } from 'vue'
 import { useResourcesStore } from '@/js/stores/viewsData'
 const blocks = computed(() => store.$state.blocks || null)
 const recap = computed(() => store.$state.recap || null)
@@ -116,6 +116,13 @@ setInterval(() => {
   if (counter > 4) counter = 1
 }, 10000)
 
+const mobile = ref(false)
+const checkScreen = () => { window.innerWidth <= 960 ? mobile.value = true : mobile.value = false }
+
+onBeforeMount(() => {
+  window.addEventListener('resize', checkScreen)
+  checkScreen()
+})
 </script>
 
 <style scoped lang="scss">

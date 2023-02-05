@@ -1,6 +1,9 @@
 <template>
   <div class="contact d-flex flex-column justify-center align-center h-auto">
-    <form @submit.prevent="sendEmail(); reset();" class="d-flex flex-column justify-center align-center">
+    <form
+      class="d-flex flex-column justify-center align-center"
+      @submit.prevent="sendEmail(); reset();"
+    >
       <div class="formOptions w-100 h-auto">
         <label>Name*</label>
         <input
@@ -10,7 +13,10 @@
           required
         >
       </div>
-      <div class="d-flex justify-center align-center w-100" :class="{'flex-column': mobile}">
+      <div
+        class="d-flex justify-center align-center w-100"
+        :class="{'flex-column': mobile}"
+      >
         <div class="formOptions w-100 h-auto">
           <label>Email*</label>
           <input
