@@ -18,9 +18,9 @@
       <v-col>
         <v-row
           id="links-words"
-          class="text-left text-uppercase"
+          class="text-uppercase"
         >
-          <v-col>
+          <v-col cols="12" sm="6" md="6 lg=6">
             <h3>
               QUICK LINKS
             </h3>
@@ -35,7 +35,7 @@
               <br>
             </router-link>
           </v-col>
-          <v-col>
+          <v-col cols="12" sm="6" md="6 lg=6">
             <h3>
               WEBSITES
             </h3>
@@ -54,7 +54,10 @@
       </v-col>
       <v-col
         id="links-icon"
-        cols="6"
+        cols="12"
+        sm="6"
+        md="6"
+        lg="6"
       >
         <v-row>
           <v-col
@@ -70,7 +73,7 @@
                 :src="require(`@/assets/Elements/Icon/${icon.url}`)"
                 :alt="icon.alt"
                 class="w-100 h-auto"
-                style="max-width: 40px;"
+                style="max-width: 30px;"
               >
             </a>
           </v-col>

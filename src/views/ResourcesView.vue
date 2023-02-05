@@ -5,8 +5,8 @@
       v-if="blocks.length > 0"
       class="container"
     >
-      <div class="row">
-        <div class="slider col">
+      <v-row>
+        <v-col class="slider">
           <div class="slides">
             <input
               v-for="index in 4"
@@ -40,28 +40,33 @@
               class="manual-btn"
             />
           </div>
-        </div>
-      </div>
-      <div class="row g-2">
+        </v-col>
+      </v-row>
+      <div class="seasonIntro">
         <div
           v-for="(block, index) in blocks.slice(1, 4)"
           :key="index"
-          class="resourceBlock col"
+          class="d-flex justify-center align-center flex-column overflow-hidden text-center rounded-xl"
+          style="padding: 10px; min-width: 300px;"
         >
           <div class="imageBlock">
             <img :src="require(`@/assets/Elements/Resource/${block.image}`)">
           </div>
           <h1
-            style="font-size: 20px;"
+            style="font-size: 18px;"
           >
             {{ block.name.slice(0, -10) }} <br> {{ block.name.slice(-10) }}
           </h1>
         </div>
       </div>
-      <div class="row">
-        <div
+      <v-row>
+        <v-col
           id="cad"
-          class="resourceBlock col-6"
+          cols="12"
+          sm="7"
+          md="7"
+          lg="7"
+          class="resourceBlock d-flex justify-center align-center flex-column overflow-hidden text-center rounded-xl"
         >
           <div class="imageBlock">
             <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 2].image}`)">
@@ -76,10 +81,14 @@
               CLICK
             </button>
           </h1>
-        </div>
-        <div
+        </v-col>
+        <v-col
           id="channel"
-          class="resourceBlock col-4"
+          cols="12"
+          sm="5"
+          md="5"
+          lg="5"
+          class="resourceBlock d-flex justify-center align-center flex-column overflow-hidden text-center rounded-xl"
         >
           <div class="imageBlock">
             <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 1].image}`)">
@@ -94,8 +103,8 @@
               CLICK
             </button>
           </h1>
-        </div>
-      </div>
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>

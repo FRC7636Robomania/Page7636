@@ -3,7 +3,11 @@
     id="header-banner"
     class="position-fixed pa-3"
   >
-    <v-row class="align-center justify-space-between" style="transition: 1s;" :class="{'blue': clickRight || scrollNav}">
+    <v-row
+      class="elements align-center justify-space-between"
+      style="transition: 1s;"
+      :class="{'blue': clickRight || scrollNav}"
+    >
       <v-col
         v-if="mobile"
         cols="2"
@@ -160,7 +164,7 @@ store.fetchData()
 const mobile = ref(false)
 const scrollNav = ref(null)
 const clickRight = ref(false)
-const clickLeft = ref(false)
+// const clickLeft = ref(false)
 const menu = computed(() => store.$state.menu || null)
 const slideshow = computed(() => store.$state.slideshow || ['default.png'])
 const routerName = router => {
@@ -173,11 +177,14 @@ const checkScreen = () => { window.innerWidth < 970 ? mobile.value = true : mobi
 const checkScroll = () => { window.scrollY > 20 ? scrollNav.value = true : scrollNav.value = false }
 const clickRightEvent = () => {
   clickRight.value = !clickRight.value
+  const element = document.querySelector('.elements')
+  const menu = document.querySelector('.menuMobile')
+  menu.style.top = menu.offsetTop === element.clientHeight ? '-400%' : element.clientHeight + 'px'
 }
+
 // const clickLeftEvent = () => { clickLeft.value = !clickLeft.value }
 
 onBeforeMount(() => {
-  console.log(clickLeft.value)
   window.addEventListener('resize', checkScreen)
   window.addEventListener('scroll', checkScroll)
   checkScreen()

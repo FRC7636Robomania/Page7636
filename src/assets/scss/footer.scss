@@ -29,10 +29,21 @@
         background-color: $color-white;
         padding-right: 5%;
         padding-left: 10%;
+        @media screen and (max-width: $screen-xs) {
+            padding: 15px;
+        }
         #links-words {
             margin-top: 10%;
+            text-align: left;
+            @media screen and (max-width: $screen-xs) {
+                margin: 10px 0;
+                text-align: center;
+            }
             h3 {
                 color: $color-blue;
+                @media screen and (max-width: $screen-xs) {
+                    font-size: 2.5rem;
+                }
             }
             .links {
                 font-size: 1.2rem;
@@ -41,6 +52,9 @@
                 transition: 0.3s;
                 &:hover {
                     color: $color-blue;
+                }
+                @media screen and (max-width: $screen-xs) {
+                    font-size: 2rem;
                 }
             }
         }
