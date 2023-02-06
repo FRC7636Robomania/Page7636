@@ -100,7 +100,7 @@ import slideNav from '@/components/SideNav.vue'
 import { computed, onBeforeMount, ref } from 'vue'
 import { useSponsorsStore } from '@/js/stores/viewsData'
 const sponsors = computed(() => store.$state.sponsors || null)
-const links = ref([])
+const links = computed(() => store.$state.links || null)
 const store = useSponsorsStore()
 store.fetchData()
 
@@ -113,17 +113,7 @@ onBeforeMount(() => {
 })
 
 onBeforeMount(() => {
-  const group = {
-    title: {
-      path: null,
-      name: 'partnership',
-    },
-    subTitle: {
-      path: ['sponsors/platinum', 'sponsors/gold', 'sponsors/silver', 'sponsors/bronze'],
-      name: ['platinum', 'gold', 'silver', 'bronze'],
-    },
-  }
-  links.value.push(group)
+  store.buildSlideNavbar()
 })
 </script>
 

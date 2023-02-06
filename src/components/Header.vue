@@ -1,12 +1,12 @@
 <template>
   <div
     id="header-banner"
-    class="position-fixed pa-3"
+    class="position-fixed w-100"
   >
     <v-row
-      class="elements align-center justify-space-between"
-      style="transition: 1s;"
-      :class="{'blue': clickRight || scrollNav}"
+      class="elements w-100 align-center justify-space-between"
+      style="transition: .5s;"
+      :class="{'blue': clickRight || scrollNav || clickLeft}"
     >
       <v-col
         v-if="mobile"
@@ -16,7 +16,8 @@
           <i
             class="fi fi-br-menu-burger"
             style="font-size: 3rem;"
-            @click="clickRightEvent"
+            :class="{'pe-none opacity-50': clickRight}"
+            @click="clickEvent('left')"
           />
         </div>
       </v-col>
@@ -80,25 +81,28 @@
         <i
           class="fi fi-br-menu-burger"
           style="font-size: 3rem;"
-          @click="clickRightEvent"
+          :class="{'pe-none opacity-50': clickLeft}"
+          @click="clickEvent('right')"
         />
       </v-col>
     </v-row>
-    <div
-      class="menuMobile w-100"
-      :class="{'active': clickRight}"
-    >
-      <p
-        v-for="list in menu"
-        :key="list"
-      >
-        <router-link
-          :to="list.to"
-          class="text-decoration-none"
+    <div class="menuMobile w-100">
+      <template v-if="clickRight">
+        <p
+          v-for="list in menu"
+          :key="list"
         >
-          {{ list.label }}
-        </router-link>
-      </p>
+          <router-link
+            :to="list.to"
+            class="text-decoration-none"
+          >
+            {{ list.label }}
+          </router-link>
+        </p>
+      </template>
+      <template v-if="clickLeft">
+        <slideNav :links="links" />
+      </template>
     </div>
   </div>
   <div
@@ -154,35 +158,51 @@
 </template>
 
 <script setup>
+import slideNav from '@/components/SideNav.vue'
 import SwiperCore, { Autoplay, EffectFade } from 'swiper'
 import { computed, onBeforeMount, ref } from 'vue'
 import { useHeaderStore } from '@/js/stores/componentsData'
 SwiperCore.use([Autoplay, EffectFade])
+const links = computed(() => store.$state.links || null)
 const store = useHeaderStore()
 store.fetchData()
 
 const mobile = ref(false)
 const scrollNav = ref(null)
 const clickRight = ref(false)
-// const clickLeft = ref(false)
+const clickLeft = ref(false)
 const menu = computed(() => store.$state.menu || null)
 const slideshow = computed(() => store.$state.slideshow || ['default.png'])
 const routerName = router => {
-  if (router === 'news_year') return 'news'
-  if (router === 'outreach_event') return 'outreach'
-  if (router === 'sponsors_level') return 'sponsors'
-  else return router
+  let res = router
+  if (res === 'news_year') res = 'news'
+  if (res === 'outreach_event') res = 'outreach'
+  if (res === 'sponsors_level') res = 'sponsors'
+  const quickLinksPage = ['outreach', 'sponsors']
+  if (quickLinksPage.includes(res)) store.fetchLinks(res)
+  return res
 }
 const checkScreen = () => { window.innerWidth < 970 ? mobile.value = true : mobile.value = false; clickRight.value = false }
 const checkScroll = () => { window.scrollY > 20 ? scrollNav.value = true : scrollNav.value = false }
-const clickRightEvent = () => {
-  clickRight.value = !clickRight.value
+const clickEvent = button => {
+  if (button === 'left' && !clickRight.value) {
+    if (clickLeft.value) {
+      setTimeout(() => {
+        clickLeft.value = !clickLeft.value
+      }, 500)
+    } else clickLeft.value = !clickLeft.value
+  }
+  if (button === 'right' && !clickLeft.value) {
+    if (clickRight.value) {
+      setTimeout(() => {
+        clickRight.value = !clickRight.value
+      }, 500)
+    } else clickRight.value = !clickRight.value
+  }
   const element = document.querySelector('.elements')
   const menu = document.querySelector('.menuMobile')
   menu.style.top = menu.offsetTop === element.clientHeight ? '-400%' : element.clientHeight + 'px'
 }
-
-// const clickLeftEvent = () => { clickLeft.value = !clickLeft.value }
 
 onBeforeMount(() => {
   window.addEventListener('resize', checkScreen)

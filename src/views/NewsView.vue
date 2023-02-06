@@ -15,7 +15,7 @@
       @slide-change="onSlideChange"
     >
       <swiper-slide
-        v-for="(pageItems, page) in newReports"
+        v-for="(pageItems, page) in pageReports"
         :key="page"
         :data-history="`news/page${page + 1}`"
       >
@@ -82,16 +82,15 @@ SwiperCore.use([Pagination, Navigation, History])
 const store = useNewsStore()
 const news = computed(() => store.$state.blocks || null)
 const months = computed(() => store.$state.months || null)
-const totalCount = ref(null)
-const newReports = ref([])
-const newsPage = ref([])
+const pageReports = computed(() => store.$state.pageReports || [])
+const years = computed(() => store.$state.years || [])
 const sideLinks = ref([])
-const years = []
+const totalCount = ref(null)
 const onSlideChange = e => { setControlledSwiper(e) }
 const filterLength = content => content.length > 250 ? content.slice(0, 250) + '...' : content
 const setControlledSwiper = swiper => setTimeout(() => {
   sideLinks.value = []
-  years[swiper.activeIndex].forEach(year => {
+  years.value[swiper.activeIndex].forEach(year => {
     const links = {
       title: {
         name: year,
@@ -117,52 +116,7 @@ onBeforeMount(() => {
   store.fetchData()
   setTimeout(() => {
     totalCount.value = news.value.reduce((prev, curr) => prev + curr.reports.length, 0)
-    let [index, yearIndex, currCount, prevIndex, count] = [0, 0, 0, 0, 6]
-    let newsblock = {
-      year: news.value[yearIndex].year,
-      reports: [],
-    }
-    while (currCount < totalCount.value) {
-      let tmpYear = []
-      while (yearIndex < news.value.length) {
-        if (news.value[yearIndex].reports.length !== index) {
-          index++
-          currCount++
-          if (currCount % count === 0) {
-            prevIndex = index
-            if (index - count <= 0) {
-              newsblock = {
-                year: news.value[yearIndex].year,
-                reports: news.value[yearIndex].reports.slice(0, index),
-              }
-              newsPage.value.push(newsblock)
-            } else {
-              newsblock = {
-                year: news.value[yearIndex].year,
-                reports: news.value[yearIndex].reports.slice(index - count, index),
-              }
-              newsPage.value.push(newsblock)
-            }
-            tmpYear = [...tmpYear, newsblock.year]
-            break
-          }
-        } else {
-          newsblock = {
-            year: news.value[yearIndex].year,
-            reports: news.value[yearIndex].reports.slice(prevIndex, index),
-          }
-          newsPage.value.push(newsblock)
-          tmpYear = [...tmpYear, newsblock.year]
-          index = 0
-          if (yearIndex !== news.value.length - 1) {
-            yearIndex++
-          } else break
-        }
-      }
-      years.push(tmpYear)
-      newReports.value.push(newsPage.value)
-      newsPage.value = []
-    }
+    store.buildSlideNavbar(totalCount.value)
   }, 2000)
 })
 </script>

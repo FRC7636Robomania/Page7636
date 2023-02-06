@@ -36,7 +36,10 @@
       </li>
     </ul>
   </nav>
-  <nav v-if="mobile">
+  <nav
+    v-if="mobile"
+    id="slideNavMobile"
+  >
     <ul class="menu">
       <li
         v-for="(link, index) in props.links"
@@ -50,7 +53,10 @@
         >
           {{ link.title.name }}
         </router-link>
-        <div v-else>
+        <div
+          v-else
+          class="title"
+        >
           {{ link.title.name }}
         </div>
         <ul v-if="link.subTitle">

@@ -6,40 +6,34 @@
       class="container"
     >
       <v-row>
-        <v-col class="slider">
-          <div class="slides">
-            <input
-              v-for="index in 4"
-              :id="`radio${index}`"
-              :key="index"
-              type="radio"
-              name="radio-btn"
-            >
-            <div
+        <v-col>
+          <swiper
+            :observer="true"
+            :observe-parents="true"
+            :slides-per-view="1"
+            :space-between="10"
+            :pagination="{ clickable: true, dynamicBullets: false }"
+            :loop="false"
+            :autoplay="{
+              delay: 10000,
+              disableOnInteraction: false,
+            }"
+            class="resourceBlock d-flex justify-center align-center flex-column overflow-hidden text-center rounded-xl"
+          >
+            <swiper-slide
               v-for="(image, index) in recap"
               :key="index"
-              :class="{'first': index == 0 }"
-              class="slide"
             >
-              <img :src="require(`@/assets/Elements/Resource/${image}`)">
-              <h1>{{ blocks[0].name }}</h1>
-            </div>
-            <div class="navigation-auto">
-              <div
-                v-for="index in 4"
-                :key="index"
-                :class="`auto-btn${index}`"
-              />
-            </div>
-          </div>
-          <div class="navigation-manual">
-            <label
-              v-for="index in 4"
-              :key="index"
-              :for="`radio${index}`"
-              class="manual-btn"
-            />
-          </div>
+              <div class="imageBlock">
+                <img :src="require(`@/assets/Elements/Resource/${image}`)">
+              </div>
+            </swiper-slide>
+            <h1
+              class="recapText"
+            >
+              {{ blocks[0].name }}
+            </h1>
+          </swiper>
         </v-col>
       </v-row>
       <div class="seasonIntro">
@@ -53,6 +47,7 @@
             <img :src="require(`@/assets/Elements/Resource/${block.image}`)">
           </div>
           <h1
+            class="text"
             style="font-size: 18px;"
           >
             {{ block.name.slice(0, -10) }} <br> {{ block.name.slice(-10) }}
@@ -71,7 +66,7 @@
           <div class="imageBlock">
             <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 2].image}`)">
           </div>
-          <h1>
+          <h1 class="text">
             {{ blocks[blocks.length - 2].name.slice(0, -4) }} <br> {{ blocks[blocks.length - 2].name.slice(-4) }}
             <br>
             <button
@@ -93,7 +88,7 @@
           <div class="imageBlock">
             <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 1].image}`)">
           </div>
-          <h1>
+          <h1 class="text">
             {{ blocks[blocks.length - 1].name.slice(0, 8) }} <br> {{ blocks[blocks.length - 1].name.slice(8) }}
             <br>
             <button
@@ -113,17 +108,12 @@
 import SideNav from '@/components/SideNav.vue'
 import { computed, ref, onBeforeMount } from 'vue'
 import { useResourcesStore } from '@/js/stores/viewsData'
+import SwiperCore, { Pagination } from 'swiper'
+SwiperCore.use([Pagination])
 const blocks = computed(() => store.$state.blocks || null)
 const recap = computed(() => store.$state.recap || null)
 const store = useResourcesStore()
 store.fetchData()
-let counter = 1
-
-setInterval(() => {
-  document.querySelector('#radio' + counter).checked = true
-  counter++
-  if (counter > 4) counter = 1
-}, 10000)
 
 const mobile = ref(false)
 const checkScreen = () => { window.innerWidth <= 960 ? mobile.value = true : mobile.value = false }

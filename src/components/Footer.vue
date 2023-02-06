@@ -20,7 +20,11 @@
           id="links-words"
           class="text-uppercase"
         >
-          <v-col cols="12" sm="6" md="6 lg=6">
+          <v-col
+            cols="12"
+            sm="6"
+            md="6 lg=6"
+          >
             <h3>
               QUICK LINKS
             </h3>
@@ -35,7 +39,11 @@
               <br>
             </router-link>
           </v-col>
-          <v-col cols="12" sm="6" md="6 lg=6">
+          <v-col
+            cols="12"
+            sm="6"
+            md="6 lg=6"
+          >
             <h3>
               WEBSITES
             </h3>
