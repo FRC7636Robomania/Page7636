@@ -87,7 +87,13 @@ const years = computed(() => store.$state.years || [])
 const sideLinks = ref([])
 const totalCount = ref(null)
 const onSlideChange = e => { setControlledSwiper(e) }
-const filterLength = content => content.length > 250 ? content.slice(0, 250) + '...' : content
+const filterLength = content => content.length > textLengthStandard() ? content.slice(0, textLengthStandard()) + '...' : content
+const textLengthStandard = () => {
+  if (window.innerWidth < 600) return 100
+  else if (window.innerWidth < 960) return 120
+  else return 250
+}
+
 const setControlledSwiper = swiper => setTimeout(() => {
   sideLinks.value = []
   years.value[swiper.activeIndex].forEach(year => {

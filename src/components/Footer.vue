@@ -71,6 +71,7 @@
           <v-col
             v-for="icon in icons"
             :key="icon"
+            class="text-center"
           >
             <a
               :href="icon.to"
@@ -80,8 +81,7 @@
               <img
                 :src="require(`@/assets/Elements/Icon/${icon.url}`)"
                 :alt="icon.alt"
-                class="w-100 h-auto"
-                style="max-width: 30px;"
+                class="w-100 h-auto mediaIcon"
               >
             </a>
           </v-col>

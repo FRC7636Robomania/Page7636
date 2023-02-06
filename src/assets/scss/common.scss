@@ -42,6 +42,9 @@ $screen-lg: 1904px;
   @media screen and (max-width: $screen-sm) {
     font-size: 10px;
   }
+  @media screen and (max-width: $screen-xs) {
+    font-size: 8px;
+  }
 }
 
 *,

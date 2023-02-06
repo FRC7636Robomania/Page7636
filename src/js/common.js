@@ -7,3 +7,14 @@ export default {
     Button, Card, Image,
   ],
 }
+
+export const throttle = function (func, wait) {
+  let lastTime = 0
+  return function (...args) {
+    const now = Date.now()
+    const coolingDown = now - lastTime < wait
+    if (coolingDown) return
+    lastTime = Date.now()
+    func.apply(null, args)
+  }
+}

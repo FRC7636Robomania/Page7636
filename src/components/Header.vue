@@ -9,7 +9,7 @@
       :class="{'blue': clickRight || scrollNav || clickLeft}"
     >
       <v-col
-        v-if="mobile"
+        v-if="mobile && quickLinksPage.includes(routerName($route.name))"
         cols="2"
       >
         <div class="space text-center">
@@ -107,7 +107,7 @@
   </div>
   <div
     id="header-image"
-    class="w-100"
+    class="w-100 h-auto"
   >
     <template v-if="routerName($route.name) === 'home'">
       <swiper
@@ -162,6 +162,7 @@ import slideNav from '@/components/SideNav.vue'
 import SwiperCore, { Autoplay, EffectFade } from 'swiper'
 import { computed, onBeforeMount, ref } from 'vue'
 import { useHeaderStore } from '@/js/stores/componentsData'
+import { throttle } from '@/js/common.js'
 SwiperCore.use([Autoplay, EffectFade])
 const links = computed(() => store.$state.links || null)
 const store = useHeaderStore()
@@ -173,18 +174,18 @@ const clickRight = ref(false)
 const clickLeft = ref(false)
 const menu = computed(() => store.$state.menu || null)
 const slideshow = computed(() => store.$state.slideshow || ['default.png'])
+const quickLinksPage = ['outreach', 'sponsors']
 const routerName = router => {
   let res = router
   if (res === 'news_year') res = 'news'
   if (res === 'outreach_event') res = 'outreach'
   if (res === 'sponsors_level') res = 'sponsors'
-  const quickLinksPage = ['outreach', 'sponsors']
   if (quickLinksPage.includes(res)) store.fetchLinks(res)
   return res
 }
 const checkScreen = () => { window.innerWidth < 970 ? mobile.value = true : mobile.value = false; clickRight.value = false }
 const checkScroll = () => { window.scrollY > 20 ? scrollNav.value = true : scrollNav.value = false }
-const clickEvent = button => {
+const clickEvent = throttle(button => {
   if (button === 'left' && !clickRight.value) {
     if (clickLeft.value) {
       setTimeout(() => {
@@ -202,7 +203,7 @@ const clickEvent = button => {
   const element = document.querySelector('.elements')
   const menu = document.querySelector('.menuMobile')
   menu.style.top = menu.offsetTop === element.clientHeight ? '-400%' : element.clientHeight + 'px'
-}
+}, 1000)
 
 onBeforeMount(() => {
   window.addEventListener('resize', checkScreen)

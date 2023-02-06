@@ -9,6 +9,10 @@
         min-height: 20vh;
         width: 70vw;
         height: auto;
+        @media screen and (max-width: $screen-sm) {
+            width: 100%;  
+            flex-direction: column;
+        }
         .year{
             width: 100px;
             height: 100px;
@@ -16,15 +20,26 @@
             font-weight: bold;
             align-self: flex-start;
             color:#CBCBCB;
+            @media screen and (max-width: $screen-sm) {
+                width: 100%;  
+                text-align: center;
+            }
         }
         .reports{
             width: 50vw;
             height: auto;
             margin: 100px 0 0 50px;
+            @media screen and (max-width: $screen-sm) {
+                width: 100%;
+                margin: 0;
+            }
             .report{
                 width: 50vw;
                 min-height: 80px;
                 height: auto;
+                @media screen and (max-width: $screen-sm) {
+                    width: 100%;
+                }
                 .day{
                     min-height: 50px;
                     min-width: 50px;
@@ -48,11 +63,17 @@
                     place-items: center;
                     width: 90px;
                     height: auto;
+                    @media screen and (max-width: $screen-xs) {
+                        display: none;
+                    }
                 }
                 .title{
-                    font-size: 30px;
+                    font-size: 1.5rem;
                     font-weight: bold;
                     word-spacing: 5px;
+                    @media screen and (max-width: $screen-xs) {
+                        font-size: 2.5rem;
+                    }
                 }
                 .content{
                     font-size: 10px;
@@ -69,6 +90,9 @@
             }
             .last {
                 margin-bottom: 200px;
+                @media screen and (max-width:$screen-sm) {
+                    margin-bottom: 100px;
+                }
             }
         }
     }
@@ -81,6 +105,12 @@
   left: 40%;
   transform: translate(0%, -100%);
   z-index: 20;
+  @media screen and (max-width: $screen-sm) {
+    left: 30%;
+  }
+  @media screen and (max-width: 400px) {
+    left: 10%;
+  }
 }
 :deep(.swiper-button-next) {
   --swiper-navigation-size: 30px;
@@ -89,6 +119,12 @@
   right: 40%;
   transform: translate(0%, -100%);
   z-index: 20;
+  @media screen and (max-width: $screen-sm) {
+    right: 30%;
+  }
+  @media screen and (max-width: 400px) {
+    right: 10%;
+  }
 }
   
 :deep(.swiper-pagination){
@@ -102,11 +138,14 @@
         border-radius: 50%;
         margin-right: 10px;
         @for $i from 1 through $num {
-        &:nth-child(#{$i})::before{
-            content: "#{$i}";
-            color: $color-white;
-            display: inline-block;
-            transform: translateY(10%);
+            &:nth-child(#{$i})::before{
+                content: "#{$i}";
+                color: $color-white;
+                display: inline-block;
+                transform: translateY(10%);
+                @media screen and (max-width:$screen-sm) {
+                    transform: translateY(5px);
+                }
             }
         }
     }
@@ -115,7 +154,10 @@
             height: 40px;
             background: $color-blue;
             &:nth-child(n)::before{
-            transform: translateY(30%);
-        }
+                transform: translateY(30%);
+                @media screen and (max-width:$screen-sm) {
+                    transform: translateY(10px);
+                }
+            }
     }
 }
