@@ -1,8 +1,8 @@
-import { updateDoc } from 'firebase/firestore'
-import { documents } from './firebase'
-const { Builder, By } = require('selenium-webdriver');
+const { updateDoc, doc, collection, getFirestore } = require('firebase/firestore')
+const firebase = require('firebase/compat/app')
+const { Builder, By } = require('selenium-webdriver')
 
-(async function myFunction () {
+;(async function myFunction () {
   const driver = await new Builder().forBrowser('chrome').build()
   try {
     await driver.manage().window().maximize()
@@ -10,7 +10,7 @@ const { Builder, By } = require('selenium-webdriver');
     await new Promise(res => setTimeout(res, 1000), () => {})
 
     await driver.findElement(By.xpath("//input[@aria-label='手機號碼、用戶名稱或電子郵件地址']")).sendKeys('yukai8765')
-    await driver.findElement(By.xpath("//input[@aria-label='密碼']")).sendKeys('05150514avmKL!')
+    await driver.findElement(By.xpath("//input[@aria-label='密碼']")).sendKeys('05150516avmKL!')
     await driver.findElement(By.xpath("//button[@class='_acan _acap _acas _aj1-']")).click()
     await new Promise(res => setTimeout(res, 7000), () => {})
     const items = await driver.findElements(By.xpath("//div[contains(@class, 'x9f619 x3nfvp2')]"))
@@ -20,6 +20,10 @@ const { Builder, By } = require('selenium-webdriver');
     await new Promise(res => setTimeout(res, 3000), () => {})
     await driver.findElement(By.xpath("//div[contains(@class, '_ab8w  _ab94 _ab97 _ab9f')]")).click()
     await new Promise(res => setTimeout(res, 5000), () => {})
+    for (let index = 0; index < 1; index++) {
+      await driver.executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })")
+      await new Promise(res => setTimeout(res, 5000), () => {})
+    }
     const posters = await driver.findElements(By.xpath("//div[contains(@class, '_aabd _aa8k _aanf')]"))
 
     const now = new Date()
@@ -54,16 +58,30 @@ const { Builder, By } = require('selenium-webdriver');
 
       const title = content.slice(0, content.indexOf('\n'))
       content = content.slice(content.indexOf('\n') + 1)
+      let [video, image] = [null, null]
+      await driver.findElement(By.xpath("//video[contains(@class, 'x1lliihq x5yr21d xh8yej3')]")).then(async () => {
+        await driver.findElement(By.xpath("//video[contains(@class, 'x1lliihq x5yr21d xh8yej3')]")).getAttribute('src')
+          .then(res => { video = res })
+      }).catch(async () => {
+        await driver.findElements(By.xpath("//img[contains(@class, 'x5yr21d xu96u03 x10l6tqk x13vifvy x87ps6o xh8yej3')]"))
+          .then(items => items[index].getAttribute('src'))
+          .then(res => { image = res })
+      })
+      const link = await driver.getCurrentUrl()
+      console.log(link)
       const tmp = {
         time: year + '/' + month + '/' + day,
         title,
         content,
-        image: 'default.png',
+        image,
+        video,
+        link,
       }
       response.push(tmp)
       await driver.findElement(By.xpath("//div[contains(@class, 'x10l6tqk x160vmok x1eu8d0j x1vjfegm')]")).click()
     }
     uploadData(response)
+    console.log('ALL DONE')
     await new Promise(res => setTimeout(res, 1000000), () => {})
   } catch (error) {
     console.error(error)
@@ -99,8 +117,19 @@ const leap = year => {
   else return false
 }
 
+const firebaseConfig = {
+  apiKey: 'AIzaSyD9w9x78y3mSW2CFQzlnYUzuuRZrz4rcy8',
+  authDomain: 'frc7636.firebaseapp.com',
+  projectId: 'frc7636',
+  storageBucket: 'frc7636.appspot.com',
+  messagingSenderId: '547352142617',
+  appId: '1:547352142617:web:c546c31414c1c0f3fa9b88',
+  measurementId: 'G-ZS6FNECGK1',
+}
+const app = firebase.initializeApp(firebaseConfig)
+const db = getFirestore(app)
 const uploadData = array => {
-  updateDoc(documents.footerDoc, {
+  updateDoc(doc(collection(db, 'components'), 'footer'), {
     posts: array,
   })
 }

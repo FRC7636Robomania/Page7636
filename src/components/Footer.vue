@@ -5,11 +5,18 @@
       class="overflow-hidden position-relative"
     >
       <Post
-        v-for="(post, index) in posts"
+        v-for="(post, index) in posts.slice(0, postNum)"
         :key="index"
         class="post"
         :post-information="post"
       />
+      <button
+        v-show="isMore"
+        class="p-white"
+        @click="morePost"
+      >
+        MORE
+      </button>
     </div>
     <v-row
       id="footer-links"
@@ -98,7 +105,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useFooterStore } from '@/js/stores/componentsData'
 import Post from './Post'
 const quickLinks = computed(() => store.$state.quickLinks || null)
@@ -107,6 +114,13 @@ const websites = computed(() => store.$state.websites || null)
 const posts = computed(() => store.$state.posts || null)
 const store = useFooterStore()
 store.fetchData()
+
+const postNum = ref(4)
+const isMore = ref(true)
+const morePost = () => {
+  postNum.value += 5
+  if (postNum.value >= posts.value.length) isMore.value = false
+}
 </script>
 
 <style lang="scss">

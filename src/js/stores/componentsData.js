@@ -10,12 +10,14 @@ export const useHeaderStore = defineStore('headerData', {
     links: [],
   }),
   actions: {
+    // 抓取 header 的資料
     fetchData () {
       onSnapshot(documents.headerDoc, (doc) => {
         this.menu = doc.data().menu
         this.slideshow = doc.data().slideshow
       })
     },
+    // 抓取快速連結
     fetchLinks (router) {
       setTimeout(() => {
         let store = null
@@ -39,6 +41,7 @@ export const useFooterStore = defineStore('footerData', {
     websites: [],
   }),
   actions: {
+    // 抓取 footer 的資料
     fetchData () {
       onSnapshot(documents.footerDoc, (doc) => {
         this.icons = doc.data().icons

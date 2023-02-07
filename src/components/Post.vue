@@ -16,23 +16,40 @@
         </p>
       </div>
     </div>
-    <div class="image">
+    <div
+      v-if="post.video"
+      class="video"
+    >
+      <video
+        autoplay
+        controls
+        :src="post.video"
+      />
+    </div>
+    <div
+      v-else-if="post.image"
+      class="image"
+    >
       <img
-        :src="require('@/assets/Elements/Post/default.png')"
+        :src="image"
         alt="postImage"
       >
     </div>
-    <p class="content">
-      {{ filterLength(post.content) }}
-    </p>
-    <p class="time">
-      post on {{ month }}.{{ day }}.{{ year }} {{ hour }}:{{ minute }} GMT
-    </p>
+    <a title="點擊此貼文閱讀更多" :href="post.link" class="text-decoration-none">
+      <h4 class="title"> {{ post.title }} </h4>
+      <p class="content">
+        {{ filterLength(post.content) }}
+      </p>
+      <p class="time">
+        post on {{ month }}.{{ day }}.{{ year }} GMT
+      </p>
+    </a>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import axios from 'axios'
+import { computed, ref } from 'vue'
 const props = defineProps({
   postInformation: {
     type: Object,
@@ -40,9 +57,19 @@ const props = defineProps({
   },
 })
 const post = computed(() => props.postInformation || null)
-const [year, month, day, other] = post.value.time.split('/')
-const [hour, minute] = other.split(':')
+const [year, month, day] = post.value.time.split('/')
 const filterLength = content => content.length > 100 ? content.slice(0, 100) + '...' : content
+const image = ref(null)
+const fetch = url => {
+  if (url) {
+    axios.get(`http://192.168.43.130:8080/${url.slice(40)}`).then(res => {
+      image.value = res.config.url
+    }).catch(error => {
+      console.log(error)
+    })
+  }
+}
+fetch(post.value.image)
 
 </script>
 

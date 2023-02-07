@@ -3,6 +3,7 @@ import { getFirestore, collection, doc } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 import { getAnalytics } from 'firebase/analytics'
 
+// 設定 firebase 憑證
 const firebaseConfig = {
   apiKey: 'AIzaSyD9w9x78y3mSW2CFQzlnYUzuuRZrz4rcy8',
   authDomain: 'frc7636.firebaseapp.com',
@@ -13,13 +14,13 @@ const firebaseConfig = {
   measurementId: 'G-ZS6FNECGK1',
 }
 
-// Initialize Firebase
+// 初始化 firebase
 const app = firebase.initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
 const db = getFirestore(app)
 const storage = getStorage(app)
 
-// fetch Documents from Firebase
+// 設定在 firebase 的檔案位置
 export const documents = {
   homeDoc: doc(collection(db, 'views'), 'homePage'),
   membersDoc: doc(collection(db, 'views'), 'membersPage'),

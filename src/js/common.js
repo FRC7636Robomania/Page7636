@@ -8,6 +8,7 @@ export default {
   ],
 }
 
+// 節流：防止短時間內過度呼叫方法
 export const throttle = function (func, wait) {
   let lastTime = 0
   return function (...args) {

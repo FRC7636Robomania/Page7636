@@ -9,6 +9,7 @@ export const useHomeStore = defineStore('homeData', {
     cardItems: [],
   }),
   actions: {
+    // 抓取 homePage 的資料
     fetchData () {
       onSnapshot(documents.homeDoc, (doc) => {
         this.blocks = doc.data().blocks
@@ -24,6 +25,7 @@ export const useMembersStore = defineStore('membersData', {
     members: [],
   }),
   actions: {
+    // 抓取 memebersPage 的資料
     fetchData () {
       onSnapshot(documents.membersDoc, (doc) => {
         this.members = doc.data().members
@@ -38,11 +40,13 @@ export const useOutreachStore = defineStore('outreachData', {
     links: [],
   }),
   actions: {
+    // 抓取 outreachPage 的資料
     fetchData () {
       onSnapshot(documents.outreachDoc, (doc) => {
         this.items = doc.data().items
       })
     },
+    // 建立側欄的快速連結
     buildSlideNavbar () {
       this.links = []
       let group = { title: { path: '', name: '' }, subTitle: { path: [], name: [] } }
@@ -73,11 +77,13 @@ export const useSponsorsStore = defineStore('sponsorsData', {
     links: [],
   }),
   actions: {
+    // 抓取 sponsorsPage 的資料
     fetchData () {
       onSnapshot(documents.sponsorsDoc, (doc) => {
         this.sponsors = doc.data().sponsors
       })
     },
+    // 建立側欄的快速連結
     buildSlideNavbar () {
       this.links = []
       const group = {
@@ -104,6 +110,7 @@ export const useNewsStore = defineStore('newsData', {
     years: [],
   }),
   actions: {
+    // 抓取 newsPage 的資料
     fetchData () {
       onSnapshot(documents.newsDoc, (doc) => {
         this.blocks = doc.data().blocks
@@ -111,6 +118,7 @@ export const useNewsStore = defineStore('newsData', {
         this.months = doc.data().months
       })
     },
+    // 建立側欄的快速連結
     buildSlideNavbar (totalCount) {
       this.years = []
       this.pageReports = []
@@ -171,6 +179,7 @@ export const useResourcesStore = defineStore('resourcesData', {
     recap: [],
   }),
   actions: {
+    // 抓取 resourcesPage 的資料
     fetchData () {
       onSnapshot(documents.resourcesDoc, (doc) => {
         this.blocks = doc.data().blocks
@@ -185,6 +194,7 @@ export const useContactStore = defineStore('contactData', {
     formOptions: [],
   }),
   actions: {
+    // 抓取 contatcPage 的資料
     fetchData () {
       onSnapshot(documents.contactDoc, (doc) => {
         this.formOptions = doc.data().formOptions
