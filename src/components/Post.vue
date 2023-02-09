@@ -31,11 +31,15 @@
       class="image"
     >
       <img
-        :src="image"
+        :src="$common.fetchImg(image) || require('@/assets/Elements/default.png')"
         alt="postImage"
       >
     </div>
-    <a title="點擊此貼文閱讀更多" :href="post.link" class="text-decoration-none">
+    <a
+      title="點擊此貼文閱讀更多"
+      :href="post.link"
+      class="text-decoration-none"
+    >
       <h4 class="title"> {{ post.title }} </h4>
       <p class="content">
         {{ filterLength(post.content) }}
@@ -48,7 +52,7 @@
 </template>
 
 <script setup>
-import axios from 'axios'
+// import axios from 'axios'
 import { computed, ref } from 'vue'
 const props = defineProps({
   postInformation: {
@@ -59,17 +63,7 @@ const props = defineProps({
 const post = computed(() => props.postInformation || null)
 const [year, month, day] = post.value.time.split('/')
 const filterLength = content => content.length > 100 ? content.slice(0, 100) + '...' : content
-const image = ref(null)
-const fetch = url => {
-  if (url) {
-    axios.get(`http://192.168.43.130:8080/${url.slice(40)}`).then(res => {
-      image.value = res.config.url
-    }).catch(error => {
-      console.log(error)
-    })
-  }
-}
-fetch(post.value.image)
+const image = ref(post.value.image)
 
 </script>
 

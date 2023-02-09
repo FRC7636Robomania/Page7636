@@ -89,7 +89,6 @@
     </v-row>
     <div
       class="w-100"
-      :class="{'py-5 px-5': !mobile, 'py-1 px-1': mobile}"
     >
       <div
         v-for="(cardItem, index) in cardItems"
@@ -98,7 +97,7 @@
       >
         <v-row
           class="align-center h-100 cardItem"
-          :class="{'py-1 px-1 mx-1 py-1': mobile, 'py-5 px-5 mx-5 my-5': !mobile}"
+          :class="{'py-5 px-5': mobile, 'py-5 px-5 my-5': !mobile, 'pink': index == 0, 'blue': index == 1}"
         >
           <v-col
             v-if="index % 2 == 0 || mobile"
@@ -109,7 +108,7 @@
             class="text-center md-4"
           >
             <img
-              :src="require(`@/assets/Elements/Home/${cardItem.imgPath}`)"
+              :src="$common.fetchImg(cardItem.imgPath) || require(`@/assets/Elements/default.png`)"
               class="h-auto bg-dark"
               :class="{'w-100': mobile, 'w-75': !mobile}"
             >
@@ -139,7 +138,7 @@
             class="my-auto md-4 text-center"
           >
             <img
-              :src="require(`@/assets/Elements/Home/${cardItem.imgPath}`)"
+              :src="$common.fetchImg(cardItem.imgPath) || require(`@/assets/Elements/default.png`)"
               class="w-75"
             >
           </v-col>
@@ -160,7 +159,7 @@
         >
           <router-link :to="bottomItem.path">
             <img
-              :src="require(`@/assets/Elements/Home/bottom/${bottomItem.image}`)"
+              :src="$common.fetchImg(bottomItem.image) || require(`@/assets/Elements/default.png`)"
               class="mx-auto w-75 h-auto py-2"
             ><br>
             {{ bottomItem.text }}

@@ -8,6 +8,7 @@ export const useHeaderStore = defineStore('headerData', {
     menu: null,
     slideshow: null,
     links: [],
+    background: null,
   }),
   actions: {
     // 抓取 header 的資料
@@ -15,6 +16,7 @@ export const useHeaderStore = defineStore('headerData', {
       onSnapshot(documents.headerDoc, (doc) => {
         this.menu = doc.data().menu
         this.slideshow = doc.data().slideshow
+        this.background = doc.data().background
       })
     },
     // 抓取快速連結

@@ -42,13 +42,14 @@
         }
     
         #searchBar {
+            padding-right: 10px;
             #keyIn{
                 height: 80%;
                 background-color: $color-white;
             }
             #searchBtn{
                 top: 5px;
-                right: 10px;
+                right: 15px;
             }
         }
     
@@ -71,6 +72,7 @@
     top: -400%;
     left: 0;
     text-align: center;
+    padding-top: 50px;
     padding-bottom: 10px;
     border: 2px $color-blue solid;
     transition: 1s;
@@ -88,7 +90,7 @@
 
 .gradient-mask {
     @include backgroundStyle(none, cover, top, no-repeat);
-    height: 40rem;
+    height: 75vh;
     color: $color-white;
     user-select: none;
     font-style: normal;

@@ -95,19 +95,23 @@
           <router-link
             :to="list.to"
             class="text-decoration-none"
+            @click="clickEvent('right')"
           >
             {{ list.label }}
           </router-link>
         </p>
       </template>
       <template v-if="clickLeft">
-        <slideNav :links="links" />
+        <slideNav
+          :links="links"
+        />
       </template>
     </div>
   </div>
   <div
     id="header-image"
-    class="w-100 h-auto"
+    class="w-100"
+    style="height: 75vh;"
   >
     <template v-if="routerName($route.name) === 'home'">
       <swiper
@@ -120,13 +124,13 @@
         }"
         :centered-slides="true"
         :loop="true"
-        style="height:600px; width:100%; z-index: -1;"
+        style="z-index: -1; height: 75vh;"
       >
         <swiper-slide
           v-for="(image, index) in slideshow"
           :key="index"
           class="gradient-mask d-flex align-center justify-center"
-          :style="{background: 'url('+require(`../assets/Elements/Header/${image}`)+')'}"
+          :style="{background: 'url('+ imageUrl(image) +')'}"
         >
           <p
             id="homeTitle"
@@ -140,7 +144,7 @@
     <template v-else>
       <div
         class="gradient-mask w-100 d-flex align-center justify-center position-relative"
-        :style="{background: 'url('+require('../assets/Elements/Header/' + routerName($route.name) + '.png')+')'}"
+        :style="{background: 'url('+ imageUrl(store.$state.background[routerName($route.name)]) +')'}"
       >
         <p
           id="menuSelected"
@@ -160,14 +164,14 @@
 <script setup>
 import slideNav from '@/components/SideNav.vue'
 import SwiperCore, { Autoplay, EffectFade } from 'swiper'
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed, onBeforeMount, ref, getCurrentInstance } from 'vue'
 import { useHeaderStore } from '@/js/stores/componentsData'
-import { throttle } from '@/js/common.js'
 SwiperCore.use([Autoplay, EffectFade])
 const links = computed(() => store.$state.links || null)
 const store = useHeaderStore()
 store.fetchData()
 
+const { proxy } = getCurrentInstance()
 const mobile = ref(false)
 const scrollNav = ref(null)
 const clickRight = ref(false)
@@ -185,25 +189,26 @@ const routerName = router => {
 }
 const checkScreen = () => { window.innerWidth < 970 ? mobile.value = true : mobile.value = false; clickRight.value = false }
 const checkScroll = () => { window.scrollY > 20 ? scrollNav.value = true : scrollNav.value = false }
-const clickEvent = throttle(button => {
+const clickEvent = proxy.$common.throttle(button => {
   if (button === 'left' && !clickRight.value) {
     if (clickLeft.value) {
-      setTimeout(() => {
-        clickLeft.value = !clickLeft.value
-      }, 500)
+      clickLeft.value = !clickLeft.value
     } else clickLeft.value = !clickLeft.value
   }
   if (button === 'right' && !clickLeft.value) {
     if (clickRight.value) {
-      setTimeout(() => {
-        clickRight.value = !clickRight.value
-      }, 500)
+      clickRight.value = !clickRight.value
     } else clickRight.value = !clickRight.value
   }
   const element = document.querySelector('.elements')
   const menu = document.querySelector('.menuMobile')
-  menu.style.top = menu.offsetTop === element.clientHeight ? '-400%' : element.clientHeight + 'px'
+  const top = element.clientHeight - 50
+  menu.style.top = menu.offsetTop === top ? '-400%' : top + 'px'
 }, 1000)
+
+const imageUrl = url => {
+  return proxy.$common.fetchImg(url) ? proxy.$common.fetchImg(url) : require('@/assets/Elements/default.png')
+}
 
 onBeforeMount(() => {
   window.addEventListener('resize', checkScreen)

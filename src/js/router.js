@@ -64,6 +64,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue'),
   },
   {
+    path: '/backStand',
+    name: 'backStand',
+    component: () => import('../views/BackStand.vue'),
+  },
+  {
     path: '/404',
     name: '404',
     component: PageNotFound,

@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-crawel.js
+/src/js/crawel.js
+/src/views/BackStand.vue
 
 
 # local env files

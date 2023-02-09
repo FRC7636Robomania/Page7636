@@ -43,7 +43,7 @@
                 </div>
                 <img
                   v-if="report.image"
-                  :src="require(`@/assets/Elements/News/${report.image}`)"
+                  :src="$common.fetchImg(report.image) || require(`@/assets/Elements/default.png`)"
                 >
                 <div style="margin-left: 80px">
                   <h1 class="title">

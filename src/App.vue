@@ -4,9 +4,9 @@ import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
-  <Header v-if="$route.path !='/' && $route.path != '/404'" />
+  <Header v-if="$route.path !='/' && $route.path != '/404' && $route.path != '/backStand'" />
   <router-view />
-  <Footer v-if="$route.path !='/' && $route.path != '/404'" />
+  <Footer v-if="$route.path !='/' && $route.path != '/404' && $route.path != '/backStand'" />
 </template>
 
 <style lang="scss">

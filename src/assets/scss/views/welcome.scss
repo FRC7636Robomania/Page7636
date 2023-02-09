@@ -1,7 +1,7 @@
 @import '@/assets/scss/common.scss';
 
 #welcomeImg {
-    @include backgroundStyle((linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url(../assets/Elements/Home/Img02.png)));
+    @include backgroundStyle((linear-gradient(rgba(3, 31, 91, 0.32),rgba(3, 31, 91, 1.0)), url(../assets/Elements/default.png)));
     position: relative;
     padding: 10% 10%;
     @media screen and (max-width: $screen-xs) {

@@ -87,6 +87,7 @@ const props = defineProps({
     default: null,
   },
 })
+
 onMounted(() => console.log(props))
 const mobile = ref(false)
 const checkScreen = () => { window.innerWidth <= 960 ? mobile.value = true : mobile.value = false }

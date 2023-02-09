@@ -26,7 +26,7 @@
             class="personBlock d-flex justify-center align-center flex-column"
           >
             <img
-              :src="require(`@/assets/Elements/Members/${person.image}`)"
+              :src="$common.fetchImg(person.image) || require(`@/assets/Elements/default.png`)"
               :alt="person.image"
               class="image w-75 h-auto rounded-xl"
             >

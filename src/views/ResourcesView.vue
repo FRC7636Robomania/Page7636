@@ -25,7 +25,7 @@
               :key="index"
             >
               <div class="imageBlock">
-                <img :src="require(`@/assets/Elements/Resource/${image}`)">
+                <img :src=" $common.fetchImg(image) || require(`@/assets/Elements/default.png`)">
               </div>
             </swiper-slide>
             <h1
@@ -44,7 +44,7 @@
           style="padding: 10px; min-width: 300px;"
         >
           <div class="imageBlock">
-            <img :src="require(`@/assets/Elements/Resource/${block.image}`)">
+            <img :src="$common.fetchImg(block.image) || require(`@/assets/Elements/default.png`)">
           </div>
           <h1
             class="text"
@@ -64,7 +64,7 @@
           class="resourceBlock d-flex justify-center align-center flex-column overflow-hidden text-center rounded-xl"
         >
           <div class="imageBlock">
-            <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 2].image}`)">
+            <img :src="$common.fetchImg(blocks[blocks.length - 2].image) || require(`@/assets/Elements/default.png`)">
           </div>
           <h1 class="text">
             {{ blocks[blocks.length - 2].name.slice(0, -4) }} <br> {{ blocks[blocks.length - 2].name.slice(-4) }}
@@ -86,7 +86,7 @@
           class="resourceBlock d-flex justify-center align-center flex-column overflow-hidden text-center rounded-xl"
         >
           <div class="imageBlock">
-            <img :src="require(`@/assets/Elements/Resource/${blocks[blocks.length - 1].image}`)">
+            <img :src="$common.fetchImg(blocks[blocks.length - 1].image) || require(`@/assets/Elements/default.png`)">
           </div>
           <h1 class="text">
             {{ blocks[blocks.length - 1].name.slice(0, 8) }} <br> {{ blocks[blocks.length - 1].name.slice(8) }}
@@ -122,6 +122,7 @@ onBeforeMount(() => {
   window.addEventListener('resize', checkScreen)
   checkScreen()
 })
+
 </script>
 
 <style scoped lang="scss">

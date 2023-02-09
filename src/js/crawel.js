@@ -58,14 +58,15 @@ const { Builder, By } = require('selenium-webdriver')
 
       const title = content.slice(0, content.indexOf('\n'))
       content = content.slice(content.indexOf('\n') + 1)
-      let [video, image] = [null, null]
+      let [video] = [null]
       await driver.findElement(By.xpath("//video[contains(@class, 'x1lliihq x5yr21d xh8yej3')]")).then(async () => {
         await driver.findElement(By.xpath("//video[contains(@class, 'x1lliihq x5yr21d xh8yej3')]")).getAttribute('src')
           .then(res => { video = res })
       }).catch(async () => {
         await driver.findElements(By.xpath("//img[contains(@class, 'x5yr21d xu96u03 x10l6tqk x13vifvy x87ps6o xh8yej3')]"))
           .then(items => items[index].getAttribute('src'))
-          .then(res => { image = res })
+          .then(res => { console.log(res) })
+        await new Promise(res => setTimeout(res, 3000), () => {})
       })
       const link = await driver.getCurrentUrl()
       console.log(link)
@@ -73,7 +74,7 @@ const { Builder, By } = require('selenium-webdriver')
         time: year + '/' + month + '/' + day,
         title,
         content,
-        image,
+        image: '',
         video,
         link,
       }

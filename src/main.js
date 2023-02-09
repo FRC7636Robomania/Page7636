@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './js/router'
-import common from './js/common'
 import PrimeVue from 'primevue/config'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { createPinia } from 'pinia'
+import common from '@/assets/common.js'
 
 import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/lara-light-indigo/theme.css'
@@ -31,6 +31,7 @@ const app = createApp(App)
   .component('Swiper', Swiper)
   .component('SwiperSlide', SwiperSlide)
 
+app.config.globalProperties.$common = common
 common.components.forEach(
   component => {
     app.component(component.name, component)
